@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/06/27 20:18:06 by ksoto            ###   ########.fr        #
+#    Updated: 2021/06/28 13:50:27 by ksoto            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ DIRSRC		=	./srcs/
 
 #***************** SRC ********************#
 
-SRC			=	ft_printf.c handle_format.c validate_format.c
+SRC			=	ft_printf.c handle_format.c validate_format.c select_functions.c
 
 #***************** DEPS *******************#
 
@@ -93,6 +93,9 @@ ftlib	:
 
 test	:
 				$(CC) $(INCLUDE) main.c libftprintf.a $(LIB)/libft.a 
+
+debug	:
+				$(CC) -g $(INCLUDE) main.c libftprintf.a $(LIB)/libft.a 
 
 .PHONY	:		all clean fclean re ftlib
 

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/24 05:44:39 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/06/28 13:56:20 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,15 @@ int print_str(va_list lista)
  * @list: list of arguments to print
  * Return: numbers of char printed
  */
-int select_function(t_fields *str, va_list list)
+int select_function(t_fields *str, va_list args)
 {
 	unsigned int i = str->idx, result = 0;
 
 	if (!str->format[i])
 		return (-1);
+
 	/* falta p & f */
-	t_fields operator[] = {
+	t_func 	operator[] = {
 			{'c', print_char},
 			{'s', print_str},
 	/*		{'d', print_int},
@@ -84,10 +85,10 @@ int select_function(t_fields *str, va_list list)
 
 	while (operator[i].op)
 	{
-		if (str->format[i] == operator[i].op)
+		if (str->op == operator[i].op)
 		{
-			// printf("here %c\n", operator[i].op);
-            // result += operator[i].f(list);
+			printf("here %c\n", operator[i].op);
+            result += operator[i].f(args);
 			break;
 		}
 		i++;

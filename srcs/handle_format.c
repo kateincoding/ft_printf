@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/27 20:00:22 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/06/28 13:48:32 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,14 @@ int print_format(t_fields *str, va_list args)
 			counter += ft_putchar_fd('.', str->fd);
 			counter += ft_putnbr_fd(str->precision, str->fd);
 		}
+		i += counter;
 	}
 	else if (validate_operator(str->format[i]))
 	{
+		str->op = str->format[i];
 		printf("sending to execute the modifyer operator\n");
+		counter += select_function(str, args);
+		// printf("operator = %c\n", str->format[i]);
 	}
 	str->lenght += counter;
 	return(10);

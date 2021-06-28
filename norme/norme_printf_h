@@ -1,0 +1,40 @@
+includes/ft_printf.h: Error!
+Error: PREPROC_BAD_INDENT   (line:   4, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   5, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   6, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   7, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:   8, col:   1):	Bad preprocessor indentation
+Error: PREPROC_BAD_INDENT   (line:  10, col:   1):	Bad preprocessor indentation
+Error: LINE_TOO_LONG        (line:  12, col:   1):	line too long
+Error: LINE_TOO_LONG        (line:  12, col:   1):	line too long
+Error: LINE_TOO_LONG        (line:  12, col:   1):	line too long
+Error: LINE_TOO_LONG        (line:  12, col:   1):	line too long
+Error: TAB_REPLACE_SPACE    (line:  28, col:  15):	Found tab when expecting space
+Error: SPACE_REPLACE_TAB    (line:  65, col:   2):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  71, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  73, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  80, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  87, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  88, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  89, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  91, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  92, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  94, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  96, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 101, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 102, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 107, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 108, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 110, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 113, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 114, col:   4):	Found space when expecting tab
+Error: MISALIGNED_FUNC_DECL (line: 120, col:   9):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line: 121, col:   9):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line: 122, col:   9):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line: 123, col:  10):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line: 124, col:   9):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line: 125, col:   9):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line: 126, col:   9):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line: 127, col:   9):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line: 128, col:   9):	Misaligned function declaration
+Error: CONSECUTIVE_NEWLINES (line: 130, col:   1):	Consecutive newlines

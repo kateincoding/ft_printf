@@ -1,0 +1,37 @@
+libft/src/ft_putnbr.c: Error!
+Error: SPACE_AFTER_KW       (line:  17, col:   5):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  17, col:  11):	Missing space before parenthesis (brace/bracket)
+libft/src/ft_putnbr_fd.c: Error!
+Error: TOO_MANY_TABS_FUNC   (line:  15, col:   5):	extra tabs before function name
+Error: TOO_FEW_TAB          (line:  17, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  17, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  17, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  17, col:  17):	Declaration and assignation on a single line
+Error: EMPTY_LINE_FUNCTION  (line:  33, col:   1):	Empty line in function
+Error: TOO_FEW_TAB          (line:  34, col:   1):	Missing tabs for indent level
+Error: SPACE_AFTER_KW       (line:  34, col:   5):	Missing space after keyword
+Error: SPACE_REPLACE_TAB    (line:  34, col:   5):	Found space when expecting tab
+Error: SPC_BFR_PAR          (line:  34, col:  11):	Missing space before parenthesis (brace/bracket)
+Error: SPACE_AFTER_KW       (line:  39, col:   5):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  39, col:  11):	Missing space before parenthesis (brace/bracket)
+libft/src/ft_strlen.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  17, col:  11):	Found space when expecting tab
+libft/src/ft_putstr_fd.c: Error!
+Error: SPACE_AFTER_KW       (line:  17, col:   5):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  17, col:  11):	Missing space before parenthesis (brace/bracket)
+libft/src/ft_memalloc.c: Error!
+Error: TAB_REPLACE_SPACE    (line:  17, col:  13):	Found tab when expecting space
+libft/src/ft_putchar_fd.c: Error!
+Error: SPACE_AFTER_KW       (line:  17, col:   5):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  17, col:  11):	Missing space before parenthesis (brace/bracket)
+libft/src/ft_atoi.c: Error!
+Error: EOL_OPERATOR         (line:  24, col:  60):	Logic operator at the end of line
+Error: TOO_MANY_TAB         (line:  25, col:  29):	Extra tabs for indent level
+Error: TERNARY_FBIDDEN      (line:  29, col:   1):	Ternaries are forbidden
+libft/src/ft_putchar.c: Error!
+Error: TOO_FEW_TAB          (line:  17, col:   1):	Missing tabs for indent level
+Error: SPACE_AFTER_KW       (line:  17, col:   5):	Missing space after keyword
+Error: SPACE_REPLACE_TAB    (line:  17, col:   5):	Found space when expecting tab
+Error: SPC_BFR_PAR          (line:  17, col:  11):	Missing space before parenthesis (brace/bracket)
+libft/src/ft_chrcount.c: Error!
+Error: EMPTY_LINE_FUNCTION  (line:  22, col:   1):	Empty line in function

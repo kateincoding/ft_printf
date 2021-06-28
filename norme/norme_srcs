@@ -1,0 +1,160 @@
+select_functions.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  20, col:   4):	space before function name
+Error: WRONG_SCOPE_COMMENT  (line:  22, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  25, col:   5):	Comment is invalid in this scope
+Error: SPACE_BEFORE_FUNC    (line:  33, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  35, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  35, col:  24):	Declaration and assignation on a single line
+Error: VAR_DECL_START_FUNC  (line:  37, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  37, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  37, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  37, col:  15):	Declaration and assignation on a single line
+Error: SPACE_BEFORE_FUNC    (line:  63, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  65, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  65, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  65, col:  39):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  69, col:   5):	Comment is invalid in this scope
+Error: VAR_DECL_START_FUNC  (line:  70, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  70, col:  13):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  70, col:  14):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  70, col:  25):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  89, col:  13):	Comment is invalid in this scope
+Error: SPACE_EMPTY_LINE     (line:  90, col:  13):	Space on empty line
+Error: WRONG_SCOPE_COMMENT  (line:  90, col:  13):	Comment is invalid in this scope
+Error: SPACE_AFTER_KW       (line:  91, col:  13):	Missing space after keyword
+Error: TOO_MANY_LINES       (line:  98, col:   1):	Function has more than 25 lines
+ft_printf.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  20, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  22, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  22, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  32):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  23, col:  13):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  23, col:  14):	Misaligned variable declaration
+Error: EMPTY_LINE_FUNCTION  (line:  27, col:   1):	Empty line in function
+Error: TOO_FEW_TAB          (line:  29, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  29, col:   2):	Found space when expecting tab
+Error: WRONG_SCOPE_COMMENT  (line:  43, col:  13):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  44, col:  13):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  48, col:  68):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  48, col:  68):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  48, col:  68):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  48, col: 100):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  50, col:  17):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  53, col:  60):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  53, col:  60):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  53, col:  60):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  53, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  60, col:  48):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  60, col:  48):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  60, col:  48):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  60, col: 128):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  62, col:  17):	Comment is invalid in this scope
+Error: TOO_MANY_LINES       (line:  71, col:   1):	Function has more than 25 lines
+Error: TOO_FEW_TAB          (line:  83, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  83, col:   5):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  97, col:   4):	space before function name
+Error: TOO_FEW_TAB          (line:  99, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  99, col:   5):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line: 102, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line: 102, col:   5):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line: 104, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line: 104, col:   5):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line: 106, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line: 106, col:   5):	Found space when expecting tab
+ft_op_bases.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  21, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  23, col:  17):	Found space when expecting tab
+Error: MULT_DECL_LINE       (line:  23, col:  21):	Multiple declarations on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  25):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  36):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  24, col:   8):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  24, col:   9):	Misaligned variable declaration
+Error: SPACE_REPLACE_TAB    (line:  57, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  57, col:  17):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  58, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  58, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  58, col:  23):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  74, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  74, col:  17):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  75, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  75, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  75, col:  23):	Declaration and assignation on a single line
+Error: SPACE_BEFORE_FUNC    (line:  91, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  93, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  93, col:  20):	Declaration and assignation on a single line
+Error: SPACE_BEFORE_FUNC    (line: 104, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 106, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 106, col:  20):	Declaration and assignation on a single line
+handle_format.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  20, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  22, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  22, col:  11):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  31):	Declaration and assignation on a single line
+Error: SPACE_BEFORE_FUNC    (line:  49, col:   5):	space before function name
+Error: SPACE_BEFORE_FUNC    (line:  63, col:   5):	space before function name
+Error: SPACE_BEFORE_FUNC    (line:  79, col:   5):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  81, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  81, col:  11):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  83, col:   5):	Comment is invalid in this scope
+Error: SPACE_BEFORE_FUNC    (line: 101, col:   5):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 103, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 103, col:  11):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line: 104, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 104, col:  11):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line: 106, col:   5):	Comment is invalid in this scope
+Error: TOO_MANY_FUNCS       (line: 116, col:   1):	Too many functions in file
+Error: SPACE_BEFORE_FUNC    (line: 116, col:   5):	space before function name
+Error: SPACE_REPLACE_TAB    (line: 118, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 118, col:  11):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line: 119, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 119, col:  11):	Declaration and assignation on a single line
+validate_format.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  28, col:   4):	space before function name
+Error: LINE_TOO_LONG        (line:  50, col:   1):	line too long
+Error: LINE_TOO_LONG        (line:  50, col:   1):	line too long
+Error: LINE_TOO_LONG        (line:  50, col:   1):	line too long
+Error: LINE_TOO_LONG        (line:  50, col:   1):	line too long
+Error: SPACE_REPLACE_TAB    (line:  85, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  85, col:  16):	Declaration and assignation on a single line
+ft_op_numbers.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  20, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  22, col:   8):	Found space when expecting tab
+Error: MULT_DECL_LINE       (line:  22, col:  10):	Multiple declarations on a single line
+Error: MULT_DECL_LINE       (line:  22, col:  15):	Multiple declarations on a single line
+Error: MULT_DECL_LINE       (line:  22, col:  18):	Multiple declarations on a single line
+Error: MULT_DECL_LINE       (line:  22, col:  21):	Multiple declarations on a single line
+Error: MULT_DECL_LINE       (line:  22, col:  24):	Multiple declarations on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  28):	Declaration and assignation on a single line
+Error: TOO_MANY_LINES       (line:  55, col:   1):	Function has more than 25 lines
+Error: SPACE_BEFORE_FUNC    (line:  63, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  65, col:  17):	Found space when expecting tab
+Error: MULT_DECL_LINE       (line:  65, col:  21):	Multiple declarations on a single line
+Error: DECL_ASSIGN_LINE     (line:  65, col:  25):	Declaration and assignation on a single line
+Error: EMPTY_LINE_FUNCTION  (line:  68, col:   1):	Empty line in function
+Error: FORBIDDEN_CS         (line:  76, col:   9):	Forbidden control structure
+ft_op_strings.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  20, col:   4):	space before function name
+Error: WRONG_SCOPE_COMMENT  (line:  22, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  25, col:   5):	Comment is invalid in this scope
+Error: SPACE_BEFORE_FUNC    (line:  33, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  35, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  35, col:  24):	Declaration and assignation on a single line
+Error: VAR_DECL_START_FUNC  (line:  37, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  37, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  37, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  37, col:  15):	Declaration and assignation on a single line
+Error: SPACE_BEFORE_FUNC    (line:  62, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  64, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  65, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  65, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  65, col:  13):	Declaration and assignation on a single line
+Error: EMPTY_LINE_FUNCTION  (line:  69, col:   1):	Empty line in function
+Error: SPACE_BEFORE_FUNC    (line:  82, col:   4):	space before function name
+Error: SPACE_REPLACE_TAB    (line:  84, col:   9):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  84, col:  13):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  85, col:   8):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  85, col:   9):	Misaligned variable declaration
+Error: MULT_DECL_LINE       (line:  85, col:  10):	Multiple declarations on a single line
+Error: DECL_ASSIGN_LINE     (line:  85, col:  14):	Declaration and assignation on a single line
+Error: EMPTY_LINE_FUNCTION  (line:  89, col:   1):	Empty line in function
+Error: FORBIDDEN_CS         (line:  90, col:   5):	Forbidden control structure

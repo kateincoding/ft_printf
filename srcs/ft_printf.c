@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/01 04:24:19 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/01 05:06:50 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int ft_vfprintf(int fd, const char *format, va_list args)
 			else
 			{
 				// printf("permited to modify\n"); //result += select_function(format[i], args); /* handle format and init flags */
-				print_format(str, args);
+				print_format(args);
 				// printf(" actual index = %d\n", str->idx);
 				str->idx--;
 				i = str->idx;

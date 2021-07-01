@@ -91,15 +91,15 @@ void finalize_stack(void);
 ** create structure for each argv
 */
 
-void set_flags(t_fields *str);
-void reset_flags(t_fields *str);
+void set_flags(void);
+void restart_flags(void);
 int	validate_only_flag(const char flag);
-void set_width(t_fields *str, va_list args_list);
-void set_precision(t_fields *str, va_list args_list);
+void set_width(va_list args_list);
+void set_precision(va_list args_list);
 
 int select_function(va_list list);
 
-int print_format(t_fields *str, va_list args_list);
+int print_format(va_list args_list);
 /*
 ** conversion operators function
 */

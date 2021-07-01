@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/01 05:02:59 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/01 05:06:35 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 ** %[$][flags][width][.precision][length modifier]conversion
 ** %[$][flags][0 - 9][. + [0-9]][length modifier]conversion
 */
-int print_format(t_fields *str, va_list args)
+int print_format(va_list args)
 {
 	int counter = 0;
 
-	reset_flags(str);
-	set_flags(str);
-	set_width(str, args);
-	set_precision(str, args);
+	restart_flags();
+	set_flags();
+	set_width(args);
+	set_precision(args);
 	if (str->format[str->idx] == ' ')
 	{
 		counter += ft_putchar_fd('%', str->fd);
@@ -52,7 +52,7 @@ int print_format(t_fields *str, va_list args)
 }
 
 
-void reset_flags(t_fields *str)
+void restart_flags(void)
 {
 	str->minus = 0;
 	str->zero = 0;
@@ -68,7 +68,7 @@ void reset_flags(t_fields *str)
 ** %[$][flags][0 - 9][. + [0-9]][length modifier]conversion
 */
 
-void set_flags(t_fields *str)
+void set_flags(void)
 {
 	int i = str->idx;
 
@@ -91,7 +91,7 @@ void set_flags(t_fields *str)
 	// printf("\n idx %d\n", str->idx);
 }
 
-void set_width(t_fields *str, va_list args_list)
+void set_width(va_list args_list)
 {
 	int i = str->idx;
 	int n = 0;
@@ -107,7 +107,7 @@ void set_width(t_fields *str, va_list args_list)
 }
 
 /* check if predomine * or number and change the order to assign n value */
-void set_precision(t_fields *str, va_list args_list)
+void set_precision(va_list args_list)
 {
 	int i = str->idx;
 	int n = 0;

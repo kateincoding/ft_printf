@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/01 04:22:51 by ksoto            ###   ########.fr        #
+#    Updated: 2021/07/01 05:27:55 by ksoto            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ DIRSRC		=	./srcs/
 
 #***************** SRC ********************#
 
-SRC			=	stack_manipulation.c ft_printf.c handle_format.c validate_format.c select_functions.c
+SRC			=	stack_manipulation.c ft_printf.c handle_format.c validate_format.c select_functions.c ft_conversion_cs.c
 
 #***************** DEPS *******************#
 

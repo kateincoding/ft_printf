@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/01 05:28:04 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/01 05:40:52 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int select_function(va_list args)
 	t_func 	operator[] = {
 			{'c', print_char},
 			{'s', print_str},
-	/*		{'d', print_int},
+			{'d', print_int},
 			{'i', print_int},
-			{'u', print_unsigned},*/
+	/*		{'u', print_unsigned},*/
 	//		{'o', print_octal},
 	/*		{'x', print_hex},
 			{'X', print_HEX},*/

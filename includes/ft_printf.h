@@ -31,7 +31,6 @@ typedef struct	s_fields
 	int		idx;
 	int		fd;
 	char	op;
-	int		(*f)(va_list);
 	int		lenght;
 	int		minus;
 	int		zero;
@@ -81,17 +80,24 @@ int validate_operator(char op);
 int	validate_flag(const char flag);
 
 /*
+** stack manipulation
+*/
+t_fields *str;
+
+void initialize_stack(const char *inputs, int fd);
+void finalize_stack(void);
+
+/*
 ** create structure for each argv
 */
 
-void initialize_fields(t_fields *str, const char *inputs, int fd);
 void set_flags(t_fields *str);
 void reset_flags(t_fields *str);
 int	validate_only_flag(const char flag);
 void set_width(t_fields *str, va_list args_list);
 void set_precision(t_fields *str, va_list args_list);
 
-int select_function(t_fields *str, va_list list);
+int select_function(va_list list);
 
 int print_format(t_fields *str, va_list args_list);
 /*

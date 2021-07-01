@@ -5,7 +5,7 @@ int main(void)
 {
     int a = 5;
     int i = 7;
-    char c = 'h';
+    char h = 'k';
 
 /*
     ft_printf("hola\n");
@@ -14,8 +14,12 @@ int main(void)
     printf("% 5 d\n", 29);
     printf("-----------\n");
 */
-    ft_printf("prueba %c\n", c);
-    printf("prueba %c\n", c);
+    ft_printf("prueba %c\n", 'k');
+    printf("prueba %c\n", 'k');
+    ft_printf("prueba %0c\n", h);
+    printf("prueba %0c\n", h);
+    ft_printf("prueba %-2c\n", h);
+    printf("prueba %-2c\n", h);
  //   ft_printf("% 10.21f\n", 29.1234);
  //   printf("% 10.21f\n", 29.1234);
     printf("-----------\n");

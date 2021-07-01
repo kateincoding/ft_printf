@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/24 05:56:39 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:24:19 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@
 int ft_vfprintf(int fd, const char *format, va_list args)
 {
 	unsigned int i = 0, result = 0;
-	t_fields *str;
+	// t_fields *str;
 
 	if (format == NULL)
 		return (-1);
 
-	str = (t_fields *)ft_memalloc(sizeof(t_fields));
- 	initialize_fields(str, format, fd);
+ 	initialize_stack(format, fd);
 	while (format && format[i] && i < ft_strlen(format))
 	{
 		while (format[i] != '%' && format[i])
@@ -57,7 +56,7 @@ int ft_vfprintf(int fd, const char *format, va_list args)
 			}
 			else
 			{
-				printf("permited to modify\n"); //result += select_function(format[i], args); /* handle format and init flags */
+				// printf("permited to modify\n"); //result += select_function(format[i], args); /* handle format and init flags */
 				print_format(str, args);
 				// printf(" actual index = %d\n", str->idx);
 				str->idx--;
@@ -66,7 +65,7 @@ int ft_vfprintf(int fd, const char *format, va_list args)
 		}
 		i++;
 	}
-	free(str);
+	finalize_stack();
 	return (result);
 }
 

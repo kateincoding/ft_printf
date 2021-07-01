@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/28 13:56:20 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/01 04:44:25 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@
 int print_char(va_list lista)
 {
 	/*va_arg (va_list ap, type)*/
-	ft_putchar(va_arg(lista, int));
-	return (1);
-	/* returning true */
+	char c = va_arg(lista, int);
+	return (ft_putchar_fd(c, str->fd));
 }
 
 /**
@@ -60,9 +59,9 @@ int print_str(va_list lista)
  * @list: list of arguments to print
  * Return: numbers of char printed
  */
-int select_function(t_fields *str, va_list args)
+int select_function(va_list args)
 {
-	unsigned int i = str->idx, result = 0;
+	unsigned int i = 0, result = 0;
 
 	if (!str->format[i])
 		return (-1);
@@ -83,11 +82,13 @@ int select_function(t_fields *str, va_list args)
 	//		{'R', print_rot13},
 			{'\0', NULL}};
 
+	// printf("\ntst here %c\n", str->op);
 	while (operator[i].op)
 	{
+		// printf("\ntst here %c\n", str->op);
 		if (str->op == operator[i].op)
 		{
-			printf("here %c\n", operator[i].op);
+			// printf("\nhere\n");
             result += operator[i].f(args);
 			break;
 		}

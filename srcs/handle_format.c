@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/28 13:48:32 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/01 05:02:59 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 */
 int print_format(t_fields *str, va_list args)
 {
-	int i = str->idx, counter = 0;
+	int counter = 0;
 
 	reset_flags(str);
 	set_flags(str);
 	set_width(str, args);
 	set_precision(str, args);
-	if (str->format[i] == ' ')
+	if (str->format[str->idx] == ' ')
 	{
 		counter += ft_putchar_fd('%', str->fd);
 		if (str->space != 0)
@@ -37,34 +37,20 @@ int print_format(t_fields *str, va_list args)
 			counter += ft_putchar_fd('.', str->fd);
 			counter += ft_putnbr_fd(str->precision, str->fd);
 		}
-		i += counter;
+		str->idx += counter; /* checar si es +1 o counter */
 	}
-	else if (validate_operator(str->format[i]))
+	else if (validate_operator(str->format[str->idx]))
 	{
-		str->op = str->format[i];
-		printf("sending to execute the modifyer operator\n");
-		counter += select_function(str, args);
+		str->op = str->format[str->idx];
+		// printf("sending to execute the modifyer operator\n");
+		counter += select_function(args);
+		str->idx += 1;
 		// printf("operator = %c\n", str->format[i]);
 	}
 	str->lenght += counter;
 	return(10);
 }
 
-/*  print , evaluar si necesito doble puntero o no */
-
-void initialize_fields(t_fields *str, const char *input, int fd)
-{
-	str->format = (char *)input;
-	str->idx = 0;
-	str->fd = fd;
-	str->lenght = 0;
-	str->minus = 0;
-	str->zero = 0;
-	str->width = 0;
-	str->wildcard = 0;
-	str->precision = -1;
-	str->space = 0;
-}
 
 void reset_flags(t_fields *str)
 {
@@ -102,6 +88,7 @@ void set_flags(t_fields *str)
 		i++;
 	}
 	str->idx = i;
+	// printf("\n idx %d\n", str->idx);
 }
 
 void set_width(t_fields *str, va_list args_list)
@@ -116,6 +103,7 @@ void set_width(t_fields *str, va_list args_list)
 		n = va_arg(args_list, int), i++;
 	str->width = n;
 	str->idx = i;
+	// printf("\n idx %d\n", str->idx);
 }
 
 /* check if predomine * or number and change the order to assign n value */
@@ -134,4 +122,5 @@ void set_precision(t_fields *str, va_list args_list)
 		str->precision = n;
 		str->idx = i;
 	}
+	// printf("\n idx %d\n", str->idx);
 }

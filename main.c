@@ -35,19 +35,24 @@ int main(void)
 
 /* ---------------- test %d -----------------*/
 
-    ft_printf("prueba %d\n", 42);
-    printf("prueba %d\n", 42);
+    ft_printf("prueba %   d\n", 42);
+    printf("prueba %   d\n", 42);
+
     ft_printf("prueba %1.0d\n", 123456789);
     printf("prueba %1.0d\n", 123456789);
     ft_printf("prueba %7d\n", 42);
     printf("prueba %7d\n", 42);
+
     ft_printf("prueba %7.0d.\n", 42);
     printf("prueba %7.0d.\n", 42);
     ft_printf("prueba %-7.0d.\n", 42);
     printf("prueba %-7.0d.\n", 42);
     printf("-----------\n");
+    printf("\n");
     ft_printf("%   5d\n", 29);
     printf("%   5d\n", 29);
+
+
     printf("-----------\n");
 
     ft_printf("% 5wd\n", 2, 9);
@@ -60,6 +65,7 @@ int main(void)
     // printf("%*d\n", 5, 4);
     // ft_printf("%d\n", 2, 9);
     // printf("%d\n", 2, 9);
+
     ft_printf("%-6d\n", 29);
     printf("%-6d\n", 29);
     ft_printf("%.5d\n", 29);

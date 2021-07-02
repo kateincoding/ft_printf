@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/02 22:42:26 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/02 18:23:16 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,21 @@ int	print_before(int width, int len)
 	int	break_flag = 0;
 	int	i;
 
-
-	if (str->space > 0 && width != len)
+	if (str->space > 0 && width == len)
 	{
+		// printf("\nhere 1\n");
 		i = 0;
-		while (i < str->space)
+		if (i < str->space)
 		{
 			str->lenght += ft_putchar_fd(' ', str->fd);
-			i++;
+			while (i < str->space)
+				i++;
 		}
 	}
 
-	if (str->minus == 0 && width != len && str->precision == 0)
+	if (str->minus == 0 && width != len && str->precision <= 0)
 	{
+		// printf("\nhere 2\n");
 		i = 0;
 		while (i < (width - len))
 		{
@@ -39,6 +41,7 @@ int	print_before(int width, int len)
 	}
 	if (str->precision > 0 && width != len)
 	{
+		// printf("\nhere 3\n");
 		i = 0;
 		while (i < width - len)
 		{

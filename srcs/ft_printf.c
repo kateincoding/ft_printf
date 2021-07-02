@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/02 17:47:55 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/02 17:57:07 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int ft_vfprintf(int fd, const char *format, va_list args)
 	unsigned int i = 0;
 	unsigned int result = 0;
 	int tmp = 0;
-	// t_fields *str;
 
 	if (format == NULL)
 		return (-1);

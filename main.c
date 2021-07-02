@@ -39,6 +39,8 @@ int main(void)
     printf("prueba %d\n", 42);
     ft_printf("prueba %1.0d\n", 123456789);
     printf("prueba %1.0d\n", 123456789);
+    ft_printf("prueba %7d\n", 42);
+    printf("prueba %7d\n", 42);
     ft_printf("prueba %7.0d.\n", 42);
     printf("prueba %7.0d.\n", 42);
     ft_printf("prueba %-7.0d.\n", 42);

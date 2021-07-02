@@ -37,6 +37,32 @@ int main(void)
 
     ft_printf("prueba %d\n", 42);
     printf("prueba %d\n", 42);
+    ft_printf("prueba %1.0d\n", 123456789);
+    printf("prueba %1.0d\n", 123456789);
+    ft_printf("prueba %7.0d.\n", 42);
+    printf("prueba %7.0d.\n", 42);
+    ft_printf("prueba %-7.0d.\n", 42);
+    printf("prueba %-7.0d.\n", 42);
+    ft_printf("%   5d\n", 29);
+    printf("%   5d\n", 29);
+    printf("-----------\n");
+
+    ft_printf("% 5wd\n", 2, 9);
+    printf("% 5wd\n", 2, 9);
+    
+    printf("-----------\n");
+    ft_printf("%   5wd\n", 2, 9);
+    printf("%   5wd\n", 2, 9);
+    // ft_printf("%*d\n", 5, 4);
+    // printf("%*d\n", 5, 4);
+    // ft_printf("%d\n", 2, 9);
+    // printf("%d\n", 2, 9);
+    ft_printf("%-6d\n", 29);
+    printf("%-6d\n", 29);
+    ft_printf("%.5d\n", 29);
+    printf("%.5d\n", 29);
+    ft_printf("'%-6.5d'\n", 29);
+    printf("'%-6.5d'\n", 29);
 
  //   ft_printf("% 10.21f\n", 29.1234);
  //   printf("% 10.21f\n", 29.1234);
@@ -52,24 +78,10 @@ int main(void)
     ft_printf("% *.* \n", 2, 1, 29.1234);
     printf("% *.* \n", 2, 1, 29.1234);
     printf("-----------\n"); */
-/*
-    ft_printf("%   5d\n", 29);
-    printf("%   5d\n", 29);
-    printf("-----------\n");
-    ft_printf("% 5wd\n", 2, 9);
-    printf("% 5wd\n", 2, 9);
-    printf("-----------\n");
-    ft_printf("%   5wd\n", 2, 9);
-    printf("%   5wd\n", 2, 9);
 
-    printf("%2$*1$d\n", 5, 4);
-    printf("%d\n", 2, 9);
-    printf("%-6d\n", 29);
-    printf("%.5d\n", 29); */
- //   printf("'%-6.5d'\n", 29);
- //   printf("'%5.3f'\n", 29.12345);
- //   printf("'%-0*.*f'\n", 10, 2, 2.12345);
-/*  printf("'%10.5f'\n", 29.1);
+/*    printf("'%5.3f'\n", 29.12345);
+    printf("'%-0*.*f'\n", 10, 2, 2.12345);
+    printf("'%10.5f'\n", 29.1);
     printf("'%-00000--*i'\n", 10, 2);
     printf("'%-0-0-000--*i'\n", 10, 2);
     printf("'%0 *i'\n", 10, 2);

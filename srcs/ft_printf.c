@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/01 05:06:50 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/02 17:47:55 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
  */
 int ft_vfprintf(int fd, const char *format, va_list args)
 {
-	unsigned int i = 0, result = 0;
+	unsigned int i = 0;
+	unsigned int result = 0;
+	int tmp = 0;
 	// t_fields *str;
 
 	if (format == NULL)
@@ -47,12 +49,28 @@ int ft_vfprintf(int fd, const char *format, va_list args)
 			else if (valid_operator_flag_modifier(format, i) == 0) /* validate operator and flag */
 			{
 				// printf ("not permited -> string\n");
-				result += ft_putchar_fd('%', fd);
-				if (format[i] == ' ')
-					result += ft_putchar_fd(' ', fd), i++; /*add print counter */
-				while (format[i] == ' ')
-					i++;
-				result += ft_putchar_fd(format[i], fd);
+				if (IS_MACOS == 1)
+				{
+					while (format[i] == ' ')
+						i++;
+					if ('0' <= format[i] && format[i] <= '9')
+					{
+						tmp = format[i] - '0';
+						while (tmp > 1)
+							result += ft_putchar_fd(' ', fd), tmp--;
+						i++;
+					}
+					result += ft_putchar_fd(format[i], fd);
+				}
+				if (IS_MACOS == 0)
+				{
+					result += ft_putchar_fd('%', fd);
+					if (format[i] == ' ')
+						result += ft_putchar_fd(' ', fd), i++; /*add print counter */
+					while (format[i] == ' ')
+						i++;
+					result += ft_putchar_fd(format[i], fd);
+				}
 			}
 			else
 			{

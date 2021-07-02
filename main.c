@@ -45,6 +45,7 @@ int main(void)
     printf("prueba %7.0d.\n", 42);
     ft_printf("prueba %-7.0d.\n", 42);
     printf("prueba %-7.0d.\n", 42);
+    printf("-----------\n");
     ft_printf("%   5d\n", 29);
     printf("%   5d\n", 29);
     printf("-----------\n");
@@ -53,8 +54,8 @@ int main(void)
     printf("% 5wd\n", 2, 9);
     
     printf("-----------\n");
-    ft_printf("%   5wd\n", 2, 9);
-    printf("%   5wd\n", 2, 9);
+    ft_printf("%   3wd\n", 2, 9);
+    printf("%   3wd\n", 2, 9);
     // ft_printf("%*d\n", 5, 4);
     // printf("%*d\n", 5, 4);
     // ft_printf("%d\n", 2, 9);
@@ -63,8 +64,8 @@ int main(void)
     printf("%-6d\n", 29);
     ft_printf("%.5d\n", 29);
     printf("%.5d\n", 29);
-    ft_printf("'%-6.5d'\n", 29);
-    printf("'%-6.5d'\n", 29);
+    ft_printf("'%-6.8d'\n", 29);
+    printf("'%-6.8d'\n", 29);
 
  //   ft_printf("% 10.21f\n", 29.1234);
  //   printf("% 10.21f\n", 29.1234);

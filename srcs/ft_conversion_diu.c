@@ -6,47 +6,78 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/02 15:38:02 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/02 17:05:13 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/**
-*print_int - It will print integers
-*@lista: the main string passed to the function
-*Return: An integer
-*/
-int print_int(va_list lista)
+int	print_before(int width, int len)
 {
-	int x, bit, d, o, n, c = 0;
-	int width, len = 1, tmp, i;
+	int	break_flag = 0;
+	int	i;
 
-	n = va_arg(lista, int);
-	tmp = n;
-	if (tmp < 0)
-		tmp = -tmp;
-	while(tmp > 10)
+	if (IS_MACOS == 1)
 	{
-		tmp = tmp/10;
-		len++;
+		if (str->space > 0 && width != len)
+		{
+			i = 0;
+			while (i < str->space)
+			{
+				str->lenght += ft_putchar_fd(' ', str->fd);
+				i++;
+			}
+		}
 	}
-	/* handle flags , also needs to see precision*/
-	width = str->width > len ? str->width : len;
-	// printf("\n width = %d\n", width);
-	// printf("\n len = %d\n", len);
-	// printf("spaces to print %d\n", (width - len));
-	if(str->minus == 0 && width != len)
+
+	if (str->minus == 0 && width != len && str->precision == 0)
 	{
 		i = 0;
-		while(i < (width - len))
+		while (i < (width - len))
 		{
 			str->lenght += ft_putchar_fd(' ', str->fd);
 			i++;
 		}
 	}
-	/* printing number */
-	o = n % 10;
+	if (str->precision > 0 && width != len)
+	{
+		i = 0;
+		while (i < width - len)
+		{
+			str->lenght += ft_putchar_fd('0', str->fd);
+			i++;
+		}
+		break_flag = 1;
+	}
+	return(break_flag);
+}
+
+void	print_after(int width, int len, int break_flag)
+{
+	int i;
+
+	if (str->minus != 0 && width != len)
+	{
+		i = 0;
+		while(i < (width - len))
+		{
+			if (break_flag == 1)
+				break;
+			str->lenght += ft_putchar_fd(' ', str->fd);
+			i++;
+		}
+	}
+}
+
+
+int print_body(int c, int n)
+{
+	int	x;
+	int	bit;
+	int	d;
+	int	o;
+
+		o = n % 10;
 	n = n / 10;
 	if (o < 0)
 	{
@@ -74,16 +105,41 @@ int print_int(va_list lista)
 		}
 	}
 	str->lenght += ft_putchar_fd(o + '0', str->fd);
-	if(str->minus != 0 && width != len)
-	{
-		i = 1;
-		while(i < (width - len))
-		{
-			str->lenght += ft_putchar_fd(' ', str->fd);
-			i++;
-		}
-	}
 	c++;
+	return (c);
+}
+
+
+/**
+*print_int - It will print integers
+*@lista: the main string passed to the function
+*Return: An integer
+*/
+int	print_int(va_list lista)
+{
+	int	n;
+	int	c = 0;
+	int	width;
+	int	len = 1;
+	int	tmp;
+	int	break_flag = 0;
+
+	n = va_arg(lista, int);
+	tmp = n;
+	if (tmp < 0)
+		tmp = -tmp;
+	while(tmp > 10)
+	{
+		tmp = tmp/10;
+		len++;
+	}
+	/* handle flags , also needs to see precision*/
+	width = str->width > len ? str->width : len;
+	width = str->precision > width ? str->precision : width;
+	break_flag = print_before(width, len);
+	/* printing number */
+	c = print_body(c, n);
+	print_after(width, len, break_flag);
 	return (c);
 }
 

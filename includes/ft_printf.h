@@ -132,5 +132,10 @@ int		ft_putnbr_fd(int n, int fd);
 int		ft_putstr_fd(char const *s, int fd);
 size_t	ft_strlen(const char *s);
 
+# if __APPLE__
+#  define IS_MACOS 1
+# else
+#  define IS_MACOS 0
+# endif
 
 #endif

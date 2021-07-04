@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/03 17:16:07 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/04 14:29:27 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void restart_flags(void)
 	str->minus = 0;
 	str->zero = 0;
 	str->width = 0;
+	str->final_width = 0;
 	str->wildcard = 0;
 	str->precision = -1;
 	str->space = 0;

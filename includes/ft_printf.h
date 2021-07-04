@@ -35,6 +35,7 @@ typedef struct	s_fields
 	int		minus;
 	int		zero;
 	int		width;
+	int		final_width;
 	int		wildcard;
 	int		precision;
 	int		hashtag;
@@ -99,7 +100,10 @@ void set_precision(va_list args_list);
 
 int select_function(va_list list);
 
+int	print_before(int width, int len);
 int print_format(va_list args_list);
+void print_after(int width, int len, int break_flag);
+
 /*
 ** conversion operators function
 */

@@ -35,6 +35,11 @@ int main(void)
 
 /* ---------------- test %d -----------------*/
 
+/* check it 
+    "%06d", -42  =-00042
+    "%.6d", -42   =-000042
+ */
+/*
     ft_printf("prueba %   d\n", 42);
     printf("prueba %   d\n", 42);
 
@@ -66,9 +71,18 @@ int main(void)
     printf("%-6d\n", 29);
     ft_printf("%.5d\n", 29);
     printf("%.5d\n", 29);
-    ft_printf("'%-6.8d'\n", 29);
-    printf("'%-6.8d'\n", 29);
-
+*/
+    ft_printf("'%  6.3d'\n", 29);
+    printf("'%  6.3d'\n", 29);
+    ft_printf("ft_printf-> '%6.0d'\n", 29);
+    printf("printf   -> '%6.0d'\n", 29);
+    ft_printf("ft_printf-> '%  -6.3d'\n", 29);
+    printf("printf   -> '%  -6.3d'\n", 29);
+    ft_printf("'%-1.8d'\n", 29);
+    printf("'%-1.8d'\n", 29);
+    ft_printf("'%-15.3d'\n", 29);
+    printf("'%-15.3d'\n", 29);
+/*
     printf("------wildcard-----\n");
     ft_printf("%*d\n", 5, 4);
     printf("%*d\n", 5, 4);
@@ -77,7 +91,7 @@ int main(void)
     printf("-----------\n");
 
     /* ---------------- test %i -----------------*/
-
+/*
     ft_printf("prueba %u\n", -42);
     printf("prueba %u\n", -42);
     ft_printf("prueba %   u\n", 42);
@@ -91,14 +105,14 @@ int main(void)
     printf("prueba %7.0i.\n", 42);
     ft_printf("prueba %-7.0i.\n", 42);
     printf("prueba %-7.0i.\n", 42);
+*/
     printf("-----------\n");
     printf("\n");
     ft_printf("%   5i\n", 29);
     printf("%   5i\n", 29);
 
-
     printf("-----------\n");
-
+/*
     ft_printf("% 5wi\n", 2, 9);
     printf("% 5wi\n", 2, 9);
     
@@ -118,9 +132,9 @@ int main(void)
     printf("%*i\n", 5, 4);
     ft_printf("%i\n", 2, 9);
     printf("%i\n", 2, 9);
-
+*/
     /* ---------------- test %u -----------------*/
-
+/*
     ft_printf("prueba %u\n", -42);
     printf("prueba %u\n", -42);
     ft_printf("prueba %   u\n", 42);
@@ -162,6 +176,45 @@ int main(void)
     printf("%*u\n", 5, 4);
     ft_printf("%u\n", 2, 9);
     printf("%u\n", 2, 9);
+*/
+    printf("********************************************\n");
+    printf("*************** TESTS x HEXA ***************\n");
+    printf("********************************************\n");
+
+    printf("**** case 0: %%x %%Xvalues given: 42, 42 **\n");
+    printf ("sysprintf    ~ %x %X\n", 42, 42);
+    ft_printf ("ft_printf    ~ %x %X\n\n", 42, 42);
+
+    printf ("sysprintf    ~ %-x %-X\n", 42, 42);
+    ft_printf ("ft_printf    ~ %-x %-X\n\n", 42, 42);
+
+    printf("**** case 1: %%x %%X values given: 1561, 1561 **\n");
+    printf ("sysprintf    ~ %x %X\n", 1561, 1561);
+    ft_printf ("ft_printf    ~ %x %X\n\n", 1561, 1561);
+
+    printf("**** case 2: %%x valuee given: 8729171 **\n");
+    printf ("sysprintf    ~ %   x.\n", 8729171);
+    ft_printf ("ft_printf    ~ %   x.\n\n", 8729171);
+
+    printf ("sysprintf    ~ %   -x.\n", 8729171);
+    ft_printf ("ft_printf    ~ %   -x.\n\n", 8729171);
+
+    printf ("sysprintf    ~ %2x.\n", 8729171);
+    ft_printf ("ft_printf    ~ %2x.\n\n", 8729171);
+
+    printf ("sysprintf    ~ %2.10x.\n", 8729171);
+    ft_printf ("ft_printf    ~ %2.10x.\n\n", 8729171);
+
+    printf ("sysprintf    ~ %15x.\n", 8729171);
+    ft_printf ("ft_printf    ~ %15x.\n\n", 8729171);
+
+    printf ("sysprintf    ~ %-15.3x.\n", 8729171);
+    ft_printf ("ft_printf    ~ %-15.3x.\n\n", 8729171);
+
+    printf ("sysprintf    ~ %-1.15x.\n", 8729171);
+    ft_printf ("ft_printf    ~ %-1.15x.\n\n", 8729171);
+
+
 
 //   ft_printf("% 10.21f\n", 29.1234);
 //   printf("% 10.21f\n", 29.1234);

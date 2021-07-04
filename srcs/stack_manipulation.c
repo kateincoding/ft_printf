@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 04:02:52 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/03 16:57:14 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/04 14:31:58 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void initialize_stack(const char *input, int fd)
 	str->minus = 0;
 	str->zero = 0;
 	str->width = 0;
+	str->final_width = 0;
 	str->wildcard = 0;
 	str->precision = -1; /* antes -1 */
 	str->space = 0;

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/01 05:06:35 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/03 17:16:07 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void set_flags(void)
 	int i = str->idx;
 
 	// "-0.*# +"
+	// printf("set flags %c\n", str->format[i]);
 	while (validate_only_flag(str->format[i]))
 	{
 		if (str->format[i] == '-')
@@ -112,6 +113,7 @@ void set_precision(va_list args_list)
 	int i = str->idx;
 	int n = 0;
 
+	// printf("set precision %c\n", str->format[i]);
 	if (str->format[i] == '.')
 	{
 		i++;

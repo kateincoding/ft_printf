@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/02 18:23:16 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/03 19:17:22 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	print_before(int width, int len)
 	int	break_flag = 0;
 	int	i;
 
-	if (str->space > 0 && width == len)
+	if (str->space > 0 && width == len && str->op != 'u')
 	{
 		// printf("\nhere 1\n");
 		i = 0;
@@ -28,7 +28,6 @@ int	print_before(int width, int len)
 				i++;
 		}
 	}
-
 	if (str->minus == 0 && width != len && str->precision <= 0)
 	{
 		// printf("\nhere 2\n");
@@ -39,16 +38,18 @@ int	print_before(int width, int len)
 			i++;
 		}
 	}
-	if (str->precision > 0 && width != len)
+	// printf("precision = %d\n", str->precision);
+	// printf("width = %d\n", width);
+	if (str->precision >= 0 && width != len)
 	{
 		// printf("\nhere 3\n");
 		i = 0;
-		while (i < width - len)
+		while (i < width - len && str->precision > 0)
 		{
 			str->lenght += ft_putchar_fd('0', str->fd);
+			break_flag = 1;
 			i++;
 		}
-		break_flag = 1;
 	}
 	return(break_flag);
 }
@@ -63,7 +64,9 @@ void	print_after(int width, int len, int break_flag)
 		while(i < (width - len))
 		{
 			if (break_flag == 1)
+			{
 				break;
+			}
 			str->lenght += ft_putchar_fd(' ', str->fd);
 			i++;
 		}
@@ -78,7 +81,7 @@ int print_body(int c, int n)
 	int	d;
 	int	o;
 
-		o = n % 10;
+	o = n % 10;
 	n = n / 10;
 	if (o < 0)
 	{
@@ -152,9 +155,27 @@ int	print_int(va_list lista)
 */
 int print_unsigned(va_list lista)
 {
-	unsigned int num, c = 0, div;
+	unsigned int num;
+	unsigned int c = 0;
+	unsigned div;
+	int	width;
+	int	len = 1;
+	int tmp;
+	int	break_flag = 0;
 
 	num = va_arg(lista, int);
+	tmp = num;
+	if (tmp < 0)
+		tmp = -tmp;
+	while(tmp > 10)
+	{
+		tmp = tmp/10;
+		len++;
+	}
+	/* handle flags , also needs to see precision*/
+	width = str->width > len ? str->width : len;
+	width = str->precision > width ? str->precision : width;
+	break_flag = print_before(width, len);
 
 	if (num == 0)
 	{
@@ -163,8 +184,9 @@ int print_unsigned(va_list lista)
 	}
 	if (num > 0)
 	{
-		for (div = 1; (num / div) > 9; div *= 10)
-			;
+		div = 1;
+		while ((num / div) > 9)
+			div *= 10;
 		while (div != 0)
 		{
 			str->lenght += ft_putchar_fd((num / div) + '0', str->fd);
@@ -173,5 +195,6 @@ int print_unsigned(va_list lista)
 			c++;
 		}
 	}
+	print_after(width, len, break_flag);
 	return (c);
 }

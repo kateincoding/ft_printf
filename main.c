@@ -61,10 +61,6 @@ int main(void)
     printf("-----------\n");
     ft_printf("%   3wd\n", 2, 9);
     printf("%   3wd\n", 2, 9);
-    // ft_printf("%*d\n", 5, 4);
-    // printf("%*d\n", 5, 4);
-    // ft_printf("%d\n", 2, 9);
-    // printf("%d\n", 2, 9);
 
     ft_printf("%-6d\n", 29);
     printf("%-6d\n", 29);
@@ -73,10 +69,102 @@ int main(void)
     ft_printf("'%-6.8d'\n", 29);
     printf("'%-6.8d'\n", 29);
 
- //   ft_printf("% 10.21f\n", 29.1234);
- //   printf("% 10.21f\n", 29.1234);
+    printf("------wildcard-----\n");
+    ft_printf("%*d\n", 5, 4);
+    printf("%*d\n", 5, 4);
+    ft_printf("%d\n", 2, 9);
+    printf("%d\n", 2, 9);
     printf("-----------\n");
 
+    /* ---------------- test %i -----------------*/
+
+    ft_printf("prueba %u\n", -42);
+    printf("prueba %u\n", -42);
+    ft_printf("prueba %   u\n", 42);
+    printf("prueba %   u\n", 42);
+    ft_printf("prueba %1.0i\n", 123456789);
+    printf("prueba %1.0i\n", 123456789);
+    ft_printf("prueba %7i\n", 42);
+    printf("prueba %7i\n", 42);
+
+    ft_printf("prueba %7.0i.\n", 42);
+    printf("prueba %7.0i.\n", 42);
+    ft_printf("prueba %-7.0i.\n", 42);
+    printf("prueba %-7.0i.\n", 42);
+    printf("-----------\n");
+    printf("\n");
+    ft_printf("%   5i\n", 29);
+    printf("%   5i\n", 29);
+
+
+    printf("-----------\n");
+
+    ft_printf("% 5wi\n", 2, 9);
+    printf("% 5wi\n", 2, 9);
+    
+    printf("-----------\n");
+    ft_printf("%   3wi\n", 2, 9);
+    printf("%   3wi\n", 2, 9);
+
+    ft_printf("%-6i\n", 29);
+    printf("%-6i\n", 29);
+    ft_printf("%.5i\n", 29);
+    printf("%.5i\n", 29);
+    ft_printf("'%-6.8i'\n", 29);
+    printf("'%-6.8i'\n", 29);
+
+    printf("------wildcard-----\n");
+    ft_printf("%*i\n", 5, 4);
+    printf("%*i\n", 5, 4);
+    ft_printf("%i\n", 2, 9);
+    printf("%i\n", 2, 9);
+
+    /* ---------------- test %u -----------------*/
+
+    ft_printf("prueba %u\n", -42);
+    printf("prueba %u\n", -42);
+    ft_printf("prueba %   u\n", 42);
+    printf("prueba %   u\n", 42);
+
+    ft_printf("prueba %1.0u\n", 123456789);
+    printf("prueba %1.0u\n", 123456789);
+    ft_printf("prueba %7u\n", 42);
+    printf("prueba %7u\n", 42);
+    ft_printf("prueba %7.0u.\n", 42);
+    printf("prueba %7.0u.\n", 42);
+    ft_printf("prueba %-7.0u.\n", 42);
+    printf("prueba %-7.0u.\n", 42);
+    ft_printf("prueba %-7.0u.\n", 42);
+    printf("prueba %-7.0u.\n", 42);
+    printf("-----------\n");
+    printf("\n");
+    ft_printf("%   5u\n", 29);
+    printf("%   5u\n", 29);
+
+    printf("-----------\n");
+
+    ft_printf("% 5wu\n", 2, 9);
+    printf("% 5wu\n", 2, 9);
+    
+    printf("-----------\n");
+    ft_printf("%   3wu\n", 2, 9);
+    printf("%   3wu\n", 2, 9);
+
+    ft_printf("%-6u\n", 29);
+    printf("%-6u\n", 29);
+    ft_printf("%.5u\n", 29);
+    printf("%.5u\n", 29);
+    ft_printf("'%-6.8u'\n", 29);
+    printf("'%-6.8u'\n", 29);
+
+    printf("------wildcard-----\n");
+    ft_printf("%*u\n", 5, 4);
+    printf("%*u\n", 5, 4);
+    ft_printf("%u\n", 2, 9);
+    printf("%u\n", 2, 9);
+
+//   ft_printf("% 10.21f\n", 29.1234);
+//   printf("% 10.21f\n", 29.1234);
     /*
     case linux done, case mac is different -> changed
     ft_printf("%  *.*  f hola\n", 2, 1, 29.1234);

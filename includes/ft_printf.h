@@ -122,6 +122,9 @@ int print_unsigned(va_list lista);
 int print_hex(va_list lista);
 int print_HEX(va_list lista);
 
+/* print pointer */
+int	print_ptr(va_list lista);
+
 /*
 ** libft
 */

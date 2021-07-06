@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksoto <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 14:52:12 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/27 13:34:48 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/05 12:05:03 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_memalloc(size_t size);
 int		ft_chrcount(const char *s, char c);
 size_t	ft_strlen(const char *s);
+// char    *ft_itoa(int n);
 
 #endif

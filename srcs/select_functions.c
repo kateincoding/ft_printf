@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/01 05:56:56 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/05 12:01:33 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int select_function(va_list args)
 			{'u', print_unsigned},
 			{'x', print_hex},
 			{'X', print_HEX},
-	//		{'p', print_ptr},
+			{'p', print_ptr},
 	//		{'b', print_bin},
 	//		{'S', print_Str_Ascii},
 	//		{'r', print_rev_str},

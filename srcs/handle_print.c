@@ -6,11 +6,23 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 08:56:04 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/07 13:45:15 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** calculate the width of format to handle %u
+*/
+void calculate_format_width()
+{
+	str->final_width = str->len;
+	if (str->width > str->len)
+		str->final_width = str->width;
+	if (str->precision > str->final_width)
+		str->final_width = str->precision;
+}
 
 int	print_before(int width, int len)
 {

@@ -6,11 +6,15 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 17:37:32 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/07 13:45:14 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** print an integer
+*/
 
 int	print_body(int c, int n)
 {
@@ -52,6 +56,25 @@ int	print_body(int c, int n)
 }
 
 /*
+** calculate integer len
+*/
+
+void	calculate_int_len(int num)
+{
+	int	tmp;
+
+	str->len = 1;
+	tmp = num;
+	if (tmp < 0)
+		tmp = -tmp;
+	while (tmp > 10)
+	{
+		tmp = tmp / 10;
+		str->len++;
+	}
+}
+
+/*
 ** print_int - It will print integers
 ** @lista: the main string passed to the function
 ** Return: An integer
@@ -61,31 +84,16 @@ int	print_int(va_list lista)
 {
 	int	n;
 	int	c;
-	int	len;
 	int	tmp;
-	int	break_flag;
 
 	c = 0;
-	len = 1;
-	break_flag = 0;
+	str->break_flag = 0;
 	n = va_arg(lista, int);
-	tmp = n;
-	if (tmp < 0)
-		tmp = -tmp;
-	while (tmp > 10)
-	{
-		tmp = tmp / 10;
-		len++;
-	}
-	str->final_width = len;
-	if (str->width > len)
-		str->final_width = str->width;
-	if (str->precision > str->final_width)
-		str->final_width = str->precision;
-	// printf("\nstr width = %d\n", str->width);
-	break_flag = print_before(str->final_width, len);
+	calculate_int_len(n);
+	calculate_format_width();
+	str->break_flag = print_before(str->final_width, str->len);
 	c = print_body(c, n);
-	print_after(str->final_width, len, break_flag);
+	print_after(str->final_width, str->len, str->break_flag);
 	return (c);
 }
 
@@ -101,29 +109,13 @@ int	print_unsigned(va_list lista)
 	unsigned int	num;
 	unsigned int	c;
 	unsigned int	div;
-	int				len;  /* insertar a la estructura */
-	int				tmp;
-	int				break_flag;
 
 	c = 0;
-	len = 1;
-	break_flag = 0;
+	str->break_flag = 0;
 	num = va_arg(lista, int);
-	tmp = num;
-	if (tmp < 0)
-		tmp = -tmp;
-	while (tmp > 10)
-	{
-		tmp = tmp/10;
-		len++;
-	}
-	str->final_width = len;
-	if (str->width > len)
-		str->final_width = str->width;
-	if (str->precision > str->final_width)
-		str->final_width = str->precision;
-	break_flag = print_before(str->final_width, len);
-
+	calculate_int_len(num);
+	calculate_format_width();
+	str->break_flag = print_before(str->final_width, str->len);
 	if (num == 0)
 	{
 		str->lenght += ft_putchar_fd('0', str->fd);
@@ -142,6 +134,6 @@ int	print_unsigned(va_list lista)
 			c++;
 		}
 	}
-	print_after(str->final_width, len, break_flag);
+	print_after(str->final_width, str->len, str->break_flag);
 	return (c);
 }

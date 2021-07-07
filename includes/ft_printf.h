@@ -41,6 +41,8 @@ typedef struct	s_fields
 	int		hashtag;
 	int		space;
 	int		plus;
+	int		len;
+	int		break_flag;
 }	t_fields;
 
 /*
@@ -103,6 +105,7 @@ int select_function(va_list list);
 int	print_before(int width, int len);
 int print_format(va_list args_list);
 void print_after(int width, int len, int break_flag);
+void calculate_format_width();
 
 /*
 ** conversion operators function

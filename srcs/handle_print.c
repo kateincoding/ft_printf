@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/04 14:32:34 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/07 08:56:04 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int	print_before(int width, int len)
 			space = len;
 		while (i < (str->final_width - space))
 			str->lenght += ft_putchar_fd(' ', str->fd), i++;
+	}
+	if (str->op == 'p')
+	{
+		ft_putchar_fd('0', str->fd);
+    	ft_putchar_fd('x', str->fd);
 	}
 	if (str->precision >= 0 && str->final_width != len)
 	{

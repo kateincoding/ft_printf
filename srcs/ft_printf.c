@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/03 18:24:30 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/07 08:39:24 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int ft_vfprintf(int fd, const char *format, va_list args)
 		}
 		i++;
 	}
+	result = str->lenght;
 	finalize_stack();
 	return (result);
 }

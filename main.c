@@ -253,43 +253,43 @@ int main(void)
     printf("********************************************\n");
 
     char *a = "mmmmmmmm";
-	// char **p = &a;
+	char **p = &a;
 
     printf("**** case 0: %%p value given: a **\n");
     printf ("sysprintf    ~ %p\n", a);
     ft_printf ("ft_printf    ~ %p\n\n", a);
 
-//    printf("\n**** case 1: %%p value given: NULL **\n");
-//    printf ("sysprintf    ~ %p\n", NULL);
-//    ft_printf ("ft_printf    ~ %p\n\n", NULL);
+    printf("\n**** case 1: %%p value given: NULL **\n");
+    printf ("sysprintf    ~ %p\n", NULL);
+    ft_printf ("ft_printf    ~ %p\n\n", NULL);
 
-//    printf("**** case 2: %%p value given: p **\n");
-//    printf ("sysprintf    ~ %p\n", p);
-//    ft_printf ("ft_printf    ~ %p\n\n", p);
+    printf("**** case 2: %%p value given: p **\n");
+    printf ("sysprintf    ~ %p.\n", p);
+    ft_printf ("ft_printf    ~ %p.\n\n", p);
 
-//    printf("**** case 3: %%5p value given: 0 **\n");
-//    printf ("sysprintf    ~ %5p\n", 0);
-//    ft_printf ("ft_printf    ~ %5p\n\n", 0);
-/*
+    ft_printf("**** case 3: %%5p value given: 0 **\n");
+    printf ("sysprintf    ~ %5p.\n", 0);
+    ft_printf ("ft_printf    ~ %5p.\n\n", 0);
+
     printf("**** case 4: %%p value given: -20p **\n");
-    printf ("bytes: %d\n", printf ("sysprintf    ~ %-20p\n", p));
-//    ft_printf ("bytes: %d\n\n", ft_printf ("ft_printf    ~ %-20p\n", p));
+    printf ("bytes_o: %d\n", printf ("sysprintf    ~ %-20p.\n", p));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("ft_printf    ~ %-20p.\n", p));
 
     printf("**** case 5: %%*.p value given NULL\n");
-    printf("bytes: %d\n\n", printf ("%*.p\n",NULL));
-//    ft_printf ("bytes: %d\n\n", ft_printf ("%*.p\n", NULL));
+    printf("bytes_o: %d\n\n", printf ("%*.p\n",NULL));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%*.p\n", NULL));
 
     printf("**** case 6: %%*5.p value given NULL\n");
-    printf("bytes: %d\n\n", printf ("%*5.p\n",NULL));
-//    ft_printf ("bytes: %d\n\n", ft_printf ("%*5.p\n", NULL));
+    printf("bytes_o: %d\n\n", printf ("%*5.p\n",NULL));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%*5.p\n", NULL));
 
     printf("**** case 7: %%2.9p value given 1234\n");
-    printf("bytes: %d\n\n", printf ("%2.9p\n",1234));
-//    ft_printf ("bytes: %d\n\n", ft_printf ("%2.9p\n", 1234));
+    printf("bytes_o: %d\n\n", printf ("%2.9p\n",1234));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%2.9p\n", 1234));
 
     printf("**** case 8: %%.5p value given NULL\n");
-    printf("bytes: %d\n\n", printf ("%.5p\n",0));
-//    ft_printf ("bytes: %d\n\n", ft_printf ("%.5p\n", 0));
-*/
+    printf("bytes_o: %d\n\n", printf ("%.5p\n",0));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%.5p\n", 0));
+
     return (0);
 }

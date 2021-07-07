@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/04 14:30:52 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/07 17:37:32 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	print_body(int c, int n)
 ** @lista: the main string passed to the function
 ** Return: An integer
 */
+
 int	print_int(va_list lista)
 {
 	int	n;
@@ -73,11 +74,14 @@ int	print_int(va_list lista)
 		tmp = -tmp;
 	while (tmp > 10)
 	{
-		tmp = tmp/10;
+		tmp = tmp / 10;
 		len++;
 	}
-	str->final_width = str->width > len ? str->width : len;
-	str->final_width = str->precision > str->final_width ? str->precision : str->final_width;
+	str->final_width = len;
+	if (str->width > len)
+		str->final_width = str->width;
+	if (str->precision > str->final_width)
+		str->final_width = str->precision;
 	// printf("\nstr width = %d\n", str->width);
 	break_flag = print_before(str->final_width, len);
 	c = print_body(c, n);
@@ -91,14 +95,15 @@ int	print_int(va_list lista)
 **
 ** Return: The number of digits printed
 */
-int print_unsigned(va_list lista)
+
+int	print_unsigned(va_list lista)
 {
 	unsigned int	num;
 	unsigned int	c;
-	unsigned	div;
-	int	len; /* insertar a la estructura */
-	int tmp;
-	int	break_flag;
+	unsigned int	div;
+	int				len;  /* insertar a la estructura */
+	int				tmp;
+	int				break_flag;
 
 	c = 0;
 	len = 1;
@@ -112,8 +117,11 @@ int print_unsigned(va_list lista)
 		tmp = tmp/10;
 		len++;
 	}
-	str->final_width = str->width > len ? str->width : len;
-	str->final_width = str->precision > str->final_width ? str->precision : str->final_width;
+	str->final_width = len;
+	if (str->width > len)
+		str->final_width = str->width;
+	if (str->precision > str->final_width)
+		str->final_width = str->precision;
 	break_flag = print_before(str->final_width, len);
 
 	if (num == 0)

@@ -6,26 +6,30 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 08:39:24 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/07 16:33:55 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/**
- * _printf - Simulates the printf function
- * @format: Format to print to the console
- * Return: number of char printed
- */
-int ft_vfprintf(int fd, const char *format, va_list args)
-{
-	unsigned int i = 0;
-	unsigned int result = 0;
-	int tmp = 0;
+/*
+**
+** _printf - Simulates the printf function
+** @format: Format to print to the console
+** Return: number of char printed
+*/
 
+int	ft_vfprintf(int fd, const char *format, va_list args)
+{
+	unsigned int	i;
+	unsigned int	result;
+	int				tmp;
+
+	result = 0;
+	tmp = 0;
+	i = 0;
 	if (format == NULL)
 		return (-1);
-
  	initialize_stack(format, fd);
 	while (format && format[i] && i < ft_strlen(format))
 	{
@@ -92,6 +96,7 @@ int ft_vfprintf(int fd, const char *format, va_list args)
 **  @fd: fd where printf prints
 **  @format: format of args
 */
+
 int	ft_dprintf(const int fd, const char *format, ...)
 {
 	va_list	args;
@@ -111,7 +116,8 @@ int	ft_dprintf(const int fd, const char *format, ...)
 **  ft_printf - replicates printf
 **  @format: format of args
 */
-int ft_printf(const char *format, ...)
+
+int	ft_printf(const char *format, ...)
 {
     va_list	args;
 	int		result;

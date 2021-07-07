@@ -6,35 +6,39 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:23:04 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/01 05:28:01 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/07 16:35:56 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/**
-*print_char - print a char at printf
-*@lista: the main string passed to the function
-*Return: An integer
+/*
+** print_char - print a char at printf
+** @lista: the main string passed to the function
+** Return: An integer
 */
-int print_char(va_list lista)
+
+int	print_char(va_list lista)
 {
+	char	c;
 	/*va_arg (va_list ap, type)*/
-	char c = va_arg(lista, int);
+	c = va_arg(lista, int);
 	return (ft_putchar_fd(c, str->fd));
 }
 
-/**
-*print_str - print a char at printf
-*@lista: the main string passed to the function
-*Return: An integer
+/*
+** print_str - print a char at printf
+** @lista: the main string passed to the function
+** Return: An integer
 */
-int print_str(va_list lista)
+
+int	print_str(va_list lista)
 {
-	unsigned int count = 0;
+	unsigned int	count;
+	char			*av;
 
-	char *av = va_arg(lista, char *);
-
+	count = 0;
+	av = va_arg(lista, char *);
 	if (!av || av == NULL)
 	{
 		ft_putchar('(');

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 16:33:55 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:28:07 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 	i = 0;
 	if (format == NULL)
 		return (-1);
- 	initialize_stack(format, fd);
+	initialize_stack(format, fd);
 	while (format && format[i] && i < ft_strlen(format))
 	{
 		while (format[i] != '%' && format[i])
@@ -44,14 +44,11 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 			i++;
 			if (format[i] == '\0')
 				return (-1);
-			// while (format[i] == ' ')
-			//	i++;
 			str->idx = i;
 			if (format[i] == '%')
 				result += ft_putchar_fd(format[i], fd);
-			else if (valid_operator_flag_modifier(format, i) == 0) /* validate operator and flag */
+			else if (valid_operator_flag_modifier(format, i) == 0)
 			{
-				// printf ("not permited -> string\n");
 				if (IS_MACOS == 1)
 				{
 					while (format[i] == ' ')
@@ -69,7 +66,7 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 				{
 					result += ft_putchar_fd('%', fd);
 					if (format[i] == ' ')
-						result += ft_putchar_fd(' ', fd), i++; /*add print counter */
+						result += ft_putchar_fd(' ', fd), i++;
 					while (format[i] == ' ')
 						i++;
 					result += ft_putchar_fd(format[i], fd);
@@ -77,9 +74,7 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 			}
 			else
 			{
-				// printf("permited to modify\n"); //result += select_function(format[i], args); /* handle format and init flags */
 				print_format(args);
-				// printf(" actual index = %d\n", str->idx);
 				str->idx--;
 				i = str->idx;
 			}
@@ -102,7 +97,7 @@ int	ft_dprintf(const int fd, const char *format, ...)
 	va_list	args;
 	int		result;
 
-    if (format == NULL)
+	if (format == NULL)
 		return (-1);
 	if (format[0] == '%' && format[1] == 0)
 		return (0);
@@ -119,14 +114,14 @@ int	ft_dprintf(const int fd, const char *format, ...)
 
 int	ft_printf(const char *format, ...)
 {
-    va_list	args;
+	va_list	args;
 	int		result;
 
-    if (format == NULL)
+	if (format == NULL)
 		return (-1);
-    if (format[0] == '%' && format[1] == 0)
+	if (format[0] == '%' && format[1] == 0)
 		return (0);
-    va_start(args, format);
+	va_start(args, format);
 	result = ft_vfprintf(1, format, args);
 	va_end(args);
 	return (result);

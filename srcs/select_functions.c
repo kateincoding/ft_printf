@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/05 12:01:33 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/07 15:49:06 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
  * @list: list of arguments to print
  * Return: numbers of char printed
  */
-int select_function(va_list args)
+int	select_function(va_list args)
 {
-	unsigned int i = 0, result = 0;
+	unsigned int	i;
+	unsigned int	result;
 
+	i = 0;
+	result = 0;
 	if (!str->format[i])
 		return (-1);
-
-	/* falta p & f */
 	t_func 	operator[] = {
 			{'c', print_char},
 			{'s', print_str},
@@ -35,10 +36,6 @@ int select_function(va_list args)
 			{'x', print_hex},
 			{'X', print_HEX},
 			{'p', print_ptr},
-	//		{'b', print_bin},
-	//		{'S', print_Str_Ascii},
-	//		{'r', print_rev_str},
-	//		{'R', print_rot13},
 			{'\0', NULL}};
 
 	// printf("\ntst here %c\n", str->op);
@@ -48,7 +45,7 @@ int select_function(va_list args)
 		if (str->op == operator[i].op)
 		{
 			// printf("\nhere\n");
-            result += operator[i].f(args);
+			result += operator[i].f(args);
 			break;
 		}
 		i++;

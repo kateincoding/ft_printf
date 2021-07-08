@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 10:46:49 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 11:33:34 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,16 @@ void	restart_flags(void)
 }
 
 /*
-** valid_operator_with_flag - validate
+** valid_operator_with_flag - validate  "-0.*# +"
 ** %[$][flags][width][.precision][length modifier]conversion
 ** %[$][flags][0 - 9][. + [0-9]][length modifier]conversion
 */
 
 void	set_flags(void)
 {
-	int i = str->idx;
+	int	i;
 
-	// "-0.*# +"
-	// printf("set flags %c\n", str->format[i]);
+	i = str->idx;
 	while (validate_only_flag(str->format[i]))
 	{
 		if (str->format[i] == '-')
@@ -107,7 +106,10 @@ void	set_width(va_list args_list)
 	str->idx = i;
 }
 
-/* check if predomine * or number and change the order to assign n value */
+/* 
+** check if predomine * or number and change the order to assign n value
+*/
+
 void	set_precision(va_list args_list)
 {
 	int	i;

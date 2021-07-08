@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 10:53:43 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 11:26:01 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,22 @@ int	select_function(va_list args)
 {
 	unsigned int	i;
 	unsigned int	result;
+	const t_func	operator[9] = {{'c', print_char}, {'s', print_str},
+									{'d', print_int}, {'i', print_int},
+									{'u', print_unsigned}, {'x', print_hex},
+									{'X', print_upper_hexadecimal},
+									{'p', print_ptr}, {'\0', NULL}};
 
 	i = 0;
 	result = 0;
 	if (!str->format[i])
 		return (-1);
-	t_func 	operator[] = {
-			{'c', print_char},
-			{'s', print_str},
-			{'d', print_int},
-			{'i', print_int},
-			{'u', print_unsigned},
-			{'x', print_hex},
-			{'X', print_upper_hexadecimal},
-			{'p', print_ptr},
-			{'\0', NULL}};
-
 	while (operator[i].op)
 	{
 		if (str->op == operator[i].op)
 		{
 			result += operator[i].f(args);
-			break;
+			break ;
 		}
 		i++;
 	}

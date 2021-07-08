@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:23:04 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 16:35:56 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 11:56:51 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 int	print_char(va_list lista)
 {
 	char	c;
-	/*va_arg (va_list ap, type)*/
+
 	c = va_arg(lista, int);
 	return (ft_putchar_fd(c, str->fd));
 }

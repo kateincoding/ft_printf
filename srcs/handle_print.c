@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 10:52:54 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 11:37:54 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ void	calculate_format_width(void)
 
 int	print_before(void)
 {
-	int	break_flag;
 	int	i;
 	int	space;
 
-	break_flag = 0;
+	str->break_flag = 0;
 	if (str->space > 0 && (str->op == 'd' || str->op == 'i'))
 	{
 		i = 0;
@@ -68,10 +67,10 @@ int	print_before(void)
 		while (i < str->precision - str->len && str->precision > 0)
 		{
 			str->lenght += ft_putchar_fd('0', str->fd);
-			break_flag = 1, i++;
+			str->break_flag = 1, i++;
 		}
 	}
-	return (break_flag);
+	return (str->break_flag);
 }
 
 void	print_after(void)

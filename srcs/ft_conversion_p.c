@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 10:19:57 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 21:02:53 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ int	print_ptr(va_list lista)
 	p = va_arg(lista, unsigned long);
 	i = (sizeof(p) << 3) - 20;
 	size = a_size(i, p, &z);
-	str->len = size;
-	if (!p)
-		str->len = size + 1;
+	str->len = size + (!p);
 	calculate_format_width();
 	str->break_flag = print_before();
 	if (!p && str->precision == -1)

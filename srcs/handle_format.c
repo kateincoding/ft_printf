@@ -6,11 +6,27 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 19:10:39 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 21:00:23 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	print_space(int counter)
+{
+	counter += ft_putchar_fd('%', str->fd);
+	if (str->space != 0)
+		counter += ft_putchar_fd(' ', str->fd);
+	if (str->width != 0)
+		counter += ft_putnbr_fd(str->width, str->fd);
+	if (str->precision != 0)
+	{
+		counter += ft_putchar_fd('.', str->fd);
+		counter += ft_putnbr_fd(str->precision, str->fd);
+	}
+	str->idx += counter; /* checar si es +1 o counter */
+	return (counter);
+}
 
 /*
 ** valid_operator_with_flag - validate
@@ -27,19 +43,7 @@ int	print_format(va_list args)
 	set_width(args);
 	set_precision(args);
 	if (str->format[str->idx] == ' ')
-	{
-		counter += ft_putchar_fd('%', str->fd);
-		if (str->space != 0)
-			counter += ft_putchar_fd(' ', str->fd);
-		if (str->width != 0)
-			counter += ft_putnbr_fd(str->width, str->fd);
-		if (str->precision != 0)
-		{
-			counter += ft_putchar_fd('.', str->fd);
-			counter += ft_putnbr_fd(str->precision, str->fd);
-		}
-		str->idx += counter; /* checar si es +1 o counter */
-	}
+		counter = print_space(counter);
 	else if (validate_operator(str->format[str->idx]))
 	{
 		str->op = str->format[str->idx];

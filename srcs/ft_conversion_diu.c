@@ -6,11 +6,32 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 10:15:09 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 19:47:57 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	size_bit(int bit, int n, int *c)
+{
+	int	d;
+	int	x;
+
+	d = 1;
+	while ((bit / 10) != 0)
+	{
+		bit = bit / 10;
+		d = d * 10;
+	}
+	while (d >= 1)
+	{
+		x = n / d;
+		str->lenght += ft_putchar_fd(x + '0', str->fd);
+		(*c)++;
+		n = n % d;
+		d = d / 10;
+	}
+}
 
 /*
 ** print an integer
@@ -18,9 +39,7 @@
 
 int	print_body(int c, int n)
 {
-	int	x;
 	int	bit;
-	int	d;
 	int	o;
 
 	o = n % 10;
@@ -33,23 +52,8 @@ int	print_body(int c, int n)
 		c++;
 	}
 	bit = n;
-	d = 1;
 	if (bit > 0)
-	{
-		while ((bit / 10) != 0)
-		{
-			bit = bit / 10;
-			d = d * 10;
-		}
-		while (d >= 1)
-		{
-			x = n / d;
-			str->lenght += ft_putchar_fd(x + '0', str->fd);
-			c++;
-			n = n % d;
-			d = d / 10;
-		}
-	}
+		size_bit(bit, n, &c);
 	str->lenght += ft_putchar_fd(o + '0', str->fd);
 	c++;
 	return (c);
@@ -109,17 +113,13 @@ int	print_unsigned(va_list lista)
 	unsigned int	c;
 	unsigned int	div;
 
-	c = 0;
 	str->break_flag = 0;
 	num = va_arg(lista, int);
 	calculate_int_len(num);
 	calculate_format_width();
 	str->break_flag = print_before();
-	if (num == 0)
-	{
-		str->lenght += ft_putchar_fd('0', str->fd);
-		c = 1;
-	}
+	c = (num == 0);
+	str->lenght += ft_putchar_fd((num == 0) * '0', str->fd);
 	if (num > 0)
 	{
 		div = 1;
@@ -127,10 +127,9 @@ int	print_unsigned(va_list lista)
 			div *= 10;
 		while (div != 0)
 		{
-			str->lenght += ft_putchar_fd((num / div) + '0', str->fd);
+			str->lenght += ft_putchar_fd((num / div) + '0', str->fd), c++;
 			num %= div;
 			div /= 10;
-			c++;
 		}
 	}
 	print_after();

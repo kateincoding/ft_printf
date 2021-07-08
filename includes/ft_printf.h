@@ -1,13 +1,12 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "ft_printf.h"
-#include <stdlib.h>
-#include <stdarg.h>
-#include <unistd.h>
-#include <limits.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <limits.h>
 // # include "../libft/libft.h"
-#include <stdio.h>
+# include <stdio.h>
 
 /*
 ** struct s_fields - Struct for fields of the future printed string for each argv
@@ -18,14 +17,18 @@
 ** @length: output
 **
 ** flags: ’-0.*’
-** @minus: [-] Left-justify within the given field width; Right justification is the default
-** @zero: [0] Left-pads the number with zeroes (0) instead of spaces when padding is specified
-** @width: The additional integer value argument preceding the argument that has to be formatted determinates the max lenght
+** @minus: [-] Left-justify within the given field width; Right
+** justification is the default
+** @zero: [0] Left-pads the number with zeroes (0) instead of spaces
+** when padding is specified
+** @width: The additional integer value argument preceding the argument
+** that has to be formatted determinates the max lenght
 ** @wildcart:[*]
-** @precision: [.] The additional integer value argument preceding the argument that has to be formatted.
+** @precision: [.] The additional integer value argument preceding the argument
+** that has to be formatted.
 */
 
-typedef struct	s_fields
+typedef struct s_fields
 {
 	char	*format;
 	int		idx;
@@ -64,69 +67,69 @@ typedef struct s_func
 {
 	char	op;
 	int		(*f)(va_list);
-} t_func;
+}	t_func;
 
 /*
 ** ft_printf: call printf functions
 */
 
-int ft_printf(const char *format, ...);
-int	ft_dprintf(const int fd, const char *format, ...);
-int ft_vfprintf(int fd, const char *format, va_list args);
+int		ft_printf(const char *format, ...);
+int		ft_dprintf(const int fd, const char *format, ...);
+int		ft_vfprintf(int fd, const char *format, va_list args);
 
 /*
 ** validate operators and flags
 */
 
-int	valid_operator_flag_modifier(const char *format, int i);
-int validate_operator(char op);
-int	validate_flag(const char flag);
+int		valid_operator_flag_modifier(const char *format, int i);
+int		validate_operator(char op);
+int		validate_flag(const char flag);
 
 /*
-** stack manipulation
+** global structure to handle width, flag and precision
 */
-t_fields *str;
+t_fields	*g_str;
 
-void initialize_stack(const char *inputs, int fd);
-void finalize_stack(void);
+void	initialize_stack(const char *inputs, int fd);
+void	finalize_stack(void);
 
 /*
 ** create structure for each argv
 */
 
-void set_flags(void);
-void restart_flags(void);
-int	validate_only_flag(const char flag);
-void set_width(va_list args_list);
-void set_precision(va_list args_list);
+void	set_flags(void);
+void	restart_flags(void);
+int		validate_only_flag(const char flag);
+void	set_width(va_list args_list);
+void	set_precision(va_list args_list);
 
-int select_function(va_list list);
+int		select_function(va_list list);
 
-int	print_before(void);
-int print_format(va_list args_list);
-void	print_after();
-void calculate_format_width(void);
+int		print_before(void);
+int		print_format(va_list args_list);
+void	print_after(void);
+void	calculate_format_width(void);
 
 /*
 ** conversion operators function
 */
 
-int print_char(va_list lista);
-int print_str(va_list lista);
+int		print_char(va_list lista);
+int		print_str(va_list lista);
 //int print_rev_str(va_list lista);
 //int print_Str_Ascii(va_list arg);
 
 /* print functions : type numbers */
-int putN(unsigned int n, unsigned int b, char *nums);
-int print_int(va_list lista);
-int print_unsigned(va_list lista);
+int		putN(unsigned int n, unsigned int b, char *nums);
+int		print_int(va_list lista);
+int		print_unsigned(va_list lista);
 
 /* print bases */
-int print_hex(va_list lista);
-int print_upper_hexadecimal(va_list lista);
+int		print_hex(va_list lista);
+int		print_upper_hexadecimal(va_list lista);
 
 /* print pointer */
-int	print_ptr(va_list lista);
+int		print_ptr(va_list lista);
 
 /*
 ** libft

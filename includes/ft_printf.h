@@ -88,7 +88,7 @@ int		validate_flag(const char flag);
 /*
 ** global structure to handle width, flag and precision
 */
-t_fields	*g_str;
+t_fields	*str;
 
 void	initialize_stack(const char *inputs, int fd);
 void	finalize_stack(void);

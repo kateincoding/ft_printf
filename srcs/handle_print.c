@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 20:29:55 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 20:37:21 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	calculate_format_width(void)
 		str->final_width = str->precision;
 }
 
-int	print_before_before(int space, int i)
+void	print_before_before(int i, int space)
 {
 	str->break_flag = 0;
 	if (str->space > 0 && (str->op == 'd' || str->op == 'i'))
@@ -58,9 +58,8 @@ int	print_before_before(int space, int i)
 int	print_before(void)
 {
 	int	i;
-	int	space;
 
-	print_before_before(space, i);
+	print_before_before(0, 0);
 	if (str->op == 'p')
 	{
 		ft_putchar_fd('0', str->fd);

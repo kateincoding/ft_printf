@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 13:45:14 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 10:15:09 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,15 @@ int	print_int(va_list lista)
 {
 	int	n;
 	int	c;
-	int	tmp;
 
 	c = 0;
 	str->break_flag = 0;
 	n = va_arg(lista, int);
 	calculate_int_len(n);
 	calculate_format_width();
-	str->break_flag = print_before(str->final_width, str->len);
+	str->break_flag = print_before();
 	c = print_body(c, n);
-	print_after(str->final_width, str->len, str->break_flag);
+	print_after();
 	return (c);
 }
 
@@ -115,7 +114,7 @@ int	print_unsigned(va_list lista)
 	num = va_arg(lista, int);
 	calculate_int_len(num);
 	calculate_format_width();
-	str->break_flag = print_before(str->final_width, str->len);
+	str->break_flag = print_before();
 	if (num == 0)
 	{
 		str->lenght += ft_putchar_fd('0', str->fd);
@@ -134,6 +133,6 @@ int	print_unsigned(va_list lista)
 			c++;
 		}
 	}
-	print_after(str->final_width, str->len, str->break_flag);
+	print_after();
 	return (c);
 }

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 15:49:06 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 10:53:43 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,14 @@ int	select_function(va_list args)
 			{'i', print_int},
 			{'u', print_unsigned},
 			{'x', print_hex},
-			{'X', print_HEX},
+			{'X', print_upper_hexadecimal},
 			{'p', print_ptr},
 			{'\0', NULL}};
 
-	// printf("\ntst here %c\n", str->op);
 	while (operator[i].op)
 	{
-		// printf("\ntst here %c\n", str->op);
 		if (str->op == operator[i].op)
 		{
-			// printf("\nhere\n");
 			result += operator[i].f(args);
 			break;
 		}

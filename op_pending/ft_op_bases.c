@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:39:09 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/24 06:04:06 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 09:55:04 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,19 @@ int	print_hexadecimal(unsigned int n)
 }
 
 /**
- * print_HEXADECIMAL - Converts decimal to uppercase hexadecimal
+ * print_upper_hexa - Converts decimal to uppercase hexadecimal
  * @n: The number to be converted
  *
  * Return: The number of digits printed
  */
-int	print_HEXADECIMAL(unsigned int n)
+int	print_upper_hexa(unsigned int n)
 {
 	int counter = 0;
 	char hex_digits[] = "0123456789ABCDEF";
 
 	if (n >= 16)
 	{
-		counter += print_HEXADECIMAL(n / 16);
+		counter += print_upper_hexa(n / 16);
 	}
 	counter += write(1, &hex_digits[n % 16], 1);
 	return (counter);
@@ -105,5 +105,5 @@ int print_HEX(va_list lista)
 {
 	unsigned int n = va_arg(lista, int);
 
-	return (print_HEXADECIMAL(n));
+	return (print_upper_hexa(n));
 }

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:39:09 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/04 15:00:18 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 10:40:53 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int	len_hexadecimal(unsigned int n, unsigned int counter)
  */
 int	print_hexadecimal(unsigned int n)
 {
-	int counter = 0;
-	char hex_digits[] = "0123456789abcdef";
+	int		counter;
+	char	hex_digits[] = "0123456789abcdef";
 
+	counter = 0;
 	if (n >= 16)
 		counter += print_hexadecimal(n / 16);
 	counter += ft_putchar(hex_digits[n % 16]);
@@ -49,14 +50,15 @@ int	print_hexadecimal(unsigned int n)
  *
  * Return: The number of digits printed
  */
-int	print_HEXADECIMAL(unsigned int n)
+int	print_upper_hexa(unsigned int n)
 {
-	int counter = 0;
-	char hex_digits[] = "0123456789ABCDEF";
+	int		counter;
+	char	hex_digits[] = "0123456789ABCDEF";
 
+	counter = 0;
 	if (n >= 16)
 	{
-		counter += print_HEXADECIMAL(n / 16);
+		counter += print_upper_hexa(n / 16);
 	}
 	counter += write(1, &hex_digits[n % 16], 1);
 	return (counter);
@@ -68,26 +70,24 @@ int	print_HEXADECIMAL(unsigned int n)
  *
  * Return: The number of digits printed
  */
-int print_hex(va_list lista)
+int	print_hex(va_list lista)
 {
-	unsigned int n = va_arg(lista, int);
-	int	len; /* insertar a la estructura */
-	int tmp;
-	int	break_flag;
-	int counter;
+	unsigned int	n;
+	int				tmp;
+	int				counter;
 
+	n = va_arg(lista, int);
 	counter = 0;
-	len = 1;
-	break_flag = 0;
+	str->len = 1;
+	str->break_flag = 0;
 	tmp = n;
 	if (tmp < 0)
 		tmp = -tmp;
-	len = len_hexadecimal(n, 0);
-	str->final_width = str->width > len ? str->width : len;
-	str->final_width = str->precision > str->final_width ? str->precision : str->final_width;
-	break_flag = print_before(str->final_width, len);
+	str->len = len_hexadecimal(n, 0);
+	calculate_format_width();
+	str->break_flag = print_before();
 	counter += print_hexadecimal(n);
-	print_after(str->final_width, len, break_flag);
+	print_after();
 	return (counter);
 }
 
@@ -97,25 +97,23 @@ int print_hex(va_list lista)
  *
  * Return: The number of digits printed
  */
-int print_HEX(va_list lista)
+int	print_upper_hexadecimal(va_list lista)
 {
-	unsigned int n = va_arg(lista, int);
-	int	len; /* insertar a la estructura */
-	int tmp;
-	int	break_flag;
-	int counter;
+	unsigned int	n;
+	int				tmp;
+	int				counter;
 
+	n = va_arg(lista, int);
 	counter = 0;
-	len = 1;
-	break_flag = 0;
+	str->len = 1;
+	str->break_flag = 0;
 	tmp = n;
 	if (tmp < 0)
 		tmp = -tmp;
-	len = len_hexadecimal(n, 0);
-	str->final_width = str->width > len ? str->width : len;
-	str->final_width = str->precision > str->final_width ? str->precision : str->final_width;
-	break_flag = print_before(str->final_width, len);
-	counter += print_HEXADECIMAL(n);
-	print_after(str->final_width, len, break_flag);
+	str->len = len_hexadecimal(n, 0);
+	calculate_format_width();
+	str->break_flag = print_before();
+	counter += print_upper_hexa(n);
+	print_after();
 	return (counter);
 }

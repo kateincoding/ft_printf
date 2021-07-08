@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 17:41:58 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 10:19:57 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,17 @@ int	print_ptr(va_list lista)
 	int				i;
 	int				nb;
 	int				z;
-	int				len;
-	int				break_flag;
 
 	nb = 0;
-	break_flag = 0;
+	str->break_flag = 0;
 	p = va_arg(lista, unsigned long);
-	// ft_putchar(p);
-	// printf("\n goku %lu\n", p);
 	i = (sizeof(p) << 3) - 20;
 	size = a_size(i, p, &z);
-	// printf("\n size = %d\n", size);
-	len = size;
+	str->len = size;
 	if (!p)
-		len = size + 1;
-	str->final_width = len;
-	if (str->width > len)
-		str->final_width = str->width;
-	if (str->precision > str->final_width)
-		str->final_width = str->precision;
-	// nb += ft_putchar_fd('0', str->fd);
-	// nb += ft_putchar_fd('x', str->fd);
-	break_flag = print_before(str->final_width, len);
-	// printf("\nsize %i vs i %i\n", size, i);
-	// printf("\np = %lu\n", p);
+		str->len = size + 1;
+	calculate_format_width();
+	str->break_flag = print_before();
 	if (!p && str->precision == -1)
 		nb += ft_putchar_fd('0', str->fd);
 	while (size && i >= 0 && p != 0)
@@ -87,7 +74,7 @@ int	print_ptr(va_list lista)
 			nb += ft_putchar_fd(hex_digit((p >> i) & 0xf), str->fd);
 		i -= 4;
 	}
-	print_after(str->final_width, len, break_flag);
+	print_after();
 	str->lenght += nb;
 	return (nb);
 }

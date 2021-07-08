@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 13:45:15 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 10:52:54 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 /*
 ** calculate the width of format to handle %u
 */
-void calculate_format_width()
+
+void	calculate_format_width(void)
 {
 	str->final_width = str->len;
 	if (str->width > str->len)
@@ -24,15 +25,17 @@ void calculate_format_width()
 		str->final_width = str->precision;
 }
 
-int	print_before(int width, int len)
+/*
+** print_before: handle the characters that will print before format
+*/
+
+int	print_before(void)
 {
 	int	break_flag;
 	int	i;
-	int space;
-	(void)width;
+	int	space;
 
 	break_flag = 0;
-	/* case minus */
 	if (str->space > 0 && (str->op == 'd' || str->op == 'i'))
 	{
 		i = 0;
@@ -44,26 +47,25 @@ int	print_before(int width, int len)
 			str->final_width--;
 		}
 	}
-	/* case not minus */
 	if (str->minus == 0)
 	{
 		i = 0;
-		if (str->precision > len)
+		if (str->precision > str->len)
 			space = str->precision;
 		else
-			space = len;
+			space = str->len;
 		while (i < (str->final_width - space))
 			str->lenght += ft_putchar_fd(' ', str->fd), i++;
 	}
 	if (str->op == 'p')
 	{
 		ft_putchar_fd('0', str->fd);
-    	ft_putchar_fd('x', str->fd);
+		ft_putchar_fd('x', str->fd);
 	}
-	if (str->precision >= 0 && str->final_width != len)
+	if (str->precision >= 0 && str->final_width != str->len)
 	{
 		i = 0;
-		while (i < str->precision - len && str->precision > 0)
+		while (i < str->precision - str->len && str->precision > 0)
 		{
 			str->lenght += ft_putchar_fd('0', str->fd);
 			break_flag = 1, i++;
@@ -72,18 +74,16 @@ int	print_before(int width, int len)
 	return (break_flag);
 }
 
-void	print_after(int width, int len, int break_flag)
+void	print_after(void)
 {
 	int	i;
-	int space;
-	(void) width;
+	int	space;
 
-	if (str->precision > len)
+	if (str->precision > str->len)
 		space = str->precision;
 	else
-		space = len;
-
-	if (str->minus != 0 && str->final_width != len)
+		space = str->len;
+	if (str->minus != 0 && str->final_width != str->len)
 	{
 		i = 0;
 		while (i < (str->final_width - space))
@@ -92,12 +92,9 @@ void	print_after(int width, int len, int break_flag)
 			i++;
 		}
 	}
-	else if (str->final_width != len && break_flag == 1)
+	else if (str->final_width != str->len && str->break_flag == 1)
 	{
 		i = -1;
-
-		// while (++i < (width - space))
-		// 	str->lenght += ft_putchar_fd(' ', str->fd);
 	}
 }
 

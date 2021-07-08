@@ -102,10 +102,10 @@ void set_precision(va_list args_list);
 
 int select_function(va_list list);
 
-int	print_before(int width, int len);
+int	print_before(void);
 int print_format(va_list args_list);
-void print_after(int width, int len, int break_flag);
-void calculate_format_width();
+void	print_after();
+void calculate_format_width(void);
 
 /*
 ** conversion operators function
@@ -123,7 +123,7 @@ int print_unsigned(va_list lista);
 
 /* print bases */
 int print_hex(va_list lista);
-int print_HEX(va_list lista);
+int print_upper_hexadecimal(va_list lista);
 
 /* print pointer */
 int	print_ptr(va_list lista);

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:39:09 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 10:40:53 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 19:10:16 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	len_hexadecimal(unsigned int n, unsigned int counter)
  */
 int	print_hexadecimal(unsigned int n)
 {
-	int		counter;
-	char	hex_digits[] = "0123456789abcdef";
+	int			counter;
+	const char	hex_digits[] = "0123456789abcdef";
 
 	counter = 0;
 	if (n >= 16)
@@ -52,8 +52,8 @@ int	print_hexadecimal(unsigned int n)
  */
 int	print_upper_hexa(unsigned int n)
 {
-	int		counter;
-	char	hex_digits[] = "0123456789ABCDEF";
+	int			counter;
+	const char	hex_digits[] = "0123456789ABCDEF";
 
 	counter = 0;
 	if (n >= 16)

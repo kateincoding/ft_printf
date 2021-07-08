@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 11:33:34 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 19:10:39 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	set_width(va_list args_list)
 	str->idx = i;
 }
 
-/* 
+/*
 ** check if predomine * or number and change the order to assign n value
 */
 

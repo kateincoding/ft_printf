@@ -6,11 +6,62 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 15:28:07 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 19:27:09 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	valid_token(const char *format, unsigned int *i, int fd, int result)
+{
+	int	tmp;
+
+	if (IS_MACOS == 1)
+	{
+		while (format[*i] == ' ')
+			i++;
+		if ('0' <= format[*i] && format[*i] <= '9')
+		{
+			tmp = format[*i] - '0';
+			while (tmp > 1)
+				result += ft_putchar_fd(' ', fd), tmp--;
+			(*i)++;
+		}
+		result += ft_putchar_fd(format[*i], fd);
+	}
+	if (IS_MACOS == 0)
+	{
+		result += ft_putchar_fd('%', fd);
+		if (format[*i] == ' ')
+			result += ft_putchar_fd(' ', fd), (*i)++;
+		while (format[*i] == ' ')
+			(*i)++;
+		result += ft_putchar_fd(format[*i], fd);
+	}
+	return (result);
+}
+
+int	token(const char *format, unsigned int *i, int fd, va_list args)
+{
+	int	result;
+
+	result = 0;
+	(*i)++;
+	if (format[*i] == '\0')
+		return (-1);
+	str->idx = *i;
+	if (format[*i] == '%')
+		result += ft_putchar_fd(format[*i], fd);
+	else if (valid_operator_flag_modifier(format, *i) == 0)
+		result += valid_token(format, i, fd, result);
+	else
+	{
+		print_format(args);
+		str->idx--;
+		*i = str->idx;
+	}
+	return (result);
+}
 
 /*
 **
@@ -23,10 +74,8 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 {
 	unsigned int	i;
 	unsigned int	result;
-	int				tmp;
 
 	result = 0;
-	tmp = 0;
 	i = 0;
 	if (format == NULL)
 		return (-1);
@@ -40,45 +89,7 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 		}
 		str->idx = i;
 		if (format[i] == '%' && format[i])
-		{
-			i++;
-			if (format[i] == '\0')
-				return (-1);
-			str->idx = i;
-			if (format[i] == '%')
-				result += ft_putchar_fd(format[i], fd);
-			else if (valid_operator_flag_modifier(format, i) == 0)
-			{
-				if (IS_MACOS == 1)
-				{
-					while (format[i] == ' ')
-						i++;
-					if ('0' <= format[i] && format[i] <= '9')
-					{
-						tmp = format[i] - '0';
-						while (tmp > 1)
-							result += ft_putchar_fd(' ', fd), tmp--;
-						i++;
-					}
-					result += ft_putchar_fd(format[i], fd);
-				}
-				if (IS_MACOS == 0)
-				{
-					result += ft_putchar_fd('%', fd);
-					if (format[i] == ' ')
-						result += ft_putchar_fd(' ', fd), i++;
-					while (format[i] == ' ')
-						i++;
-					result += ft_putchar_fd(format[i], fd);
-				}
-			}
-			else
-			{
-				print_format(args);
-				str->idx--;
-				i = str->idx;
-			}
-		}
+			result += token(format, &i, fd, args);
 		i++;
 	}
 	result = str->lenght;

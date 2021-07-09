@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/05 12:08:18 by ksoto            ###   ########.fr        #
+#    Updated: 2021/07/09 18:40:13 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,21 @@ LIB			=	./libft/
 #***************** DIR ********************#
 
 DIRSRC		=	./srcs/
+DIRFT		=	$(LIB)/src/
 
 #***************** SRC ********************#
 
 SRC			=	stack_manipulation.c ft_printf.c handle_format.c validate_format.c select_functions.c ft_conversion_cs.c ft_conversion_diu.c ft_conversion_xX.c handle_print.c ft_conversion_p.c
 
+SRCFT		=	ft_atoi.c ft_chrcount.c ft_memalloc.c ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c
+
+SRCS		=	$(SRC) $(SRCFT)
+
 #***************** DEPS *******************#
 
 DIROBJ		=	./depo/
 
-OAUX		=	$(SRC:%=$(DIROBJ)%)
+OAUX		=	$(SRCS:%=$(DIROBJ)%)
 DEPS		=	$(OAUX:.c=.d)
 OBJS		=	$(OAUX:.c=.o)
 
@@ -65,9 +70,13 @@ E0M			=	"\e[0m"
 				@printf $(GREEN)"Generating libftprintf objects... %-33.33s\r" $@
 				@$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
 
+%.o		:		../$(DIRFT)/%.c
+				@printf $(GREEN)"Generating libftprintf objects... %-33.33s\r" $@
+				@$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+
 #************************ MAIN COMPILATION *************************
 
-$(NAME)	:		ftlib $(OBJS)
+$(NAME)	:		$(OBJS)
 				@$(ECHO)
 				@ar rc $(NAME) $(OBJS)
 				@ranlib $(NAME)
@@ -76,26 +85,21 @@ $(NAME)	:		ftlib $(OBJS)
 clean	:
 				@($(RM) $(OBJS))
 				@($(RM) $(DEPS))
-				@(cd $(LIB) && $(MAKE) clean)
 				@$(ECHO) $(BOLD)$(RED)'> Directory cleaned'$(E0M)
 
 all		:		$(NAME)
 
 fclean	:		clean
 				@$(RM) $(NAME)
-				@(cd $(LIB) && $(MAKE) fclean)
 				@$(ECHO) $(BOLD)$(RED)'> Remove executable'$(E0M)
 
 re		:		fclean all
 
-ftlib	:
-				@(cd $(LIB) && $(MAKE))
-
 test	:
-				$(CC) $(INCLUDE) main.c libftprintf.a $(LIB)/libft.a 
+				$(CC) $(INCLUDE) main.c libftprintf.a $(LIB)/libft.a
 
 debug	:
-				$(CC) -g $(INCLUDE) main.c libftprintf.a $(LIB)/libft.a 
+				$(CC) -g $(INCLUDE) main.c libftprintf.a $(LIB)/libft.a
 
 .PHONY	:		all clean fclean re ftlib
 

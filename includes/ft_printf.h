@@ -5,7 +5,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>
-// # include "../libft/libft.h"
+// # include "libft.h"
 # include <stdio.h>
 
 /*
@@ -140,7 +140,6 @@ int		print_ptr(t_fields *str, va_list lista);
 /*
 ** libft -----
 */
-
 int		ft_putchar(char c);
 int		ft_putchar_fd(char c, int fd);
 int		ft_chrcount(char const *s, char c);

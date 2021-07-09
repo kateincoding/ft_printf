@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 22:53:29 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/09 00:18:52 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,16 @@ int	print_ptr(t_fields *str, va_list lista)
 	int				z;
 
 	initialize_var_operators(str);
-	p = va_arg(lista, unsigned long);
+	p = va_arg(lista, unsigned long); /* como diferenciamos cuando es 0 de un NULL */
+	str->null_flag = (!p);
+	// printf("p is %lu\n", p); p siempre es 0 en caso sea 0 y null, caso 3 y 6
 	i = (sizeof(p) << 3) - 20;
 	size = a_size(i, p, &z);
-	str->len = size + (!p);
+	str->len = size + (!p) * 3; /*como se diferenciaria el p de 0 y null */
 	calculate_format_width(str);
+	//if (!p)
+	//	str->final_width += 1;
+	// printf("\nlen %d and final width %d\n", str->len, str->final_width);
 	print_before(str);
 	if (!p && str->precision == -1)
 		str->counter += ft_putchar_fd('0', str->fd);

@@ -46,6 +46,7 @@ typedef struct s_fields
 	int		plus;
 	int		len;
 	int		break_flag;
+	int		null_flag;
 	int		counter;
 }	t_fields;
 

@@ -284,8 +284,8 @@ int main(void)
     ft_printf ("bytes_f: %d\n\n", ft_printf ("%*5.p\n", NULL));
 
     printf("**** case 7: %%2.9p value given 1234\n");
-    printf("bytes_o: %d\n\n", printf ("%2.9p\n",1234));
-    ft_printf ("bytes_f: %d\n\n", ft_printf ("%2.9p\n", 1234));
+    printf("bytes_o: %d\n\n", printf ("%2.15p\n",1234));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%2.15p\n", 1234));
 
     printf("**** case 8: %%.5p value given NULL\n");
     printf("bytes_o: %d\n\n", printf ("%.5p\n",0));

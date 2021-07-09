@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 20:18:20 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 21:59:52 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	print_format(t_fields *str, va_list args)
 		str->idx += 1;
 	}
 	str->lenght += counter;
-	return (10);
+	return (str->lenght);
 }
 
 void	restart_flags(t_fields *str)
@@ -64,6 +64,7 @@ void	restart_flags(t_fields *str)
 	str->precision = -1;
 	str->space = 0;
 	str->len = 0;
+	str->lenght = 0;
 	str->break_flag = 0;
 }
 

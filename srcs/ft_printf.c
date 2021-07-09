@@ -6,13 +6,13 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 19:27:09 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 20:29:28 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	valid_token(const char *format, unsigned int *i, int fd, int result)
+int	valid_token(t_fields *str, const char *format, unsigned int *i, int result)
 {
 	int	tmp;
 
@@ -24,24 +24,24 @@ int	valid_token(const char *format, unsigned int *i, int fd, int result)
 		{
 			tmp = format[*i] - '0';
 			while (tmp > 1)
-				result += ft_putchar_fd(' ', fd), tmp--;
+				result += ft_putchar_fd(' ', str->fd), tmp--;
 			(*i)++;
 		}
-		result += ft_putchar_fd(format[*i], fd);
+		result += ft_putchar_fd(format[*i], str->fd);
 	}
 	if (IS_MACOS == 0)
 	{
-		result += ft_putchar_fd('%', fd);
+		result += ft_putchar_fd('%', str->fd);
 		if (format[*i] == ' ')
-			result += ft_putchar_fd(' ', fd), (*i)++;
+			result += ft_putchar_fd(' ', str->fd), (*i)++;
 		while (format[*i] == ' ')
 			(*i)++;
-		result += ft_putchar_fd(format[*i], fd);
+		result += ft_putchar_fd(format[*i], str->fd);
 	}
 	return (result);
 }
 
-int	token(const char *format, unsigned int *i, int fd, va_list args)
+int	token(t_fields *str, const char *format, unsigned int *i, va_list args)
 {
 	int	result;
 
@@ -51,12 +51,12 @@ int	token(const char *format, unsigned int *i, int fd, va_list args)
 		return (-1);
 	str->idx = *i;
 	if (format[*i] == '%')
-		result += ft_putchar_fd(format[*i], fd);
+		result += ft_putchar_fd(format[*i], str->fd);
 	else if (valid_operator_flag_modifier(format, *i) == 0)
-		result += valid_token(format, i, fd, result);
+		result += valid_token(str, format, i, result);
 	else
 	{
-		print_format(args);
+		print_format(str, args);
 		str->idx--;
 		*i = str->idx;
 	}
@@ -74,12 +74,14 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 {
 	unsigned int	i;
 	unsigned int	result;
+	t_fields		*str;
 
 	result = 0;
 	i = 0;
 	if (format == NULL)
 		return (-1);
-	initialize_stack(format, fd);
+	str = (t_fields *)ft_memalloc(sizeof(t_fields));
+	initialize_stack(str, format, fd);
 	while (format && format[i] && i < ft_strlen(format))
 	{
 		while (format[i] != '%' && format[i])
@@ -89,11 +91,11 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 		}
 		str->idx = i;
 		if (format[i] == '%' && format[i])
-			result += token(format, &i, fd, args);
+			result += token(str, format, &i, args);
 		i++;
 	}
 	result = str->lenght;
-	finalize_stack();
+	finalize_stack(str);
 	return (result);
 }
 

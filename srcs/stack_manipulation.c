@@ -6,15 +6,14 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 04:02:52 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 15:46:48 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 20:29:35 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	initialize_stack(const char *input, int fd)
+void	initialize_stack(t_fields *str, const char *input, int fd)
 {
-	str = (t_fields *)ft_memalloc(sizeof(t_fields));
 	str->format = (char *)input;
 	str->idx = 0;
 	str->fd = fd;
@@ -30,7 +29,7 @@ void	initialize_stack(const char *input, int fd)
 	str->break_flag = 0;
 }
 
-void	finalize_stack(void)
+void	finalize_stack(t_fields *str)
 {
 	free(str);
 }

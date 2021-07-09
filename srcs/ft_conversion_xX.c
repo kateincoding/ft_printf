@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:39:09 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 19:10:16 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 20:21:11 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	print_upper_hexa(unsigned int n)
  *
  * Return: The number of digits printed
  */
-int	print_hex(va_list lista)
+int	print_hex(t_fields *str, va_list lista)
 {
 	unsigned int	n;
 	int				tmp;
@@ -84,10 +84,10 @@ int	print_hex(va_list lista)
 	if (tmp < 0)
 		tmp = -tmp;
 	str->len = len_hexadecimal(n, 0);
-	calculate_format_width();
-	str->break_flag = print_before();
+	calculate_format_width(str);
+	str->break_flag = print_before(str);
 	counter += print_hexadecimal(n);
-	print_after();
+	print_after(str);
 	return (counter);
 }
 
@@ -97,7 +97,7 @@ int	print_hex(va_list lista)
  *
  * Return: The number of digits printed
  */
-int	print_upper_hexadecimal(va_list lista)
+int	print_upper_hexadecimal(t_fields *str, va_list lista)
 {
 	unsigned int	n;
 	int				tmp;
@@ -111,9 +111,9 @@ int	print_upper_hexadecimal(va_list lista)
 	if (tmp < 0)
 		tmp = -tmp;
 	str->len = len_hexadecimal(n, 0);
-	calculate_format_width();
-	str->break_flag = print_before();
+	calculate_format_width(str);
+	str->break_flag = print_before(str);
 	counter += print_upper_hexa(n);
-	print_after();
+	print_after(str);
 	return (counter);
 }

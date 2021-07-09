@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:23:04 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 11:56:51 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 20:30:58 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** Return: An integer
 */
 
-int	print_char(va_list lista)
+int	print_char(t_fields *str, va_list lista)
 {
 	char	c;
 
@@ -32,7 +32,7 @@ int	print_char(va_list lista)
 ** Return: An integer
 */
 
-int	print_str(va_list lista)
+int	print_str(t_fields *str, va_list lista)
 {
 	unsigned int	count;
 	char			*av;
@@ -41,17 +41,17 @@ int	print_str(va_list lista)
 	av = va_arg(lista, char *);
 	if (!av || av == NULL)
 	{
-		ft_putchar('(');
-		ft_putchar('n');
-		ft_putchar('u');
-		ft_putchar('l');
-		ft_putchar('l');
-		ft_putchar(')');
+		ft_putchar_fd('(', str->fd);
+		ft_putchar_fd('n', str->fd);
+		ft_putchar_fd('u', str->fd);
+		ft_putchar_fd('l', str->fd);
+		ft_putchar_fd('l', str->fd);
+		ft_putchar_fd(')', str->fd);
 		return (6);
 	}
 	while (*av)
 	{
-		write(1, &(*av++), 1);
+		write(str->fd, &(*av++), 1);
 		count++;
 	}
 	return (count);

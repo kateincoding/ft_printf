@@ -6,13 +6,13 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 21:00:23 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 20:18:20 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_space(int counter)
+int	print_space(t_fields *str, int counter)
 {
 	counter += ft_putchar_fd('%', str->fd);
 	if (str->space != 0)
@@ -33,28 +33,28 @@ int	print_space(int counter)
 ** %[$][flags][width][.precision][length modifier]conversion
 ** %[$][flags][0 - 9][. + [0-9]][length modifier]conversion
 */
-int	print_format(va_list args)
+int	print_format(t_fields *str, va_list args)
 {
 	int	counter;
 
 	counter = 0;
-	restart_flags();
-	set_flags();
-	set_width(args);
-	set_precision(args);
+	restart_flags(str);
+	set_flags(str);
+	set_width(str, args);
+	set_precision(str, args);
 	if (str->format[str->idx] == ' ')
-		counter = print_space(counter);
+		counter = print_space(str, counter);
 	else if (validate_operator(str->format[str->idx]))
 	{
 		str->op = str->format[str->idx];
-		counter += select_function(args);
+		counter += select_function(str, args);
 		str->idx += 1;
 	}
 	str->lenght += counter;
 	return (10);
 }
 
-void	restart_flags(void)
+void	restart_flags(t_fields *str)
 {
 	str->minus = 0;
 	str->zero = 0;
@@ -73,7 +73,7 @@ void	restart_flags(void)
 ** %[$][flags][0 - 9][. + [0-9]][length modifier]conversion
 */
 
-void	set_flags(void)
+void	set_flags(t_fields *str)
 {
 	int	i;
 
@@ -95,7 +95,7 @@ void	set_flags(void)
 	str->idx = i;
 }
 
-void	set_width(va_list args_list)
+void	set_width(t_fields *str, va_list args_list)
 {
 	int	i;
 	int	n;
@@ -114,7 +114,7 @@ void	set_width(va_list args_list)
 ** check if predomine * or number and change the order to assign n value
 */
 
-void	set_precision(va_list args_list)
+void	set_precision(t_fields *str, va_list args_list)
 {
 	int	i;
 	int	n;

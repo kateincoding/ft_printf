@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 21:02:53 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 20:21:52 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	a_size(int i, unsigned long p, int *zeroes)
 	return (count - *zeroes);
 }
 
-int	print_ptr(va_list lista)
+int	print_ptr(t_fields *str, va_list lista)
 {
 	unsigned long	p;
 	int				size;
@@ -62,8 +62,8 @@ int	print_ptr(va_list lista)
 	i = (sizeof(p) << 3) - 20;
 	size = a_size(i, p, &z);
 	str->len = size + (!p);
-	calculate_format_width();
-	str->break_flag = print_before();
+	calculate_format_width(str);
+	str->break_flag = print_before(str);
 	if (!p && str->precision == -1)
 		nb += ft_putchar_fd('0', str->fd);
 	while (size && i >= 0 && p != 0)
@@ -72,7 +72,7 @@ int	print_ptr(va_list lista)
 			nb += ft_putchar_fd(hex_digit((p >> i) & 0xf), str->fd);
 		i -= 4;
 	}
-	print_after();
+	print_after(str);
 	str->lenght += nb;
 	return (nb);
 }

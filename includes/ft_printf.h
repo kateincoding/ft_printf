@@ -66,7 +66,7 @@ typedef struct s_fields
 typedef struct s_func
 {
 	char	op;
-	int		(*f)(va_list);
+	int		(*f)(t_fields *str, va_list args);
 }	t_func;
 
 /*
@@ -88,51 +88,53 @@ int		validate_flag(const char flag);
 /*
 ** global structure to handle width, flag and precision
 */
-t_fields	*str;
+// t_fields	*str;
 
-void	initialize_stack(const char *inputs, int fd);
-void	finalize_stack(void);
-
+void	initialize_stack(t_fields *str, const char *inputs, int fd);
+void	finalize_stack(t_fields *str);
+int		select_function(t_fields *str, va_list list);
 /*
 ** create structure for each argv
 */
 
-void	set_flags(void);
-void	restart_flags(void);
+void	set_flags(t_fields *str);
+void	restart_flags(t_fields *str);
 int		validate_only_flag(const char flag);
-void	set_width(va_list args_list);
-void	set_precision(va_list args_list);
+void	set_width(t_fields *str, va_list args);
+void	set_precision(t_fields *str, va_list args);
 
-int		select_function(va_list list);
+/*
+** handle print
+*/
 
-int		print_before(void);
-int		print_format(va_list args_list);
-void	print_after(void);
-void	calculate_format_width(void);
+void	calculate_format_width(t_fields *str);
+int		print_before(t_fields *str);
+int		print_format(t_fields *str, va_list args_list);
+void	print_after(t_fields *str);
 
 /*
 ** conversion operators function
 */
 
-int		print_char(va_list lista);
-int		print_str(va_list lista);
+int		print_char(t_fields *str, va_list lista);
+int		print_str(t_fields *str, va_list lista);
 //int print_rev_str(va_list lista);
 //int print_Str_Ascii(va_list arg);
 
 /* print functions : type numbers */
 int		putN(unsigned int n, unsigned int b, char *nums);
-int		print_int(va_list lista);
-int		print_unsigned(va_list lista);
+int		print_int(t_fields *str, va_list lista);
+int		print_unsigned(t_fields *str, va_list lista);
 
 /* print bases */
-int		print_hex(va_list lista);
-int		print_upper_hexadecimal(va_list lista);
+int		print_hex(t_fields *str, va_list lista);
+int		print_upper_hexadecimal(t_fields *str, va_list lista);
 
 /* print pointer */
-int		print_ptr(va_list lista);
+int		print_ptr(t_fields *str, va_list lista);
 
 /*
-** libft
+** libft -----
 */
 
 int		ft_putchar(char c);

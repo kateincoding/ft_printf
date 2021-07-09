@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 20:37:21 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 20:12:35 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** calculate the width of format to handle %u
 */
 
-void	calculate_format_width(void)
+void	calculate_format_width(t_fields *str)
 {
 	str->final_width = str->len;
 	if (str->width > str->len)
@@ -25,7 +25,7 @@ void	calculate_format_width(void)
 		str->final_width = str->precision;
 }
 
-void	print_before_before(int i, int space)
+void	print_before_before(t_fields *str, int i, int space)
 {
 	str->break_flag = 0;
 	if (str->space > 0 && (str->op == 'd' || str->op == 'i'))
@@ -55,11 +55,11 @@ void	print_before_before(int i, int space)
 ** print_before: handle the characters that will print before format
 */
 
-int	print_before(void)
+int	print_before(t_fields *str)
 {
 	int	i;
 
-	print_before_before(0, 0);
+	print_before_before(str, 0, 0);
 	if (str->op == 'p')
 	{
 		ft_putchar_fd('0', str->fd);
@@ -77,7 +77,7 @@ int	print_before(void)
 	return (str->break_flag);
 }
 
-void	print_after(void)
+void	print_after(t_fields *str)
 {
 	int	i;
 	int	space;

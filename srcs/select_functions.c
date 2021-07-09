@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 11:26:01 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 20:26:13 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @list: list of arguments to print
  * Return: numbers of char printed
  */
-int	select_function(va_list args)
+int	select_function(t_fields *str, va_list args)
 {
 	unsigned int	i;
 	unsigned int	result;
@@ -36,7 +36,7 @@ int	select_function(va_list args)
 	{
 		if (str->op == operator[i].op)
 		{
-			result += operator[i].f(args);
+			result += operator[i].f(str, args);
 			break ;
 		}
 		i++;

@@ -6,13 +6,13 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 19:47:57 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/08 20:32:49 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	size_bit(int bit, int n, int *c)
+void	size_bit(t_fields *str, int bit, int n, int *c)
 {
 	int	d;
 	int	x;
@@ -37,7 +37,7 @@ void	size_bit(int bit, int n, int *c)
 ** print an integer
 */
 
-int	print_body(int c, int n)
+int	print_body(t_fields *str, int c, int n)
 {
 	int	bit;
 	int	o;
@@ -53,7 +53,7 @@ int	print_body(int c, int n)
 	}
 	bit = n;
 	if (bit > 0)
-		size_bit(bit, n, &c);
+		size_bit(str, bit, n, &c);
 	str->lenght += ft_putchar_fd(o + '0', str->fd);
 	c++;
 	return (c);
@@ -63,7 +63,7 @@ int	print_body(int c, int n)
 ** calculate integer len
 */
 
-void	calculate_int_len(int num)
+void	calculate_int_len(t_fields *str, int num)
 {
 	int	tmp;
 
@@ -84,7 +84,7 @@ void	calculate_int_len(int num)
 ** Return: An integer
 */
 
-int	print_int(va_list lista)
+int	print_int(t_fields *str, va_list lista)
 {
 	int	n;
 	int	c;
@@ -92,11 +92,11 @@ int	print_int(va_list lista)
 	c = 0;
 	str->break_flag = 0;
 	n = va_arg(lista, int);
-	calculate_int_len(n);
-	calculate_format_width();
-	str->break_flag = print_before();
-	c = print_body(c, n);
-	print_after();
+	calculate_int_len(str, n);
+	calculate_format_width(str);
+	str->break_flag = print_before(str);
+	c = print_body(str, c, n);
+	print_after(str);
 	return (c);
 }
 
@@ -107,7 +107,7 @@ int	print_int(va_list lista)
 ** Return: The number of digits printed
 */
 
-int	print_unsigned(va_list lista)
+int	print_unsigned(t_fields *str, va_list lista)
 {
 	unsigned int	num;
 	unsigned int	c;
@@ -115,9 +115,9 @@ int	print_unsigned(va_list lista)
 
 	str->break_flag = 0;
 	num = va_arg(lista, int);
-	calculate_int_len(num);
-	calculate_format_width();
-	str->break_flag = print_before();
+	calculate_int_len(str, num);
+	calculate_format_width(str);
+	str->break_flag = print_before(str);
 	c = (num == 0);
 	str->lenght += ft_putchar_fd((num == 0) * '0', str->fd);
 	if (num > 0)
@@ -132,6 +132,6 @@ int	print_unsigned(va_list lista)
 			div /= 10;
 		}
 	}
-	print_after();
+	print_after(str);
 	return (c);
 }

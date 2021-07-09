@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 00:42:27 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/09 17:38:05 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	initialize_var_operators(t_fields *str)
 	str->counter = 0;
 	str->null_flag = 0;
 	str->positive = 0;
+	str->len = 0;
 }
 
 

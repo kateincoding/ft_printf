@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 00:41:35 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/09 17:45:07 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,27 @@ void	calculate_int_len(t_fields *str, int num)
 {
 	int	tmp;
 
-	str->len = 1;
 	tmp = num;
 	if (tmp < 0)
+	{
 		tmp = -tmp;
+		if (str->op == 'i' || str->op == 'd')
+			str->len++;
+		while (tmp < -10)
+		{
+			tmp = tmp / 10;
+			str->len++;
+		}
+		if (tmp > -10)
+			str->len += 1;
+	}
 	while (tmp > 10)
 	{
 		tmp = tmp / 10;
 		str->len++;
 	}
+	if (tmp < 10 && tmp >= 0)
+		str->len += 1;
 }
 
 /*
@@ -115,8 +127,8 @@ int	print_unsigned(t_fields *str, va_list lista)
 	calculate_int_len(str, num);
 	calculate_format_width(str);
 	print_before(str);
-	// c = (num == 0);
-	str->counter += ft_putchar_fd((num == 0) * '0', str->fd);
+	if (num == 0)
+		str->counter += ft_putchar_fd('0', str->fd);
 	if (num > 0)
 	{
 		div = 1;

@@ -46,6 +46,7 @@ typedef struct s_fields
 	int		plus;
 	int		len;
 	int		break_flag;
+	int		counter;
 }	t_fields;
 
 /*
@@ -107,8 +108,9 @@ void	set_precision(t_fields *str, va_list args);
 ** handle print
 */
 
+void	initialize_var_operators(t_fields *str);
 void	calculate_format_width(t_fields *str);
-int		print_before(t_fields *str);
+void	print_before(t_fields *str);
 int		print_format(t_fields *str, va_list args_list);
 void	print_after(t_fields *str);
 

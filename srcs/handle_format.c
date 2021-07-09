@@ -6,14 +6,17 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 21:59:52 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:53:23 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_space(t_fields *str, int counter)
+int	print_space(t_fields *str)
 {
+	int counter;
+
+	counter = 0;
 	counter += ft_putchar_fd('%', str->fd);
 	if (str->space != 0)
 		counter += ft_putchar_fd(' ', str->fd);
@@ -43,15 +46,14 @@ int	print_format(t_fields *str, va_list args)
 	set_width(str, args);
 	set_precision(str, args);
 	if (str->format[str->idx] == ' ')
-		counter = print_space(str, counter);
+		counter += print_space(str);
 	else if (validate_operator(str->format[str->idx]))
 	{
 		str->op = str->format[str->idx];
 		counter += select_function(str, args);
 		str->idx += 1;
 	}
-	str->lenght += counter;
-	return (str->lenght);
+	return (counter);
 }
 
 void	restart_flags(t_fields *str)

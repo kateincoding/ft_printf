@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 20:29:28 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:53:06 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	token(t_fields *str, const char *format, unsigned int *i, va_list args)
 		result += valid_token(str, format, i, result);
 	else
 	{
-		print_format(str, args);
+		result += print_format(str, args);
 		str->idx--;
 		*i = str->idx;
 	}
@@ -94,7 +94,7 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 			result += token(str, format, &i, args);
 		i++;
 	}
-	result = str->lenght;
+	// result = str->lenght;
 	finalize_stack(str);
 	return (result);
 }

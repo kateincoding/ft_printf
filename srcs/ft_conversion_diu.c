@@ -6,13 +6,13 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 20:32:49 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:53:55 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	size_bit(t_fields *str, int bit, int n, int *c)
+void	size_bit(t_fields *str, int bit, int n)
 {
 	int	d;
 	int	x;
@@ -26,8 +26,7 @@ void	size_bit(t_fields *str, int bit, int n, int *c)
 	while (d >= 1)
 	{
 		x = n / d;
-		str->lenght += ft_putchar_fd(x + '0', str->fd);
-		(*c)++;
+		str->counter += ft_putchar_fd(x + '0', str->fd);
 		n = n % d;
 		d = d / 10;
 	}
@@ -37,7 +36,7 @@ void	size_bit(t_fields *str, int bit, int n, int *c)
 ** print an integer
 */
 
-int	print_body(t_fields *str, int c, int n)
+void	print_body(t_fields *str, int n)
 {
 	int	bit;
 	int	o;
@@ -48,15 +47,12 @@ int	print_body(t_fields *str, int c, int n)
 	{
 		n = -n;
 		o = -o;
-		str->lenght += ft_putchar_fd('-', str->fd);
-		c++;
+		str->counter += ft_putchar_fd('-', str->fd);
 	}
 	bit = n;
 	if (bit > 0)
-		size_bit(str, bit, n, &c);
-	str->lenght += ft_putchar_fd(o + '0', str->fd);
-	c++;
-	return (c);
+		size_bit(str, bit, n);
+	str->counter += ft_putchar_fd(o + '0', str->fd);
 }
 
 /*
@@ -87,17 +83,15 @@ void	calculate_int_len(t_fields *str, int num)
 int	print_int(t_fields *str, va_list lista)
 {
 	int	n;
-	int	c;
 
-	c = 0;
-	str->break_flag = 0;
+	initialize_var_operators(str);
 	n = va_arg(lista, int);
 	calculate_int_len(str, n);
 	calculate_format_width(str);
-	str->break_flag = print_before(str);
-	c = print_body(str, c, n);
+	print_before(str);
+	print_body(str, n);
 	print_after(str);
-	return (c);
+	return (str->counter);
 }
 
 /*
@@ -110,16 +104,15 @@ int	print_int(t_fields *str, va_list lista)
 int	print_unsigned(t_fields *str, va_list lista)
 {
 	unsigned int	num;
-	unsigned int	c;
 	unsigned int	div;
 
-	str->break_flag = 0;
+	initialize_var_operators(str);
 	num = va_arg(lista, int);
 	calculate_int_len(str, num);
 	calculate_format_width(str);
-	str->break_flag = print_before(str);
-	c = (num == 0);
-	str->lenght += ft_putchar_fd((num == 0) * '0', str->fd);
+	print_before(str);
+	// c = (num == 0);
+	str->counter += ft_putchar_fd((num == 0) * '0', str->fd);
 	if (num > 0)
 	{
 		div = 1;
@@ -127,11 +120,11 @@ int	print_unsigned(t_fields *str, va_list lista)
 			div *= 10;
 		while (div != 0)
 		{
-			str->lenght += ft_putchar_fd((num / div) + '0', str->fd), c++;
+			str->counter += ft_putchar_fd((num / div) + '0', str->fd);
 			num %= div;
 			div /= 10;
 		}
 	}
 	print_after(str);
-	return (c);
+	return (str->counter);
 }

@@ -6,11 +6,18 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 20:12:35 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:53:31 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	initialize_var_operators(t_fields *str)
+{
+	str->break_flag = 0;
+	str->counter = 0;
+}
+
 
 /*
 ** calculate the width of format to handle %u
@@ -33,7 +40,7 @@ void	print_before_before(t_fields *str, int i, int space)
 		i = 0;
 		if (i < str->space)
 		{
-			str->lenght += ft_putchar_fd(' ', str->fd);
+			str->counter += ft_putchar_fd(' ', str->fd);
 			while (i < str->space)
 				i++;
 			str->final_width--;
@@ -47,7 +54,7 @@ void	print_before_before(t_fields *str, int i, int space)
 		else
 			space = str->len;
 		while (i < (str->final_width - space))
-			str->lenght += ft_putchar_fd(' ', str->fd), i++;
+			str->counter += ft_putchar_fd(' ', str->fd), i++;
 	}
 }
 
@@ -55,14 +62,14 @@ void	print_before_before(t_fields *str, int i, int space)
 ** print_before: handle the characters that will print before format
 */
 
-int	print_before(t_fields *str)
+void	print_before(t_fields *str)
 {
 	int	i;
 
 	print_before_before(str, 0, 0);
 	if (str->op == 'p')
 	{
-		ft_putchar_fd('0', str->fd);
+		ft_putchar_fd('0', str->fd); /* revisar si se le agrega al counter */
 		ft_putchar_fd('x', str->fd);
 	}
 	if (str->precision >= 0 && str->final_width != str->len)
@@ -70,11 +77,11 @@ int	print_before(t_fields *str)
 		i = 0;
 		while (i < str->precision - str->len && str->precision > 0)
 		{
-			str->lenght += ft_putchar_fd('0', str->fd);
-			str->break_flag = 1, i++;
+			str->counter += ft_putchar_fd('0', str->fd);
+			str->break_flag = 1;
+			i++;
 		}
 	}
-	return (str->break_flag);
 }
 
 void	print_after(t_fields *str)
@@ -91,7 +98,7 @@ void	print_after(t_fields *str)
 		i = 0;
 		while (i < (str->final_width - space))
 		{
-			str->lenght += ft_putchar_fd(' ', str->fd);
+			str->counter += ft_putchar_fd(' ', str->fd);
 			i++;
 		}
 	}

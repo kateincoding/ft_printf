@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:39:09 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 20:21:11 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:53:26 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,19 @@ int	print_hex(t_fields *str, va_list lista)
 {
 	unsigned int	n;
 	int				tmp;
-	int				counter;
 
+	initialize_var_operators(str);
 	n = va_arg(lista, int);
-	counter = 0;
 	str->len = 1;
-	str->break_flag = 0;
 	tmp = n;
 	if (tmp < 0)
 		tmp = -tmp;
 	str->len = len_hexadecimal(n, 0);
 	calculate_format_width(str);
-	str->break_flag = print_before(str);
-	counter += print_hexadecimal(n);
+	print_before(str);
+	str->counter += print_hexadecimal(n);
 	print_after(str);
-	return (counter);
+	return (str->counter);
 }
 
 /**
@@ -101,19 +99,17 @@ int	print_upper_hexadecimal(t_fields *str, va_list lista)
 {
 	unsigned int	n;
 	int				tmp;
-	int				counter;
 
+	initialize_var_operators(str);
 	n = va_arg(lista, int);
-	counter = 0;
 	str->len = 1;
-	str->break_flag = 0;
 	tmp = n;
 	if (tmp < 0)
 		tmp = -tmp;
 	str->len = len_hexadecimal(n, 0);
 	calculate_format_width(str);
-	str->break_flag = print_before(str);
-	counter += print_upper_hexa(n);
+	print_before(str);
+	str->counter += print_upper_hexa(n);
 	print_after(str);
-	return (counter);
+	return (str->counter);
 }

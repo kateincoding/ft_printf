@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 20:21:52 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:53:29 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +48,34 @@ int	a_size(int i, unsigned long p, int *zeroes)
 	return (count - *zeroes);
 }
 
+/*
+** print_ptr - Print %p format -> address of the pointer
+** @str: structure that contains all the flags
+** @lista: args of the printf function
+*/
+
 int	print_ptr(t_fields *str, va_list lista)
 {
 	unsigned long	p;
 	int				size;
 	int				i;
-	int				nb;
 	int				z;
 
-	nb = 0;
-	str->break_flag = 0;
+	initialize_var_operators(str);
 	p = va_arg(lista, unsigned long);
 	i = (sizeof(p) << 3) - 20;
 	size = a_size(i, p, &z);
 	str->len = size + (!p);
 	calculate_format_width(str);
-	str->break_flag = print_before(str);
+	print_before(str);
 	if (!p && str->precision == -1)
-		nb += ft_putchar_fd('0', str->fd);
+		str->counter += ft_putchar_fd('0', str->fd);
 	while (size && i >= 0 && p != 0)
 	{
 		if (z-- <= 0)
-			nb += ft_putchar_fd(hex_digit((p >> i) & 0xf), str->fd);
+			str->counter += ft_putchar_fd(hex_digit((p >> i) & 0xf), str->fd);
 		i -= 4;
 	}
 	print_after(str);
-	str->lenght += nb;
-	return (nb);
+	return (str->counter);
 }

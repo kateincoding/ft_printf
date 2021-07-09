@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 04:02:52 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 22:53:20 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/09 00:44:06 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	initialize_stack(t_fields *str, const char *input, int fd)
 	str->wildcard = 0;
 	str->precision = -1;
 	str->space = 0;
+	str->plus = 0;
+	str->counter = 0;
 	str->len = 0;
 	str->break_flag = 0;
 }

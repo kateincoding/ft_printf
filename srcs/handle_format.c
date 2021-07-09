@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 00:00:50 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/09 00:43:06 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	restart_flags(t_fields *str)
 	str->len = 0;
 	str->lenght = 0;
 	str->break_flag = 0;
+	str->plus = 0;
 }
 
 /*

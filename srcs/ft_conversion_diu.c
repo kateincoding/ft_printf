@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 22:53:55 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/09 00:41:35 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	print_int(t_fields *str, va_list lista)
 
 	initialize_var_operators(str);
 	n = va_arg(lista, int);
+	if (n > 0)
+		str->positive = 1;
 	calculate_int_len(str, n);
 	calculate_format_width(str);
 	print_before(str);
@@ -108,6 +110,8 @@ int	print_unsigned(t_fields *str, va_list lista)
 
 	initialize_var_operators(str);
 	num = va_arg(lista, int);
+	if (num > 0)
+		str->positive = 1;
 	calculate_int_len(str, num);
 	calculate_format_width(str);
 	print_before(str);

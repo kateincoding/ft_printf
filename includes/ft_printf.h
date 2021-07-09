@@ -44,6 +44,7 @@ typedef struct s_fields
 	int		hashtag;
 	int		space;
 	int		plus;
+	int		positive;
 	int		len;
 	int		break_flag;
 	int		null_flag;

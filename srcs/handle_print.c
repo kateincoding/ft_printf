@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 00:18:53 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/09 00:42:27 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	initialize_var_operators(t_fields *str)
 	str->break_flag = 0;
 	str->counter = 0;
 	str->null_flag = 0;
+	str->positive = 0;
 }
 
 
@@ -59,6 +60,8 @@ void	print_before_before(t_fields *str, int i, int space)
 		while (i < (str->final_width - space))
 			str->counter += ft_putchar_fd(' ', str->fd), i++;
 	}
+	if (str->plus == 1 && str->positive == 1)
+		str->counter += ft_putchar_fd('+', str->fd);
 }
 
 /*

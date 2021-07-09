@@ -15,23 +15,27 @@ int main(void)
     printf("-----------\n");
 */
 /* ---------------- test %c -----------------*/
-/*
+
+    ft_printf("prueba %c\n", NULL);
+    printf("prueba %c\n", NULL);
     ft_printf("prueba %c\n", 'k');
     printf("prueba %c\n", 'k');
-    ft_printf("prueba %0c\n", h);
-    printf("prueba %0c\n", h);
-    ft_printf("prueba %-2c\n", h);
-    printf("prueba %-2c\n", h);
-*/
+    ft_printf("prueba %0c\n", 'h');
+    printf("prueba %0c\n", 'h');
+    ft_printf("prueba %-2c\n", 'h');
+    printf("prueba %-2c\n", 'h');
+
 /* ---------------- test %s -----------------*/
-/*
+
+    ft_printf("prueba %s\n", NULL);
+    printf("prueba %s\n", NULL);
     ft_printf("prueba %s\n", "kate");
     printf("prueba %s\n", "kate");
     ft_printf("prueba %0s\n", "kate");
     printf("prueba %0s\n", "kate");
     ft_printf("prueba %-2s\n", "kate");
     printf("prueba %-2s\n", "kate");
-*/
+
 
 /* ---------------- test %d -----------------*/
 

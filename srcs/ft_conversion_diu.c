@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/10 06:29:44 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/10 15:12:08 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,11 @@ void	print_body(t_fields *str, int n)
 	{
 		n = -n;
 		o = -o;
-		str->counter += ft_putchar_fd('-', str->fd);
 	}
 	bit = n;
 	if (bit > 0)
 		size_bit(str, bit, n);
-	if (!(str->zero_value == 1 && str->precision == 0))
+	if (str->zero_value == 0 || (str->zero_value == 1 && str->precision != 0))
 		str->counter += ft_putchar_fd(o + '0', str->fd);
 }
 
@@ -67,8 +66,8 @@ void	calculate_int_len(t_fields *str, int num)
 	tmp = num;
 	if (tmp < 0)
 	{
-		if (str->op == 'i' || str->op == 'd')
-			str->len++;
+//		if (str->op == 'i' || str->op == 'd')
+//			str->len++;
 		while (tmp < -10)
 		{
 			tmp = tmp / 10;
@@ -84,7 +83,7 @@ void	calculate_int_len(t_fields *str, int num)
 	}
 	if (tmp < 10 && tmp >= 0)
 		str->len += 1;
-	if (str->zero_value)
+	if (str->zero_value && str->precision == 0)
 		str->len = 0;
 }
 
@@ -104,6 +103,8 @@ int	print_int(t_fields *str, va_list lista)
 		str->positive = 1;
 	else if (n == 0)
 		str->zero_value = 1;
+	else
+		str->negative = 1;
 //	printf("\nlen = %d\n", str->len);
 	calculate_int_len(str, n);
 //	printf("\nlen = %d\n", str->len);

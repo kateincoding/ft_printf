@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 00:43:06 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/10 09:14:34 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,15 @@ void	set_width(t_fields *str, va_list args_list)
 	i = str->idx;
 	n = 0;
 	if (str->format[i] == '*')
-		n = va_arg(args_list, int), i++;
+	{
+		n = va_arg(args_list, int);
+		if (n < 0)
+		{
+			str->minus = 1;
+			n = -1 * n;
+		}
+		i++;
+	}
 	while ('0' <= str->format[i] && str->format[i] <= '9')
 		n = 10 * n + str->format[i] - '0', i++;
 //	if (str->format[i] == '*')

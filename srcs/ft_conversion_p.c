@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 00:18:52 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/10 07:48:55 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	print_ptr(t_fields *str, va_list lista)
 	//	str->final_width += 1;
 	// printf("\nlen %d and final width %d\n", str->len, str->final_width);
 	print_before(str);
-	if (!p && str->precision == -1)
+	if (!p && str->precision != 0)
 		str->counter += ft_putchar_fd('0', str->fd);
 	while (size && i >= 0 && p != 0)
 	{

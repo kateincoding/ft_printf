@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 17:45:07 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/10 05:32:04 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	print_body(t_fields *str, int n)
 	bit = n;
 	if (bit > 0)
 		size_bit(str, bit, n);
-	str->counter += ft_putchar_fd(o + '0', str->fd);
+	if (!(str->zero_value == 1 && str->precision == 0))
+		str->counter += ft_putchar_fd(o + '0', str->fd);
 }
 
 /*
@@ -66,7 +67,6 @@ void	calculate_int_len(t_fields *str, int num)
 	tmp = num;
 	if (tmp < 0)
 	{
-		tmp = -tmp;
 		if (str->op == 'i' || str->op == 'd')
 			str->len++;
 		while (tmp < -10)
@@ -77,13 +77,15 @@ void	calculate_int_len(t_fields *str, int num)
 		if (tmp > -10)
 			str->len += 1;
 	}
-	while (tmp > 10)
+	while (tmp >= 10)
 	{
 		tmp = tmp / 10;
 		str->len++;
 	}
 	if (tmp < 10 && tmp >= 0)
 		str->len += 1;
+	if (str->zero_value)
+		str->len = 0;
 }
 
 /*
@@ -100,8 +102,13 @@ int	print_int(t_fields *str, va_list lista)
 	n = va_arg(lista, int);
 	if (n > 0)
 		str->positive = 1;
+	else if (n == 0)
+		str->zero_value = 1;
+//	printf("\nlen = %d\n", str->len);
 	calculate_int_len(str, n);
+//	printf("\nlen = %d\n", str->len);
 	calculate_format_width(str);
+//	printf("\nfinal width = %d\n", str->final_width);
 	print_before(str);
 	print_body(str, n);
 	print_after(str);
@@ -124,11 +131,13 @@ int	print_unsigned(t_fields *str, va_list lista)
 	num = va_arg(lista, int);
 	if (num > 0)
 		str->positive = 1;
+	else if (num == 0)
+		str->zero_value = 1;
 	calculate_int_len(str, num);
 	calculate_format_width(str);
 	print_before(str);
-	if (num == 0)
-		str->counter += ft_putchar_fd('0', str->fd);
+//	if (num == 0)
+//		str->counter += ft_putchar_fd('0', str->fd);
 	if (num > 0)
 	{
 		div = 1;

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 17:38:05 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/10 05:30:35 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	initialize_var_operators(t_fields *str)
 	str->null_flag = 0;
 	str->positive = 0;
 	str->len = 0;
+	str->zero_value = 0;
 }
 
 
@@ -33,6 +34,8 @@ void	calculate_format_width(t_fields *str)
 		str->final_width = str->width;
 	if (str->precision > str->final_width)
 		str->final_width = str->precision;
+//	printf("\n===final len = %d ===\n", str->len);
+//	printf("===final width = %d ===\n", str->final_width);
 }
 
 void	print_before_before(t_fields *str, int i, int space)
@@ -103,9 +106,8 @@ void	print_after(t_fields *str)
 	else
 		space = str->len;
 	if (str->op == 'p')
-	{
 		space = str->counter;
-	}
+	space = str->counter; /* test si no fx, borrar */
 	if (str->minus != 0 && str->final_width != str->len)
 	{
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/10 15:57:44 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/12 01:08:30 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ void	calculate_format_width(t_fields *str)
 
 void	print_before_before(t_fields *str, int i, int space)
 {
-	if (str->zero == 0) /* print spaces before */
+	if (str->zero == 0)
 	{
 		if (str->space > 0 && (str->op == 'd' || str->op == 'i'))
 		{
 			i = 0;
-	//		printf("\n ====== here hey =====\n");
 			if (i < str->space)
 			{
 				str->counter += ft_putchar_fd(' ', str->fd);
@@ -70,7 +69,7 @@ void	print_before_before(t_fields *str, int i, int space)
 				str->counter += ft_putchar_fd(' ', str->fd), i++;
 		}
 	}
-	/* print sign */
+// print sign
 	if (str->plus == 1 && str->positive == 1)
 		str->counter += ft_putchar_fd('+', str->fd);
 	if (str->negative == 1 && (str->op == 'd' || str->op == 'i'))
@@ -94,25 +93,17 @@ void	print_before(t_fields *str)
 	}
 	if (str->op == 'p' && str->null_flag == 1 && str->break_flag == 1)
 		str->counter += write(str->fd, "000", 3);
-//	printf("zeros %d\n", str->precision);
-/* print zero */
+// print zero
 	if ((str->zero != 0 || str->precision > 0) && str->final_width != str->len)
 	{
-		// printf ("\n=====hereeeeee\n");
 		i = 0;
 		zeros = 0;
 		if (str->precision != 0 && str->zero_value == 1)
 			zeros = str->final_width - str->len - str->counter;
 		else
 			zeros = str->final_width - str->len - str->counter;
-//		printf("final width %d\n", str->final_width);
-		// printf("width %d\n", str->width);
-//		printf("final len %d\n", str->len);
-		// printf("final counter %d\n", str->counter);
-//		printf("zeros %d\n", zeros);
 		while (i < zeros)
 		{
-//			printf("\n hey1 \n");
 			str->counter += ft_putchar_fd('0', str->fd);
 			str->break_flag = 1;
 			i++;
@@ -146,27 +137,3 @@ void	print_after(t_fields *str)
 		i = -1;
 	}
 }
-
-/*
-void	print_after(int width, int len, int break_flag)
-{
-	int	i;
-
-	if (str->minus != 0 && width != len)
-	{
-		i = 0;
-		while (i < (width - len))
-		{
-			if (break_flag == 1)
-			{
-				// i = 0;
-				// while (++i < (width - (str->precision + len)))
-				//	str->lenght += ft_putchar_fd(' ', str->fd);
-				break;
-			}
-			str->lenght += ft_putchar_fd(' ', str->fd);
-			i++;
-		}
-	}
-}
-*/

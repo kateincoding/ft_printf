@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/10 07:48:55 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/12 01:07:03 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ int	print_ptr(t_fields *str, va_list lista)
 	size = a_size(i, p, &z);
 	str->len = size + (!p) * 3; /*como se diferenciaria el p de 0 y null */
 	calculate_format_width(str);
-	//if (!p)
-	//	str->final_width += 1;
 	// printf("\nlen %d and final width %d\n", str->len, str->final_width);
 	print_before(str);
 	if (!p && str->precision != 0)

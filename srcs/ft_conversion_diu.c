@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/10 15:12:08 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/12 01:06:12 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	calculate_int_len(t_fields *str, int num)
 	tmp = num;
 	if (tmp < 0)
 	{
-//		if (str->op == 'i' || str->op == 'd')
-//			str->len++;
 		while (tmp < -10)
 		{
 			tmp = tmp / 10;
@@ -105,11 +103,8 @@ int	print_int(t_fields *str, va_list lista)
 		str->zero_value = 1;
 	else
 		str->negative = 1;
-//	printf("\nlen = %d\n", str->len);
 	calculate_int_len(str, n);
-//	printf("\nlen = %d\n", str->len);
 	calculate_format_width(str);
-//	printf("\nfinal width = %d\n", str->final_width);
 	print_before(str);
 	print_body(str, n);
 	print_after(str);

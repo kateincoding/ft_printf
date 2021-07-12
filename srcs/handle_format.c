@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/10 09:14:34 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/12 01:09:53 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_space(t_fields *str)
 {
-	int counter;
+	int	counter;
 
 	counter = 0;
 	counter += ft_putchar_fd('%', str->fd);
@@ -36,6 +36,7 @@ int	print_space(t_fields *str)
 ** %[$][flags][width][.precision][length modifier]conversion
 ** %[$][flags][0 - 9][. + [0-9]][length modifier]conversion
 */
+
 int	print_format(t_fields *str, va_list args)
 {
 	int	counter;
@@ -118,8 +119,6 @@ void	set_width(t_fields *str, va_list args_list)
 	}
 	while ('0' <= str->format[i] && str->format[i] <= '9')
 		n = 10 * n + str->format[i] - '0', i++;
-//	if (str->format[i] == '*')
-//	n = va_arg(args_list, int), i++;
 	str->width = n;
 	str->idx = i;
 }

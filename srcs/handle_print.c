@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/14 10:12:39 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/14 15:30:15 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,17 @@ void add_more_width(t_fields *str)
 {
 //	printf("here\n");
 //	printf("minus precision  %d\n", str->minus_precision);
+//	printf("zero value  %d\n", str->zero_value);
 //	printf("negative  %d\n", str->negative);
 //	printf("op  %c\n", str->op);
+// printf("final width %d\n", str->final_width);
 	if (str->precision >= 1 && str->minus_precision == 0 && str->negative == 1 && (str->op == 'd' || str->op == 'i'))
 		str->final_width++;
 	else if (str->minus_precision == 1  && str->negative != 1 && (str->op == 'd' || str->op == 'i'))
-		str->final_width--;
-	else if ((str->negative == 1 || str->minus_precision == 1) && str->op == 'u') /*corregir caso linea 343 */
+		str->final_width--; /* handle width negative */
+	else if (str->negative == 1 && str->op == 'u') /*corregir caso linea 343 */
+		str->final_width--; /* skipped */
+	else if (str->minus_precision == 1 && str->zero_value == 0 && str->op == 'u')
 		str->final_width--;
 }
 
@@ -46,7 +50,7 @@ void	calculate_format_width(t_fields *str)
 	str->final_width = str->len;
 	if (str->width > str->len)
 		str->final_width = str->width;
-	if (str->precision > str->final_width)
+	if (str->precision > str->final_width && str->minus_precision == 0)
 		str->final_width = str->precision;
 	add_more_width(str);
 //	printf("\n===final len = %d ===\n", str->len);

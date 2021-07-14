@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/10 05:58:00 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/14 14:09:27 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int	valid_token(t_fields *str, const char *format, unsigned int *i, int result)
 			(*i)++;
 		}
 		if (format[*i] == '.')
+		{
 			(*i)++;
 			while ('0' <= format[*i] && format[*i] <= '9')
 				(*i)++;
+		}
 		result += ft_putchar_fd(format[*i], str->fd);
 	}
 	if (IS_MACOS == 0)

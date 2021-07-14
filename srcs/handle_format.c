@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:54:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/12 01:09:53 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/14 04:06:10 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	print_format(t_fields *str, va_list args)
 void	restart_flags(t_fields *str)
 {
 	str->minus = 0;
+	str->minus_precision = 0;
 	str->zero = 0;
 	str->width = 0;
 	str->final_width = 0;
@@ -140,7 +141,15 @@ void	set_precision(t_fields *str, va_list args_list)
 		while ('0' <= str->format[i] && str->format[i] <= '9')
 			n = 10 * n + str->format[i] - '0', i++;
 		if (str->format[i] == '*')
-			n = va_arg(args_list, int), i++;
+			n = va_arg(args_list, int);
+//			printf("hey, i am here n = %i\n", n);
+			if (n < 0)
+			{
+//				printf("hey, i am here\n");
+				str->minus_precision = 1;
+				n = -1 * n;
+			}
+			i++;
 		str->precision = n;
 		str->idx = i;
 	}

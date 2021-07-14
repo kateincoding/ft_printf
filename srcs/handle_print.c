@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/12 01:08:30 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/14 04:30:15 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ void	initialize_var_operators(t_fields *str)
 	str->negative = 0;
 }
 
+void add_more_width(t_fields *str)
+{
+//	printf("here\n");
+//	printf("minus precision  %d\n", str->minus_precision);
+//	printf("negative  %d\n", str->negative);
+//	printf("op  %c\n", str->op);
+	if (str->precision >= 1 && str->minus_precision == 0 && str->negative == 1 && (str->op == 'd' || str->op == 'i'))
+		str->final_width++;
+	else if (str->minus_precision == 1  && str->positive == 1 && str->op == 'd')
+		str->final_width--;
+	else if ((str->negative == 1 || str->minus_precision == 1) && str->op == 'u') /*corregir caso linea 343 */
+		str->final_width--;
+}
 
 /*
 ** calculate the width of format to handle %u
@@ -35,6 +48,7 @@ void	calculate_format_width(t_fields *str)
 		str->final_width = str->width;
 	if (str->precision > str->final_width)
 		str->final_width = str->precision;
+	add_more_width(str);
 //	printf("\n===final len = %d ===\n", str->len);
 //	printf("===final width = %d ===\n", str->final_width);
 }
@@ -94,7 +108,7 @@ void	print_before(t_fields *str)
 	if (str->op == 'p' && str->null_flag == 1 && str->break_flag == 1)
 		str->counter += write(str->fd, "000", 3);
 // print zero
-	if ((str->zero != 0 || str->precision > 0) && str->final_width != str->len)
+	if (str->zero != 0 || str->precision > 0)
 	{
 		i = 0;
 		zeros = 0;
@@ -102,7 +116,16 @@ void	print_before(t_fields *str)
 			zeros = str->final_width - str->len - str->counter;
 		else
 			zeros = str->final_width - str->len - str->counter;
-		while (i < zeros)
+		while (i < zeros && !(str->zero > 0 && str->minus == 1))
+		{
+			str->counter += ft_putchar_fd('0', str->fd);
+			str->break_flag = 1;
+			i++;
+		}
+//		printf("zeros  %d\n", zeros);
+//		printf("final  %d\n", str->final_width);
+//		printf("counter  %d\n", str->counter);
+		while (i < zeros && str->precision != 0)
 		{
 			str->counter += ft_putchar_fd('0', str->fd);
 			str->break_flag = 1;
@@ -123,10 +146,15 @@ void	print_after(t_fields *str)
 	if (str->op == 'p')
 		space = str->counter;
 	space = str->counter; /* test si no fx, borrar */
-	if (str->zero == 0 && str->minus != 0 && str->final_width != str->len)
+	if (str->minus != 0 && str->final_width != str->len)
 	{
 		i = 0;
-		while (i < (str->final_width - space))
+		while ((i < (str->final_width - space)) && str->zero == 0)
+		{
+			str->counter += ft_putchar_fd(' ', str->fd);
+			i++;
+		}
+		while ((i < (str->final_width - space)) && str->zero > 0)
 		{
 			str->counter += ft_putchar_fd(' ', str->fd);
 			i++;

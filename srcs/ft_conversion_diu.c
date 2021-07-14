@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/12 01:06:12 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/14 04:30:00 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,8 @@ int	print_unsigned(t_fields *str, va_list lista)
 		str->positive = 1;
 	else if (num == 0)
 		str->zero_value = 1;
+	else
+		str->negative = 1;
 	calculate_int_len(str, num);
 	calculate_format_width(str);
 	print_before(str);

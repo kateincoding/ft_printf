@@ -36,6 +36,7 @@ typedef struct s_fields
 	char	op;
 	int		lenght;
 	int		minus;
+	int		minus_precision;
 	int		zero;
 	int		width;
 	int		final_width;
@@ -45,10 +46,12 @@ typedef struct s_fields
 	int		space;
 	int		plus;
 	int		positive;
+	int		negative;
 	int		len;
 	int		break_flag;
 	int		null_flag;
 	int		counter;
+	int		zero_value;
 }	t_fields;
 
 /*

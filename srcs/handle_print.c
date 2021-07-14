@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/14 08:57:27 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/14 10:12:39 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void add_more_width(t_fields *str)
 //	printf("op  %c\n", str->op);
 	if (str->precision >= 1 && str->minus_precision == 0 && str->negative == 1 && (str->op == 'd' || str->op == 'i'))
 		str->final_width++;
-	else if (str->minus_precision == 1  && str->positive == 1 && str->op == 'd')
+	else if (str->minus_precision == 1  && str->negative != 1 && (str->op == 'd' || str->op == 'i'))
 		str->final_width--;
 	else if ((str->negative == 1 || str->minus_precision == 1) && str->op == 'u') /*corregir caso linea 343 */
 		str->final_width--;

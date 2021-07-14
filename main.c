@@ -315,7 +315,7 @@ int main(void)
 	printf(" --- Return : %d\n", printf(".%.*d.", 0, 12));
 	printf(" --- Return : %d\n", ft_printf(".%.*d.", 0, 12));
     printf("====12====\n");*/
-    printf(" --- Return : %d\n", printf(".%.*d.", -3, 12));
+/*    printf(" --- Return : %d\n", printf(".%.*d.", -3, 12));
 	printf(" --- Return : %d\n", ft_printf(".%.*d.", -3, 12));
 	printf(" --- Return : %d\n", printf(".%.*d.", 3, 12));
 	printf(" --- Return : %d\n", ft_printf(".%.*d.", 3, 12));
@@ -335,10 +335,10 @@ int main(void)
 	printf(" --- Return : %d\n", ft_printf(".%.*d.", -3, 12));
 	printf(" --- Return : %d\n", printf(".%.*d.", 3, 12));
 	printf(" --- Return : %d\n", ft_printf(".%.*d.", 3, 12));
-
+*//*
     printf("====unsigned====\n");
-	printf(" --- Return : %d\n", printf(".%.*u.", -3, -12));
-	printf(" --- Return : %d\n", ft_printf(".%.*u.", -3, -12));
+//	printf(" --- Return : %d\n", printf(".%.*u.", -3, -12));
+//	printf(" --- Return : %d\n", ft_printf(".%.*u.", -3, -12));
 	printf(" --- Return : %d\n", printf(".%.*u.", 3, -12));
 	printf(" --- Return : %d\n", ft_printf(".%.*u.", 3, -12));
     printf("====0====\n");
@@ -355,7 +355,23 @@ int main(void)
 	printf(" --- Return : %d\n", ft_printf(".%.*u.", -3, -12));
     printf(" --- Return : %d\n", printf(".%.*u.", 3, -12));
 	printf(" --- Return : %d\n", ft_printf(".%.*u.", 3, -12));
-
+*/
+    a = -4;
+    l = 0;
+    printf(" --- Return : %d\n", printf("%.*d", a, l));
+    printf(" --- Return : %d\n", ft_printf("%.*d", a, l));
+    printf(" --- Return : %d\n", printf("%.*d", a, i));
+    printf(" --- Return : %d\n", ft_printf("%.*d", a, i));
+    a = 4;
+    printf(" --- Return : %d\n", printf("%.*d", a, l));
+    printf(" --- Return : %d\n", ft_printf("%.*d", a, l));
+    printf(" --- Return : %d\n", printf("%.*d", a, i));
+    printf(" --- Return : %d\n", ft_printf("%.*d", a, i));
+    a = -4;
+	printf(" --- Return : %d\n", printf("%-*i, %-*d, %-*d, %-*d, %-*d, %-*d, %-*d, %-*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	printf(" --- Return : %d\n", ft_printf("%-*i, %-*d, %-*d, %-*d, %-*d, %-*d, %-*d, %-*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	
+    a = -4;
 	while (a < 5) //T34-69
 	{
 		printf(" --- Return : %d\n", printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));

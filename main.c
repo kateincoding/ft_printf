@@ -356,10 +356,16 @@ int main(void)
     printf(" --- Return : %d\n", printf(".%.*u.", 3, -12));
 	printf(" --- Return : %d\n", ft_printf(".%.*u.", 3, -12));
 */
-    a = -4;
+    a = -7;
     l = 0;
-    printf(" --- Return : %d\n", printf("%.*d", a, l));
-    printf(" --- Return : %d\n", ft_printf("%.*d", a, l));
+//    printf(" --- Return : %d\n", printf("%.*d", a, l));
+//    printf(" --- Return : %d\n", ft_printf("%.*d", a, l));
+
+//    printf(" --- Return : %d\n", printf("%.*i", a, l));
+//    printf(" --- Return : %d\n", ft_printf("%.*i", a, l));
+
+    printf(" --- Return : %d\n", printf("%.*u", a, l));
+    printf(" --- Return : %d\n", ft_printf("%.*u", a, l));
     printf(" --- Return : %d\n", printf("%.*d", a, i));
     printf(" --- Return : %d\n", ft_printf("%.*d", a, i));
     a = 4;

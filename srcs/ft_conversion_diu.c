@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/14 04:30:00 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/14 09:05:23 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,15 @@ int	print_unsigned(t_fields *str, va_list lista)
 {
 	unsigned int	num;
 	unsigned int	div;
+	int n;
 
 	initialize_var_operators(str);
 	num = va_arg(lista, int);
-	if (num > 0)
+	n = (int)num;
+//	printf("number = %d\n", num);
+	if (n > 0)
 		str->positive = 1;
-	else if (num == 0)
+	else if (n == 0)
 		str->zero_value = 1;
 	else
 		str->negative = 1;

@@ -6,17 +6,17 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 06:15:36 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 06:37:04 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 06:48:55 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-** print_before_before: handle the spaces " " and signs "+", "-"
+** print_before_before_diu: handle the spaces " " and signs "+", "-"
 */
 
-void	print_before_before(t_fields *str, int i, int space)
+void	print_before_before_diu(t_fields *str, int i, int space)
 {
 	if (str->zero == 0)
 	{
@@ -59,7 +59,7 @@ void	print_before_diu(t_fields *str)
 	int	i;
 	int zeros;
 
-	print_before_before(str, 0, 0);
+	print_before_before_diu(str, 0, 0);
 	if (str->zero != 0 || str->precision > 0)
 	{
 		i = 0;

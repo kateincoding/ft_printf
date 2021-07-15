@@ -6,17 +6,17 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:51:55 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 05:47:15 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 06:46:56 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-** print_before_before: handle the spaces " " for char or string
+** print_before_before_cs: handle the spaces " " for char or string
 */
 
-void	print_before_before(t_fields *str, int i, int space)
+void	print_before_before_cs(t_fields *str, int i, int space)
 {
 	if (str->zero == 0)
 	{
@@ -45,7 +45,7 @@ void	print_before_cs(t_fields *str)
 	int	i;
 	int	zeros;
 
-	print_before_before(str, 0, 0);
+	print_before_before_cs(str, 0, 0);
 	if (str->zero != 0 || str->precision > 0)
 	{
 		i = 0;

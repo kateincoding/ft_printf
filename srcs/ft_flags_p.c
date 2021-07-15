@@ -6,17 +6,17 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:52:02 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 05:57:24 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 06:47:42 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-** print_before_before: handle the spaces " " and signs "+", "-"
+** print_before_before_p: handle the spaces " " and signs "+", "-"
 */
 
-void	print_before_before(t_fields *str, int i, int space)
+void	print_before_before_p(t_fields *str, int i, int space)
 {
 	if (str->zero == 0)
 	{
@@ -50,7 +50,7 @@ void	print_before_p(t_fields *str)
 	int	i;
 	int zeros;
 
-	print_before_before(str, 0, 0);
+	print_before_before_p(str, 0, 0);
 	if (str->op == 'p')
 	{
 		str->counter += ft_putchar_fd('0', str->fd); /* revisar si se le agrega al counter */

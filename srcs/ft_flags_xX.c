@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:52:05 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 04:57:12 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 06:13:22 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	print_before_before(t_fields *str, int i, int space)
 ** print_before: handle the characters "0" that will print before format
 */
 
-void	print_before_xX(t_fields *str)
+void	print_before_x(t_fields *str)
 {
 	int	i;
 	int zeros;
@@ -73,7 +73,7 @@ void	print_before_xX(t_fields *str)
 ** print_before: handle the spaces " "
 */
 
-void	print_after_xX(t_fields *str)
+void	print_after_x(t_fields *str)
 {
 	int	i;
 	int	space;

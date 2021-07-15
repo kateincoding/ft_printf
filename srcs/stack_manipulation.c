@@ -6,11 +6,15 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 04:02:52 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/14 02:40:31 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 05:24:33 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** initialize_stack - initialize structure of program
+*/
 
 void	initialize_stack(t_fields *str, const char *input, int fd)
 {
@@ -31,6 +35,10 @@ void	initialize_stack(t_fields *str, const char *input, int fd)
 	str->len = 0;
 	str->break_flag = 0;
 }
+
+/*
+** finalize_stack - free structure of program
+*/
 
 void	finalize_stack(t_fields *str)
 {

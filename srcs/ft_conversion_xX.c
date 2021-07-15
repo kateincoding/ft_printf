@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:39:09 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/08 23:17:33 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 05:25:09 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	print_hexadecimal(unsigned int n)
 }
 
 /**
- * print_HEXADECIMAL - Converts decimal to uppercase hexadecimal
+ * print_upper_hexa - Converts decimal to uppercase hexadecimal
  * @n: The number to be converted
  *
  * Return: The number of digits printed
@@ -90,7 +90,7 @@ int	print_hex(t_fields *str, va_list lista)
 }
 
 /**
- * print_HEX - Converts decimal to uppercase hexadecimal
+ * print_upper_hexadecimal - Converts decimal to uppercase hexadecimal
  * @lista: The number of list to be converted
  *
  * Return: The number of digits printed
@@ -108,8 +108,8 @@ int	print_upper_hexadecimal(t_fields *str, va_list lista)
 		tmp = -tmp;
 	str->len = len_hexadecimal(n, 0);
 	calculate_format_width(str);
-	print_before(str);
+	print_before_xX(str);
 	str->counter += print_upper_hexa(n);
-	print_after(str);
+	print_after_xX(str);
 	return (str->counter);
 }

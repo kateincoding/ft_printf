@@ -152,13 +152,14 @@ int main(void)
 //    int i = 7;
 //    char h = 'k';
 
-/*
-    ft_printf("hola\n");
-    case resolved
+    printf("hola %6s.\n", "kate");
+    ft_printf("hola %6s.\n", "kate");
+    printf("hey %7c\n", "a");
+    ft_printf("hey %7c\n", "a");
     ft_printf("% 5 d\n", 29);
     printf("% 5 d\n", 29);
     printf("-----------\n");
-*/
+
 	int		a = -4;
 	int		b = 0;
 	char	c = 'a';
@@ -371,6 +372,7 @@ int main(void)
     a = 4;
     printf(" --- Return : %d\n", printf("%.*d", a, l));
     printf(" --- Return : %d\n", ft_printf("%.*d", a, l));
+
     printf(" --- Return : %d\n", printf("%.*d", a, i));
     printf(" --- Return : %d\n", ft_printf("%.*d", a, i));
     a = -4;

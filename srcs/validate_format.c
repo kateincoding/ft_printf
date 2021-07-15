@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:37:47 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/07 15:44:48 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 05:32:45 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ int	validate_only_flag(const char flag)
 {
 	return (ft_chrcount("-0# +", flag) > 0);
 }
-
-// HERE
 
 /*
 ** valid_operator_with_flag - validate

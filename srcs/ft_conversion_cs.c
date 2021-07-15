@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:23:04 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 05:37:55 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 17:18:44 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,13 @@ int	print_char(t_fields *str, va_list lista)
 	char	c;
 
 	c = va_arg(lista, int);
-	return (ft_putchar_fd(c, str->fd));
+	initialize_var_operators(str);
+	str->len = 1;
+	calculate_format_width(str);
+	print_before_cs(str);
+	ft_putchar_fd(c, str->fd);
+	print_after_cs(str);
+	return (str->counter);
 }
 
 /*
@@ -39,6 +45,10 @@ int	print_str(t_fields *str, va_list lista)
 
 	count = 0;
 	av = va_arg(lista, char *);
+	initialize_var_operators(str);
+	str->len = ft_strlen(str->format);
+	calculate_format_width(str);
+	print_before_cs(str);
 	if (!av || av == NULL)
 	{
 		count += ft_putchar_fd('(', str->fd);
@@ -53,5 +63,6 @@ int	print_str(t_fields *str, va_list lista)
 	{
 		count += write(str->fd, &(*av++), 1);
 	}
+	print_after_cs(str);
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/12 01:07:03 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 05:56:37 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	print_ptr(t_fields *str, va_list lista)
 	str->len = size + (!p) * 3; /*como se diferenciaria el p de 0 y null */
 	calculate_format_width(str);
 	// printf("\nlen %d and final width %d\n", str->len, str->final_width);
-	print_before(str);
+	print_before_p(str);
 	if (!p && str->precision != 0)
 		str->counter += ft_putchar_fd('0', str->fd);
 	while (size && i >= 0 && p != 0)
@@ -79,6 +79,6 @@ int	print_ptr(t_fields *str, va_list lista)
 			str->counter += ft_putchar_fd(hex_digit((p >> i) & 0xf), str->fd);
 		i -= 4;
 	}
-	print_after(str);
+	print_after_p(str);
 	return (str->counter);
 }

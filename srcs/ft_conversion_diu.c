@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/14 09:31:44 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 06:32:06 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ int	print_int(t_fields *str, va_list lista)
 		str->negative = 1;
 	calculate_int_len(str, n);
 	calculate_format_width(str);
-	print_before(str);
+	print_before_diu(str);
 	print_body(str, n);
-	print_after(str);
+	print_after_diu(str);
 	return (str->counter);
 }
 
@@ -136,7 +136,7 @@ int	print_unsigned(t_fields *str, va_list lista)
 		str->negative = 1;
 	calculate_int_len(str, num);
 	calculate_format_width(str);
-	print_before(str);
+	print_before_diu(str);
 //	if (num == 0)
 //		str->counter += ft_putchar_fd('0', str->fd);
 	if (num > 0)
@@ -151,6 +151,6 @@ int	print_unsigned(t_fields *str, va_list lista)
 			div /= 10;
 		}
 	}
-	print_after(str);
+	print_after_diu(str);
 	return (str->counter);
 }

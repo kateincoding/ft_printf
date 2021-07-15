@@ -92,15 +92,15 @@ int		validate_operator(char op);
 int		validate_flag(const char flag);
 
 /*
-** global structure to handle width, flag and precision
+** initializate and finalize the stack in the "dinamycally" structure
 */
-// t_fields	*str;
 
 void	initialize_stack(t_fields *str, const char *inputs, int fd);
 void	finalize_stack(t_fields *str);
 int		select_function(t_fields *str, va_list list);
+
 /*
-** create structure for each argv
+** handle_format: create structure for each argv
 */
 
 void	set_flags(t_fields *str);
@@ -110,34 +110,47 @@ void	set_width(t_fields *str, va_list args);
 void	set_precision(t_fields *str, va_list args);
 
 /*
-** handle print
+** handle_print: handle the width, precission and flags in the printing
 */
 
 void	initialize_var_operators(t_fields *str);
 void	calculate_format_width(t_fields *str);
-void	print_before(t_fields *str);
 int		print_format(t_fields *str, va_list args_list);
+void	print_before(t_fields *str);
 void	print_after(t_fields *str);
 
 /*
-** conversion operators function
+** ft_conversion_cs: conversion operators function
+** t_flags_cs: handle flags for char and strings (add to makefile)
 */
 
 int		print_char(t_fields *str, va_list lista);
 int		print_str(t_fields *str, va_list lista);
-//int print_rev_str(va_list lista);
-//int print_Str_Ascii(va_list arg);
 
-/* print functions : type numbers */
+/*
+** ft_conversion_diu: print functions
+** ft_flags_diu: handle flags for numbers (add to makefile)
+*/
+
 int		putN(unsigned int n, unsigned int b, char *nums);
 int		print_int(t_fields *str, va_list lista);
 int		print_unsigned(t_fields *str, va_list lista);
 
-/* print bases */
+/*
+** ft_conversion_xX: print functions
+** ft_flags_xX: handle flags for hexadecimals (added done)
+*/
+
 int		print_hex(t_fields *str, va_list lista);
 int		print_upper_hexadecimal(t_fields *str, va_list lista);
+void	print_before_xX(t_fields *str);
+void	print_after_xX(t_fields *str);
 
-/* print pointer */
+/*
+** ft_conversion_p: print functions
+** ft_flags_p: handle flags for pointer (add to makefile)
+*/
+
 int		print_ptr(t_fields *str, va_list lista);
 
 /*

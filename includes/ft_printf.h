@@ -116,7 +116,6 @@ void	set_precision(t_fields *str, va_list args);
 */
 
 void	initialize_var_operators(t_fields *str);
-void	calculate_format_width(t_fields *str);
 int		print_format(t_fields *str, va_list args_list);
 
 /*
@@ -126,13 +125,11 @@ int		print_format(t_fields *str, va_list args_list);
 int		select_function(t_fields *str, va_list list);
 
 /*
-** goal of tripa_chuca
-** handle_print: handle the width, precission and flags to print
+** ft_final_width_calculation: handle the width, precission and flags to print
 ** temporary flag, it will unmerge
 */
 
-void	print_before(t_fields *str);
-void	print_after(t_fields *str);
+void	calculate_format_width(t_fields *str);
 
 /*
 ** ft_conversion_cs: conversion operators function

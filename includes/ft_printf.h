@@ -84,7 +84,9 @@ int		ft_dprintf(const int fd, const char *format, ...);
 int		ft_vfprintf(int fd, const char *format, va_list args);
 
 /*
-** validate operators and flags
+** validate_format: validate the format of *
+** validate if it is a conversion operator
+** validate if it is a flag
 */
 
 int		valid_operator_flag_modifier(const char *format, int i);
@@ -97,10 +99,10 @@ int		validate_flag(const char flag);
 
 void	initialize_stack(t_fields *str, const char *inputs, int fd);
 void	finalize_stack(t_fields *str);
-int		select_function(t_fields *str, va_list list);
 
 /*
-** handle_format: create structure for each argv
+** set_flag_structure: initializate the structure with flags
+** handle_format: validate operators and flags
 */
 
 void	set_flags(t_fields *str);
@@ -116,6 +118,19 @@ void	set_precision(t_fields *str, va_list args);
 void	initialize_var_operators(t_fields *str);
 void	calculate_format_width(t_fields *str);
 int		print_format(t_fields *str, va_list args_list);
+
+/*
+** select_functions: select conversion operation function
+*/
+
+int		select_function(t_fields *str, va_list list);
+
+/*
+** goal of tripa_chuca
+** handle_print: handle the width, precission and flags to print
+** temporary flag, it will unmerge
+*/
+
 void	print_before(t_fields *str);
 void	print_after(t_fields *str);
 
@@ -126,15 +141,21 @@ void	print_after(t_fields *str);
 
 int		print_char(t_fields *str, va_list lista);
 int		print_str(t_fields *str, va_list lista);
+void	print_before_cs(t_fields *str);
+void	print_after_cs(t_fields *str);
 
 /*
 ** ft_conversion_diu: print functions
 ** ft_flags_diu: handle flags for numbers (add to makefile)
 */
 
-int		putN(unsigned int n, unsigned int b, char *nums);
+// int		putN(unsigned int n, unsigned int b, char *nums);
 int		print_int(t_fields *str, va_list lista);
 int		print_unsigned(t_fields *str, va_list lista);
+void	print_before_diu(t_fields *str);
+void	print_after_diu(t_fields *str);
+// void	print_before_u(t_fields *str);
+// void	print_after_u(t_fields *str);
 
 /*
 ** ft_conversion_xX: print functions
@@ -143,8 +164,8 @@ int		print_unsigned(t_fields *str, va_list lista);
 
 int		print_hex(t_fields *str, va_list lista);
 int		print_upper_hexadecimal(t_fields *str, va_list lista);
-void	print_before_xX(t_fields *str);
-void	print_after_xX(t_fields *str);
+void	print_before_x(t_fields *str);
+void	print_after_x(t_fields *str);
 
 /*
 ** ft_conversion_p: print functions
@@ -152,6 +173,8 @@ void	print_after_xX(t_fields *str);
 */
 
 int		print_ptr(t_fields *str, va_list lista);
+void	print_before_p(t_fields *str);
+void	print_after_p(t_fields *str);
 
 /*
 ** libft -----

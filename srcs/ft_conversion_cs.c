@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:23:04 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 17:18:44 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 19:13:38 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	print_char(t_fields *str, va_list lista)
 	str->len = 1;
 	calculate_format_width(str);
 	print_before_cs(str);
-	ft_putchar_fd(c, str->fd);
+	str->counter = ft_putchar_fd(c, str->fd);
 	print_after_cs(str);
 	return (str->counter);
 }
@@ -51,17 +51,17 @@ int	print_str(t_fields *str, va_list lista)
 	print_before_cs(str);
 	if (!av || av == NULL)
 	{
-		count += ft_putchar_fd('(', str->fd);
-		count += ft_putchar_fd('n', str->fd);
-		count += ft_putchar_fd('u', str->fd);
-		count += ft_putchar_fd('l', str->fd);
-		count += ft_putchar_fd('l', str->fd);
-		count += ft_putchar_fd(')', str->fd);
+		str->counter += ft_putchar_fd('(', str->fd);
+		str->counter += ft_putchar_fd('n', str->fd);
+		str->counter += ft_putchar_fd('u', str->fd);
+		str->counter += ft_putchar_fd('l', str->fd);
+		str->counter += ft_putchar_fd('l', str->fd);
+		str->counter += ft_putchar_fd(')', str->fd);
 		return (6);
 	}
 	while (*av)
 	{
-		count += write(str->fd, &(*av++), 1);
+		str->counter += write(str->fd, &(*av++), 1);
 	}
 	print_after_cs(str);
 	return (count);

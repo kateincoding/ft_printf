@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 00:01:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 06:59:49 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 23:31:56 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,8 @@ void	initialize_var_operators(t_fields *str)
 }
 
 /*
-** changing width with special cases "*" "0" "negative *"
-*/
-
-void	add_more_width(t_fields *str)
-{
-	if (str->precision >= 1 && str->minus_precision == 0 && str->negative == 1 && (str->op == 'd' || str->op == 'i'))
-		str->final_width++;
-	else if (str->minus_precision == 1  && str->negative != 1 && (str->op == 'd' || str->op == 'i'))
-		str->final_width--; /* handle width negative */
-	else if (str->negative == 1 && str->op == 'u') /*corregir caso linea 343 */
-		str->final_width--; /* skipped */
-	else if (str->minus_precision == 1 && str->zero_value == 0 && str->op == 'u')
-		str->final_width--;
-}
-
-/*
 ** calculate the width of format to handle %u
+** changing width with special cases "*" "0" "negative *"
 */
 
 void	calculate_format_width(t_fields *str)
@@ -54,5 +39,12 @@ void	calculate_format_width(t_fields *str)
 		str->final_width = str->width;
 	if (str->precision > str->final_width && str->minus_precision == 0)
 		str->final_width = str->precision;
-	add_more_width(str);
+	if (str->precision >= 1 && str->minus_precision == 0 && str->negative == 1 && (str->op == 'd' || str->op == 'i'))
+		str->final_width++;
+	else if (str->minus_precision == 1  && str->negative != 1 && (str->op == 'd' || str->op == 'i'))
+		str->final_width--; /* handle width negative */
+	else if (str->negative == 1 && str->op == 'u') /*corregir caso linea 343 */
+		str->final_width--; /* skipped */
+	else if (str->minus_precision == 1 && str->zero_value == 0 && str->op == 'u')
+		str->final_width--;
 }

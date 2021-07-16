@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:51:55 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 06:46:56 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 23:33:08 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	print_after_cs(t_fields *str)
 	int	space;
 
 	space = str->counter;
-	if (str->minus != 0 && str->final_width != str->len)
+	if (str->minus != 0 && str->precision != -1)
 	{
 		i = 0;
 		while ((i < (str->final_width - space)) && str->zero == 0)

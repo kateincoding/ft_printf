@@ -134,8 +134,10 @@ void test_ptr(void)
     ft_printf ("bytes_f: %d\n\n", ft_printf ("%*.p\n", NULL));
 
     printf("**** case 6: %%*5.p value given NULL\n");
-    printf("bytes_o: %d\n\n", printf ("%*5.p\n",NULL));
-    ft_printf ("bytes_f: %d\n\n", ft_printf ("%*5.p\n", NULL));
+    printf("bytes_o: %d\n\n", printf ("%5.p\n",NULL));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%5.p\n", NULL));
+    printf("bytes_o: %d\n\n", printf ("%5.p\n",0));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%5.p\n", 0));
 
     printf("**** case 7: %%2.9p value given 1234\n");
     printf("bytes_o: %d\n\n", printf ("%2.15p\n",1234));
@@ -182,6 +184,7 @@ int main(void)
 	char	*t = "0x12345678";
 	char	*u = "-0";
 
+    test_ptr();
 /*
     test_ptr();
     printf("\ntest 4 %%1d\n");
@@ -364,7 +367,7 @@ int main(void)
 
 //    printf(" --- Return : %d\n", printf("%.*i", a, l));
 //    printf(" --- Return : %d\n", ft_printf("%.*i", a, l));
-
+/*
     printf(" --- Return : %d\n", printf("%.*u", a, l));
     printf(" --- Return : %d\n", ft_printf("%.*u", a, l));
     printf(" --- Return : %d\n", printf("%.*d", a, i));
@@ -395,7 +398,7 @@ int main(void)
 		printf(" --- Return : %d\n", ft_printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
 		a++;
 	}
-/*
+
     a = -1;
 	while(a < 5) //T257-346
 	{
@@ -414,6 +417,9 @@ int main(void)
 		}
 		a++;
 	}
+
+    			printf(" --- Return : %d\n", printf("%-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X", a, b, i, a, b, i, a, b, i, a, b, j, a, b, j, a, b, j, a, b, k, a, b, k, a, b, k, a, b, l, a, b, l, a, b, l, a, b, m, a, b, m, a, b, m, a, b, c, a, b, c, a, b, c, a, b, d, a, b, d, a, b, d, a, b, e, a, b, e, a, b, e));
+			printf(" --- Return : %d\n", ft_printf("%-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X", a, b, i, a, b, i, a, b, i, a, b, j, a, b, j, a, b, j, a, b, k, a, b, k, a, b, k, a, b, l, a, b, l, a, b, l, a, b, m, a, b, m, a, b, m, a, b, c, a, b, c, a, b, c, a, b, d, a, b, d, a, b, d, a, b, e, a, b, e, a, b, e));
 */
     /* ---------------- test %i -----------------*/
 /*

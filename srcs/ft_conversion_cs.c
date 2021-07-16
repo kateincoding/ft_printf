@@ -6,11 +6,49 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:23:04 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 21:49:47 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/16 10:29:42 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** calculate the width of format to handle %u
+** changing width with special cases "*" "0" "negative *"
+*/
+
+void	calculate_format_width_s(t_fields *str, char *av)
+{
+	str->final_width = str->len;
+	if (str->precision < str->len && str->precision != -1)
+	{
+		str->len = str->precision;
+		str->final_width = str->len;
+	}
+	if (!av && str->precision > 0)
+	{
+		
+		if (str->precision <= 6)
+			str->len = str->precision;
+		else
+			str->len = 6;
+		str->final_width = str->len;
+	}
+	if (str->width > str->len)
+		str->final_width = str->width;
+//	if (str->precision > str->final_width && str->minus_precision == 0)
+//		str->final_width = str->precision;
+//	printf("final precision = %d\n", str->precision);
+//	printf("final width = %d\n", str->final_width);
+//	if (str->precision >= 1 && str->minus_precision == 0 && str->negative == 1 && (str->op == 'd' || str->op == 'i'))
+//		str->final_width++;
+//	else if (str->minus_precision == 1  && str->negative != 1 && (str->op == 'd' || str->op == 'i'))
+//		str->final_width--; /* handle width negative */
+//	else if (str->negative == 1 && str->op == 'u') /*corregir caso linea 343 */
+//		str->final_width--;
+//	else if (str->minus_precision == 1 && str->zero_value == 0 && str->op == 'u')
+//		str->final_width--;
+}
 
 /*
 ** print_char - print a char at printf
@@ -41,25 +79,33 @@ int	print_char(t_fields *str, va_list lista)
 int	print_str(t_fields *str, va_list lista)
 {
 	char			*av;
+	int				i;
 
+	i = 0;
 	av = va_arg(lista, char *);
 	initialize_var_operators(str);
-	str->len = ft_strlen(av);
-	calculate_format_width(str);
+	if (av)
+		str->len = ft_strlen(av);
+	else
+		str->len = 0;
+	calculate_format_width_s(str, av);
 	print_before_cs(str);
-	if (!av || av == NULL)
+	if (!av && (str->precision == -1 || str->minus_precision == 1))
 	{
-		str->counter += ft_putchar_fd('(', str->fd);
-		str->counter += ft_putchar_fd('n', str->fd);
-		str->counter += ft_putchar_fd('u', str->fd);
-		str->counter += ft_putchar_fd('l', str->fd);
-		str->counter += ft_putchar_fd('l', str->fd);
-		str->counter += ft_putchar_fd(')', str->fd);
-		return (6);
+		str->counter += write(str->fd, "(null)", 6);
+		return (str->counter);
 	}
-	while (*av)
+	else if (!av && str->precision > 0)
+	{
+		if (str->precision <= 6)
+			str->counter += write(str->fd, "(null)", str->precision);
+		else
+			str->counter += write(str->fd, "(null)", 6);
+	}
+	while (av && *av && i < str->len)
 	{
 		str->counter += write(str->fd, &(*av++), 1);
+		i++;
 	}
 	print_after_cs(str);
 	return (str->counter);

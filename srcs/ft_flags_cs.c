@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:51:55 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 23:33:08 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/16 07:42:49 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	print_before_cs(t_fields *str)
 	int	zeros;
 
 	print_before_before_cs(str, 0, 0);
-	if (str->zero != 0 || str->precision > 0)
+	if (str->minus == 0 && (str->zero != 0 || str->precision > 0))
 	{
 		i = 0;
 		zeros = 0;
@@ -56,13 +56,13 @@ void	print_before_cs(t_fields *str)
 			zeros = str->final_width - str->len - str->counter;
 		while (i < zeros && !(str->zero > 0 && str->minus == 1))
 		{
-			str->counter += ft_putchar_fd('0', str->fd);
+			str->counter += ft_putchar_fd(' ', str->fd);
 			str->break_flag = 1;
 			i++;
 		}
 		while (i < zeros && str->precision != 0)
 		{
-			str->counter += ft_putchar_fd('0', str->fd);
+			str->counter += ft_putchar_fd(' ', str->fd);
 			str->break_flag = 1;
 			i++;
 		}

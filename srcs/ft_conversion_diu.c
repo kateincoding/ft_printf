@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 06:32:06 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/17 07:56:07 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	size_bit(t_fields *str, int bit, int n)
 	}
 	while (d >= 1)
 	{
+		printf("flag");
 		x = n / d;
 		str->counter += ft_putchar_fd(x + '0', str->fd);
 		n = n % d;
@@ -38,7 +39,7 @@ void	size_bit(t_fields *str, int bit, int n)
 
 void	print_body(t_fields *str, int n)
 {
-	int	bit;
+	int	bit = n;
 	int	o;
 
 	o = n % 10;
@@ -48,7 +49,6 @@ void	print_body(t_fields *str, int n)
 		n = -n;
 		o = -o;
 	}
-	bit = n;
 	if (bit > 0)
 		size_bit(str, bit, n);
 	if (str->zero_value == 0 || (str->zero_value == 1 && str->precision != 0))
@@ -59,7 +59,7 @@ void	print_body(t_fields *str, int n)
 ** calculate integer len
 */
 
-void	calculate_int_len(t_fields *str, int num)
+void	calculate_un_len(t_fields *str, int num)
 {
 	int	tmp;
 
@@ -85,6 +85,56 @@ void	calculate_int_len(t_fields *str, int num)
 		str->len = 0;
 }
 
+void	calculate_int_len(t_fields *str, int num)
+{
+	int	tmp;
+
+	tmp = num;
+	if (tmp < 0)
+	{
+		while (tmp <= -10)
+		{
+			tmp = tmp / 10;
+			str->len++;
+//			printf("flag1\n");
+		}
+		if (tmp > -10)
+			str->len += 2;
+		return ;
+	}
+	while (tmp >= 10)
+	{
+		tmp = tmp / 10;
+		str->len++;
+	}
+	if (tmp < 10 && tmp >= 0)
+		str->len += 1;
+	if (str->zero_value && str->precision == 0)
+		str->len = 0;
+}
+
+int		putnbr_di(long n, int fd)
+{
+    int counter = 0;
+
+	if (n == -2147483648)
+		counter += ft_putstr_fd("2147483648", fd);
+	else if (n < 0)
+	{
+//		counter += ft_putchar_fd('-', fd);
+		counter += putnbr_di(-n, fd);
+	}
+	else if (n >= 10)
+	{
+		counter += putnbr_di(n / 10, fd);
+		counter += ft_putchar_fd(n % 10 + '0', fd);
+	}
+	else if (n < 10)
+		counter += ft_putchar_fd(n + '0', fd);
+
+    return(counter);
+}
+
 /*
 ** print_int - It will print integers
 ** @lista: the main string passed to the function
@@ -104,9 +154,15 @@ int	print_int(t_fields *str, va_list lista)
 	else
 		str->negative = 1;
 	calculate_int_len(str, n);
-	calculate_format_width(str);
+//	printf("len %d\n",str->len);
+	calculate_format_width_d(str);
+//	printf("width %d\n",str->final_width);
 	print_before_diu(str);
-	print_body(str, n);
+	if (str->negative == 1)
+		str->counter += putnbr_di((long)n, str->fd);
+	else
+		str->counter += putnbr_di((long)n, str->fd);
+//	print_body(str, n);
 	print_after_diu(str);
 	return (str->counter);
 }
@@ -134,7 +190,7 @@ int	print_unsigned(t_fields *str, va_list lista)
 		str->zero_value = 1;
 	else
 		str->negative = 1;
-	calculate_int_len(str, num);
+	calculate_un_len(str, num);
 	calculate_format_width(str);
 	print_before_diu(str);
 //	if (num == 0)

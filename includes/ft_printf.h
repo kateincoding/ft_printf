@@ -130,6 +130,7 @@ int		select_function(t_fields *str, va_list list);
 */
 
 void	calculate_format_width(t_fields *str);
+void	calculate_format_width_d(t_fields *str);
 
 /*
 ** ft_conversion_cs: conversion operators function
@@ -186,6 +187,8 @@ int		ft_putnbr(int n);
 int		ft_putnbr_fd(int n, int fd);
 int		ft_putstr_fd(char const *s, int fd);
 size_t	ft_strlen(const char *s);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(const char *s1, const char *s2);
 
 # if __APPLE__
 #  define IS_MACOS 1

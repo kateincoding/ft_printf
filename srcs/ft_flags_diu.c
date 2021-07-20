@@ -6,11 +6,25 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 06:15:36 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/20 21:34:07 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/20 18:51:40 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	print_case_minus(t_fields *str, int i, int space)
+{
+	i = 0;
+	if (str->precision > str->len)
+		space = str->precision;
+	else if (str->zero_value == 1 && str->final_width >= 1
+		&& str->precision != 0)
+		space = 1;
+	else
+		space = str->len;
+	while (i < (str->final_width - space - (str->negative == 1)))
+		str->counter += ft_putchar_fd(' ', str->fd), i++;
+}
 
 /*
 ** print_before_before_diu: handle the spaces " " and signs "+", "-"
@@ -32,18 +46,7 @@ void	print_before_before_diu(t_fields *str, int i, int space)
 			}
 		}
 		if (str->minus == 0)
-		{
-			i = 0;
-			if (str->precision > str->len)
-				space = str->precision;
-			else if (str->zero_value == 1 && str->final_width >= 1
-				&& str->precision != 0)
-				space = 1;
-			else
-				space = str->len;
-			while (i < (str->final_width - space - (str->negative == 1)))
-				str->counter += ft_putchar_fd(' ', str->fd), i++;
-		}
+			print_case_minus(str, i, space);
 	}
 	if (str->plus == 1 && str->positive == 1)
 		str->counter += ft_putchar_fd('+', str->fd);

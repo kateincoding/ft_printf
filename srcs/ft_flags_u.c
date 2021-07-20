@@ -6,11 +6,27 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:51:59 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/20 21:48:58 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/20 19:12:02 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	print_u_minus(t_fields *str, int i, int space)
+{
+	if (str->precision > str->len)
+		space = str->precision;
+	else if (str->zero_value == 1 && str->final_width >= 1
+		&& str->precision != 0)
+		space = 1;
+	else
+		space = str->len;
+	while (i < (str->final_width - space - (str->negative == 1)))
+	{
+		str->counter += ft_putchar_fd(' ', str->fd);
+		i++;
+	}
+}
 
 /*
 ** print_before_before_u: handle the spaces " " and signs "+", "-"
@@ -32,18 +48,7 @@ void	print_before_before_u(t_fields *str, int i, int space)
 			}
 		}
 		if (str->minus == 0)
-		{
-			i = 0;
-			if (str->precision > str->len)
-				space = str->precision;
-			else if (str->zero_value == 1 && str->final_width >= 1
-				&& str->precision != 0)
-				space = 1;
-			else
-				space = str->len;
-			while (i < (str->final_width - space - (str->negative == 1)))
-				str->counter += ft_putchar_fd(' ', str->fd), i++;
-		}
+			print_u_minus(str, 0, 0);
 	}
 	if (str->plus == 1 && str->positive == 1)
 		str->counter += ft_putchar_fd('+', str->fd);

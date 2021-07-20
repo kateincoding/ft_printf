@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:52:02 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/20 21:45:30 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/20 19:07:48 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,30 @@ void	print_before_before_p(t_fields *str, int i, int space)
 		str->counter += ft_putchar_fd('-', str->fd);
 }
 
-/*
-** print_before_p: handle the characters "0" that will print before format
-*/
-
-void	print_before_p(t_fields *str)
+void	print_p_zero(t_fields *str, int i, int zeros)
 {
-	int	i;
-	int	zeros;
+	i = 0;
+	zeros = 0;
+	if (str->precision != 0 && str->zero_value == 1)
+		zeros = str->final_width - str->len - str->counter;
+	else
+		zeros = str->final_width - str->len - str->counter;
+	while (i < zeros && !(str->zero > 0 && str->minus == 1))
+	{
+		str->counter += ft_putchar_fd('0', str->fd);
+		str->break_flag = 1;
+		i++;
+	}
+	while (i < zeros && str->precision != 0)
+	{
+		str->counter += ft_putchar_fd('0', str->fd);
+		str->break_flag = 1;
+		i++;
+	}
+}
 
-	print_before_before_p(str, 0, 0);
+void	print_p_prefix(t_fields *str)
+{
 	if (str->op == 'p')
 	{
 		str->counter += ft_putchar_fd('0', str->fd);
@@ -57,27 +71,18 @@ void	print_before_p(t_fields *str)
 	}
 	if (str->op == 'p' && str->null_flag == 1 && str->break_flag == 1)
 		str->counter += write(str->fd, "000", 3);
+}
+
+/*
+** print_before_p: handle the characters "0" that will print before format
+*/
+
+void	print_before_p(t_fields *str)
+{
+	print_before_before_p(str, 0, 0);
+	print_p_prefix(str);
 	if (str->zero != 0 || str->precision > 0)
-	{
-		i = 0;
-		zeros = 0;
-		if (str->precision != 0 && str->zero_value == 1)
-			zeros = str->final_width - str->len - str->counter;
-		else
-			zeros = str->final_width - str->len - str->counter;
-		while (i < zeros && !(str->zero > 0 && str->minus == 1))
-		{
-			str->counter += ft_putchar_fd('0', str->fd);
-			str->break_flag = 1;
-			i++;
-		}
-		while (i < zeros && str->precision != 0)
-		{
-			str->counter += ft_putchar_fd('0', str->fd);
-			str->break_flag = 1;
-			i++;
-		}
-	}
+		print_p_zero(str, 0, 0);
 }
 
 /*

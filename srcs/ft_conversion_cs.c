@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:23:04 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/16 10:29:42 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 12:01:46 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	calculate_format_width_s(t_fields *str, char *av)
 	}
 	if (!av && str->precision > 0)
 	{
-		
 		if (str->precision <= 6)
 			str->len = str->precision;
 		else
@@ -36,18 +35,6 @@ void	calculate_format_width_s(t_fields *str, char *av)
 	}
 	if (str->width > str->len)
 		str->final_width = str->width;
-//	if (str->precision > str->final_width && str->minus_precision == 0)
-//		str->final_width = str->precision;
-//	printf("final precision = %d\n", str->precision);
-//	printf("final width = %d\n", str->final_width);
-//	if (str->precision >= 1 && str->minus_precision == 0 && str->negative == 1 && (str->op == 'd' || str->op == 'i'))
-//		str->final_width++;
-//	else if (str->minus_precision == 1  && str->negative != 1 && (str->op == 'd' || str->op == 'i'))
-//		str->final_width--; /* handle width negative */
-//	else if (str->negative == 1 && str->op == 'u') /*corregir caso linea 343 */
-//		str->final_width--;
-//	else if (str->minus_precision == 1 && str->zero_value == 0 && str->op == 'u')
-//		str->final_width--;
 }
 
 /*
@@ -71,6 +58,26 @@ int	print_char(t_fields *str, va_list lista)
 }
 
 /*
+** part 2 of print_str -> print (null)
+*/
+
+void	print_null(t_fields *str)
+{
+	if (!av && (str->precision == -1 || str->minus_precision == 1))
+	{
+		str->counter += write(str->fd, "(null)", 6);
+		return (str->counter);
+	}
+	else if (!av && str->precision > 0)
+	{
+		if (str->precision <= 6)
+			str->counter += write(str->fd, "(null)", str->precision);
+		else
+			str->counter += write(str->fd, "(null)", 6);
+	}
+}
+
+/*
 ** print_str - print a char at printf
 ** @lista: the main string passed to the function
 ** Return: An integer
@@ -90,18 +97,7 @@ int	print_str(t_fields *str, va_list lista)
 		str->len = 0;
 	calculate_format_width_s(str, av);
 	print_before_cs(str);
-	if (!av && (str->precision == -1 || str->minus_precision == 1))
-	{
-		str->counter += write(str->fd, "(null)", 6);
-		return (str->counter);
-	}
-	else if (!av && str->precision > 0)
-	{
-		if (str->precision <= 6)
-			str->counter += write(str->fd, "(null)", str->precision);
-		else
-			str->counter += write(str->fd, "(null)", 6);
-	}
+	print_null(str);
 	while (av && *av && i < str->len)
 	{
 		str->counter += write(str->fd, &(*av++), 1);

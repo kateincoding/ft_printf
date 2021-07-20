@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:23:04 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/20 12:01:46 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 12:20:36 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ int	print_char(t_fields *str, va_list lista)
 ** part 2 of print_str -> print (null)
 */
 
-void	print_null(t_fields *str)
+int	print_null(t_fields *str, char *av)
 {
 	if (!av && (str->precision == -1 || str->minus_precision == 1))
 	{
 		str->counter += write(str->fd, "(null)", 6);
-		return (str->counter);
+		return (1);
 	}
 	else if (!av && str->precision > 0)
 	{
@@ -75,6 +75,7 @@ void	print_null(t_fields *str)
 		else
 			str->counter += write(str->fd, "(null)", 6);
 	}
+	return (0);
 }
 
 /*
@@ -97,7 +98,8 @@ int	print_str(t_fields *str, va_list lista)
 		str->len = 0;
 	calculate_format_width_s(str, av);
 	print_before_cs(str);
-	print_null(str);
+	if (print_null(str, av) == 1)
+		return (str->counter);
 	while (av && *av && i < str->len)
 	{
 		str->counter += write(str->fd, &(*av++), 1);

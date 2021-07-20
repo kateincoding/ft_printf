@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 06:15:36 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 06:57:21 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 10:44:18 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	print_before_before_diu(t_fields *str, int i, int space)
 
 /*
 ** print_before: handle the characters "0" that will print before format
+** ft_printf(" %04d ", -14) -> -014 ->f_width = 4 -> f_len = 3 ->
 */
 
 void	print_before_diu(t_fields *str)
@@ -64,10 +65,9 @@ void	print_before_diu(t_fields *str)
 	{
 		i = 0;
 		zeros = 0;
-		if (str->precision != 0 && str->zero_value == 1)
-			zeros = str->final_width - str->len - str->counter;
-		else
-			zeros = str->final_width - str->len - str->counter;
+		zeros = str->final_width - str->len - str->counter;
+		if (str->negative)
+			zeros++;
 		while (i < zeros && !(str->zero > 0 && str->minus == 1))
 		{
 			str->counter += ft_putchar_fd('0', str->fd);

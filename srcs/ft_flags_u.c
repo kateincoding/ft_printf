@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:51:59 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 06:47:58 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 21:48:58 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	print_before_before_u(t_fields *str, int i, int space)
 			i = 0;
 			if (str->precision > str->len)
 				space = str->precision;
-			else if (str->zero_value == 1 && str->final_width >= 1 && str->precision != 0)
+			else if (str->zero_value == 1 && str->final_width >= 1
+				&& str->precision != 0)
 				space = 1;
 			else
 				space = str->len;
@@ -57,7 +58,7 @@ void	print_before_before_u(t_fields *str, int i, int space)
 void	print_before_u(t_fields *str)
 {
 	int	i;
-	int zeros;
+	int	zeros;
 
 	print_before_before_u(str, 0, 0);
 	if (str->zero != 0 || str->precision > 0)

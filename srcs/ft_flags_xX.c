@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:52:05 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 06:48:18 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 21:48:25 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@
 void	print_before_before_x(t_fields *str, int i, int space)
 {
 	if (str->zero == 0 && str->minus == 0)
-    {
-        i = 0;
-        if (str->precision > str->len)
-            space = str->precision;
-        else if (str->zero_value == 1 && str->final_width >= 1 && str->precision != 0)
-            space = 1;
-        else
-            space = str->len;
-        while (i < (str->final_width - space - (str->negative == 1)))
-            str->counter += ft_putchar_fd(' ', str->fd), i++;
+	{
+		i = 0;
+		if (str->precision > str->len)
+			space = str->precision;
+		else if (str->zero_value == 1 && str->final_width >= 1
+			&& str->precision != 0)
+			space = 1;
+		else
+			space = str->len;
+		while (i < (str->final_width - space - (str->negative == 1)))
+			str->counter += ft_putchar_fd(' ', str->fd), i++;
 	}
 	if (str->plus == 1 && str->positive == 1)
 		str->counter += ft_putchar_fd('+', str->fd);
@@ -43,7 +44,7 @@ void	print_before_before_x(t_fields *str, int i, int space)
 void	print_before_x(t_fields *str)
 {
 	int	i;
-	int zeros;
+	int	zeros;
 
 	print_before_before_x(str, 0, 0);
 	if (str->zero != 0 || str->precision > 0)

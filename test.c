@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:29:11 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/07/20 08:06:10 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 10:43:14 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -699,6 +699,7 @@ void test4_i(void)
 
 void test_zero(void)
 {
+/*
 	printf(RED);
 	printf("->Result1 %d\n", printf(" %01d ", 0));
 	ft_printf(E0M);
@@ -768,12 +769,12 @@ void test_zero(void)
 	printf("->Result14 %d\n", printf(" %03d ", -11));
 	ft_printf(E0M);
 	printf("->Result14 %d\n", ft_printf(" %03d ", -11));
-
+*/
 	printf(RED);
 	printf("->Result15 %d\n", printf(" %04d ", -14));
 	ft_printf(E0M);
 	printf("->Result15 %d\n", ft_printf(" %04d ", -14));
-
+/*
 	printf(RED);
 	printf("->Result16 %d\n", printf(" %05d ", -15));
 	ft_printf(E0M);
@@ -986,20 +987,76 @@ void test_zero(void)
 	printf("->Result57 %d\n", ft_printf(" %09i %010i %011i %012i %013i %014i %015i", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
 
 //	SUBCATEGORY(57, 85, cout << endl << FG_LGRAY << "subcategory: u" << RESET_ALL << endl;)
-/*	printf("->Result58 %d\n", printf(" %01u ", 0));
+	printf(RED);
+	printf("->Result58 %d\n", printf(" %01u ", 0));
+	ft_printf(E0M);
+	printf("->Result58 %d\n", printf(" %01u ", 0));
+
+	printf(RED);
 	printf("->Result59 %d\n", printf(" %02u ", -1));
+	ft_printf(E0M);
+	printf("->Result59 %d\n", printf(" %02u ", -1));
+
+	printf(RED);
 	printf("->Result60 %d\n", printf(" %03u ", 1));
+	ft_printf(E0M);
+	printf("->Result60 %d\n", printf(" %03u ", 1));
+
+	printf(RED);
 	printf("->Result61 %d\n", printf(" %04u ", 9));
+	ft_printf(E0M);
+	printf("->Result61 %d\n", printf(" %04u ", 9));
+
+	printf(RED);
 	printf("->Result62 %d\n", printf(" %01u ", 10));
+	ft_printf(E0M);
+	printf("->Result62 %d\n", printf(" %01u ", 10));
+
+	printf(RED);
 	printf("->Result63 %d\n", printf(" %02u ", 11));
+	ft_printf(E0M);
+	printf("->Result63 %d\n", printf(" %02u ", 11));
+
+	printf(RED);
 	printf("->Result64 %d\n", printf(" %03u ", 15));
+	ft_printf(E0M);
+	printf("->Result64 %d\n", printf(" %03u ", 15));
+
+	printf(RED);
 	printf("->Result65 %d\n", printf(" %04u ", 16));
+	ft_printf(E0M);
+	printf("->Result65 %d\n", printf(" %04u ", 16));
+
+	printf(RED);
 	printf("->Result66 %d\n", printf(" %05u ", 17));
+	ft_printf(E0M);
+	printf("->Result66 %d\n", printf(" %05u ", 17));
+
+	printf(RED);
 	printf("->Result67 %d\n", printf(" %01u ", 99));
+	ft_printf(E0M);
+	printf("->Result67 %d\n", printf(" %01u ", 99));
+
+	printf(RED);
 	printf("->Result68 %d\n", printf(" %02u ", 100));
-	printf(68, printf(" %03u ", 101));
-	printf(69, printf(" %01u ", -9));
-	printf(70, printf(" %02u ", -10));
+	ft_printf(E0M);
+	printf("->Result68 %d\n", printf(" %02u ", 100));
+
+	printf(RED);
+	printf("->Result69 %d\n", printf(" %03u ", 101));
+	printf(E0M);
+	printf("->Result69 %d\n", printf(" %03u ", 101));
+
+	printf(RED);
+	printf("->Result70 %d\n", printf(" %01u ", -9));
+	printf(E0M);
+	printf("->Result70 %d\n", printf(" %01u ", -9));
+
+	printf(RED);
+	printf("->Result71 %d\n", printf(" %02u ", -10));
+	printf(E0M);
+	printf("->Result71 %d\n", printf(" %02u ", -10));
+/*
 	printf(71, printf(" %03u ", -11));
 	printf(72, printf(" %04u ", -14));
 	printf(73, printf(" %05u ", -15));

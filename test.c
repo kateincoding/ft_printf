@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:29:11 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/07/20 11:36:45 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 14:51:28 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1252,6 +1252,155 @@ void test_fix(void)
 	printf("->Result6 %d\n", ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
 }
 
+void	test_x(void)
+{
+	printf(RED);
+	printf("->Result1 %d\n", printf(" %x ", 0));
+	ft_printf(E0M);
+	printf("->Result1 %d\n", ft_printf(" %x ", 0));
+
+	printf(RED);
+	printf("->Result2 %d\n", printf(" %x ", -1));
+	ft_printf(E0M);
+	printf("->Result2 %d\n", ft_printf(" %x ", -1));
+
+	printf(RED);
+	printf("->Result3 %d\n", printf(" %x ", 1));
+	ft_printf(E0M);
+	printf("->Result3 %d\n", ft_printf(" %x ", 1));
+
+	printf(RED);
+	printf("->Result4 %d\n", printf(" %x ", 9));
+	ft_printf(E0M);
+	printf("->Result4 %d\n", ft_printf(" %x ", 9));
+
+	printf(RED);
+	printf("->Result5 %d\n", printf(" %x ", 10));
+	ft_printf(E0M);
+	printf("->Result5 %d\n", ft_printf(" %x ", 10));
+
+	printf(RED);
+	printf("->Result6 %d\n", printf(" %x ", 11));
+	ft_printf(E0M);
+	printf("->Result6 %d\n", ft_printf(" %x ", 11));
+
+	printf(RED);
+	printf("->Result7 %d\n", printf(" %x ", 15));
+	ft_printf(E0M);
+	printf("->Result7 %d\n", ft_printf(" %x ", 15));
+
+	printf(RED);
+	printf("->Result8 %d\n", printf(" %x ", 16));
+	ft_printf(E0M);
+	printf("->Result8 %d\n", ft_printf(" %x ", 16));
+
+	printf(RED);
+	printf("->Result9 %d\n", printf(" %x ", 17));
+	ft_printf(E0M);
+	printf("->Result9 %d\n", ft_printf(" %x ", 17));
+
+	printf(RED);
+	printf("->Result10 %d\n", printf(" %x ", 99));
+	ft_printf(E0M);
+	printf("->Result10 %d\n", ft_printf(" %x ", 99));
+
+	printf(RED);
+	printf("->Result11 %d\n", printf(" %x ", 100));
+	ft_printf(E0M);
+	printf("->Result11 %d\n", ft_printf(" %x ", 100));
+
+	printf(RED);
+	printf("->Result12 %d\n", printf(" %x ", 101));
+	ft_printf(E0M);
+	printf("->Result12 %d\n", ft_printf(" %x ", 101));
+
+	printf(RED);
+	printf("->Result13 %d\n", printf(" %x ", -9));
+	ft_printf(E0M);
+	printf("->Result13 %d\n", ft_printf(" %x ", -9));
+
+	printf(RED);
+	printf("->Result14 %d\n", printf(" %x ", -10));
+	ft_printf(E0M);
+	printf("->Result14 %d\n", ft_printf(" %x ", -10));
+
+	printf(RED);
+	printf("->Result15 %d\n", printf(" %x ", -11));
+	ft_printf(E0M);
+	printf("->Result15 %d\n", ft_printf(" %x ", -11));
+
+	printf(RED);
+	printf("->Result16 %d\n", printf(" %x ", -14));
+	ft_printf(E0M);
+	printf("->Result16 %d\n", ft_printf(" %x ", -14));
+
+	printf(RED);
+	printf("->Result17 %d\n", printf(" %x ", -15));
+	ft_printf(E0M);
+	printf("->Result17 %d\n", ft_printf(" %x ", -15));
+
+	printf(RED);
+	printf("->Result18 %d\n", printf(" %x ", -16));
+	ft_printf(E0M);
+	printf("->Result18 %d\n", ft_printf(" %x ", -16));
+
+	printf(RED);
+	printf("->Result19 %d\n", printf(" %x ", -99));
+	ft_printf(E0M);
+	printf("->Result19 %d\n", ft_printf(" %x ", -99));
+
+	printf(RED);
+	printf("->Result20 %d\n", printf(" %x ", -100));
+	ft_printf(E0M);
+	printf("->Result20 %d\n", ft_printf(" %x ", -100));
+
+	printf(RED);
+	printf("->Result21 %d\n", printf(" %x ", -101));
+	ft_printf(E0M);
+	printf("->Result21 %d\n", ft_printf(" %x ", -101));
+
+	printf(RED);
+	printf("->Result22 %d\n", printf(" %x ", INT_MAX));
+	ft_printf(E0M);
+	printf("->Result22 %d\n", ft_printf(" %x ", INT_MAX));
+
+	printf(RED);
+	printf("->Result23 %d\n", printf(" %x ", INT_MIN));
+	ft_printf(E0M);
+	printf("->Result23 %d\n", ft_printf(" %x ", INT_MIN));
+
+	printf(RED);
+	printf("->Result24 %d\n", printf(" %x ", LONG_MAX));
+	ft_printf(E0M);
+	printf("->Result24 %d\n", ft_printf(" %x ", LONG_MAX));
+
+	printf(RED);
+	printf("->Result25 %d\n", printf(" %x ", LONG_MIN));
+	ft_printf(E0M);
+	printf("->Result25 %d\n", ft_printf(" %x ", LONG_MIN));
+
+	printf(RED);
+	printf("->Result26 %d\n", printf(" %x ", UINT_MAX));
+	ft_printf(E0M);
+	printf("->Result26 %d\n", ft_printf(" %x ", UINT_MAX));
+
+	printf(RED);
+	printf("->Result27 %d\n", printf(" %x ", ULONG_MAX));
+	ft_printf(E0M);
+	printf("->Result27 %d\n", ft_printf(" %x ", ULONG_MAX));
+
+	printf(RED);
+	printf("->Result28 %d\n", printf(" %x ", ULONG_LONG_MAX));
+	ft_printf(E0M);
+	printf("->Result28 %d\n", ft_printf(" %x ", ULONG_LONG_MAX));
+
+	printf(RED);
+	printf("->Result29 %d\n", printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+	ft_printf(E0M);
+	printf("->Result29 %d\n", ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+}
+
+
 int main(void)
 {
 //	test_c();
@@ -1261,6 +1410,7 @@ int main(void)
 //	test4_i();
 //	test_plus();
 //	test_zero();
-	test_fix();
+//	test_fix();
+	test_x();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:52:02 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 06:47:42 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 21:45:30 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ void	print_before_before_p(t_fields *str, int i, int space)
 			i = 0;
 			if (str->precision > str->len)
 				space = str->precision;
-		//			if (str->op == 'p' && str->null_flag == 1)
-		//				space = space - 3;
-			else if (str->zero_value == 1 && str->final_width >= 1 && str->precision != 0)
+			else if (str->zero_value == 1 && str->final_width >= 1
+				&& str->precision != 0)
 				space = 1;
 			else
 				space = str->len;
@@ -48,12 +47,12 @@ void	print_before_before_p(t_fields *str, int i, int space)
 void	print_before_p(t_fields *str)
 {
 	int	i;
-	int zeros;
+	int	zeros;
 
 	print_before_before_p(str, 0, 0);
 	if (str->op == 'p')
 	{
-		str->counter += ft_putchar_fd('0', str->fd); /* revisar si se le agrega al counter */
+		str->counter += ft_putchar_fd('0', str->fd);
 		str->counter += ft_putchar_fd('x', str->fd);
 	}
 	if (str->op == 'p' && str->null_flag == 1 && str->break_flag == 1)

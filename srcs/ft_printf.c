@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:35:30 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/15 05:08:28 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 21:40:00 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 			result += token(str, format, &i, args);
 		i++;
 	}
-	// result = str->lenght;
 	finalize_stack(str);
 	return (result);
 }

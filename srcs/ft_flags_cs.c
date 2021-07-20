@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 16:51:55 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/16 16:28:23 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 21:49:24 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ void	print_after_cs(t_fields *str)
 			i++;
 		}
 	}
-	else if (str->minus != 0 && str->op == 's' && str->precision == -1 && (str->final_width > str->counter))
+	else if (str->minus != 0 && str->op == 's' && str->precision == -1
+		&& (str->final_width > str->counter))
 	{
 		i = 0;
 		while ((i < (str->final_width - space)) && str->zero == 0)

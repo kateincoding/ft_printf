@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/20 11:40:51 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 21:43:28 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	size_bit(t_fields *str, int bit, int n)
 
 void	print_body(t_fields *str, int n)
 {
-	int	bit = n;
+	int	bit;
 	int	o;
 
+	bit = n;
 	o = n % 10;
 	n = n / 10;
 	if (o < 0)
@@ -96,7 +97,6 @@ void	calculate_int_len(t_fields *str, int num)
 		{
 			tmp = tmp / 10;
 			str->len++;
-//			printf("flag1\n");
 		}
 		if (tmp > -10)
 			str->len += 2;
@@ -113,17 +113,15 @@ void	calculate_int_len(t_fields *str, int num)
 		str->len = 0;
 }
 
-int		putnbr_di(long n, int fd)
+int	putnbr_di(long n, int fd)
 {
-    int counter = 0;
+	int	counter;
 
+	counter = 0;
 	if (n == -2147483648)
 		counter += ft_putstr_fd("2147483648", fd);
 	else if (n < 0)
-	{
-//		counter += ft_putchar_fd('-', fd);
 		counter += putnbr_di(-n, fd);
-	}
 	else if (n >= 10)
 	{
 		counter += putnbr_di(n / 10, fd);
@@ -131,8 +129,7 @@ int		putnbr_di(long n, int fd)
 	}
 	else if (n < 10)
 		counter += ft_putchar_fd(n + '0', fd);
-
-    return(counter);
+	return (counter);
 }
 
 /*
@@ -174,7 +171,7 @@ int	print_int(t_fields *str, va_list lista)
 int	print_unsigned(t_fields *str, va_list lista)
 {
 	unsigned int	num;
-	int n;
+	int				n;
 
 	initialize_var_operators(str);
 	num = va_arg(lista, int);

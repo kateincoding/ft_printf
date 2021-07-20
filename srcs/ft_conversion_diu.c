@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/20 10:43:53 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 11:40:51 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,15 +154,12 @@ int	print_int(t_fields *str, va_list lista)
 	else
 		str->negative = 1;
 	calculate_int_len(str, n);
-//	printf("len %d\n",str->len);
 	calculate_format_width_d(str);
-//	printf("width %d\n",str->final_width);
 	print_before_diu(str);
 	if (str->negative == 1)
 		str->counter += putnbr_di((long)n, str->fd);
 	else
 		str->counter += putnbr_di((long)n, str->fd);
-//	print_body(str, n);
 	print_after_diu(str);
 	return (str->counter);
 }
@@ -177,13 +174,11 @@ int	print_int(t_fields *str, va_list lista)
 int	print_unsigned(t_fields *str, va_list lista)
 {
 	unsigned int	num;
-	unsigned int	div;
 	int n;
 
 	initialize_var_operators(str);
 	num = va_arg(lista, int);
 	n = (int)num;
-//	printf("number = %d\n", num);
 	if (n > 0)
 		str->positive = 1;
 	else if (n == 0)
@@ -193,20 +188,7 @@ int	print_unsigned(t_fields *str, va_list lista)
 	calculate_un_len(str, num);
 	calculate_format_width(str);
 	print_before_diu(str);
-//	if (num == 0)
-//		str->counter += ft_putchar_fd('0', str->fd);
-	if (num > 0)
-	{
-		div = 1;
-		while ((num / div) > 9)
-			div *= 10;
-		while (div != 0)
-		{
-			str->counter += ft_putchar_fd((num / div) + '0', str->fd);
-			num %= div;
-			div /= 10;
-		}
-	}
+	str->counter += putnbr_di((long)num, str->fd);
 	print_after_diu(str);
 	return (str->counter);
 }

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:29:11 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/07/20 11:30:38 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 11:36:45 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1229,7 +1229,7 @@ void test_fix(void)
 	ft_printf(E0M);
 	printf("->Result3 %d\n", ft_printf(" |%p| |%p| ", LONG_MIN, LONG_MAX));
 
-	/* %u */
+	printf("\n==== u ====\n\n");
 	printf(RED);
 	printf("->Result4 %d\n", printf(" |%u| |%u| |%u| |%u| |%u| |%u| |%u|", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
 	ft_printf(E0M);

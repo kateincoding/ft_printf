@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:29:11 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/07/17 09:20:29 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 08:06:10 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -697,13 +697,395 @@ void test4_i(void)
 	printf("->Result29 %d\n", ft_printf(" %i %i %i %i %i %i %i", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
 }
 
+void test_zero(void)
+{
+	printf(RED);
+	printf("->Result1 %d\n", printf(" %01d ", 0));
+	ft_printf(E0M);
+	printf("->Result1 %d\n", ft_printf(" %01d ", 0));
+
+	printf(RED);
+	printf("->Result2 %d\n", printf(" %02d ", -1));
+	ft_printf(E0M);
+	printf("->Result2 %d\n", ft_printf(" %02d ", -1));
+
+	printf(RED);
+	printf("->Result3 %d\n", printf(" %04d ", 9));
+	ft_printf(E0M);
+	printf("->Result3 %d\n", ft_printf(" %04d ", 9));
+
+	printf(RED);
+	printf("->Result4 %d\n", printf(" %01d ", 10));
+	ft_printf(E0M);
+	printf("->Result4 %d\n", ft_printf(" %01d ", 10));
+
+	printf(RED);
+	printf("->Result5 %d\n", printf(" %02d ", 11));
+	ft_printf(E0M);
+	printf("->Result5 %d\n", ft_printf(" %02d ", 11));
+
+	printf(RED);
+	printf("->Result6 %d\n", printf(" %03d ", 15));
+	ft_printf(E0M);
+	printf("->Result6 %d\n", ft_printf(" %03d ", 15));
+
+	printf(RED);
+	printf("->Result7 %d\n", printf(" %04d ", 16));
+	ft_printf(E0M);
+	printf("->Result7 %d\n", ft_printf(" %04d ", 16));
+
+	printf(RED);
+	printf("->Result8 %d\n", printf(" %05d ", 17));
+	ft_printf(E0M);
+	printf("->Result8 %d\n", ft_printf(" %05d ", 17));
+
+	printf(RED);
+	printf("->Result9 %d\n", printf(" %01d ", 99));
+	ft_printf(E0M);
+	printf("->Result9 %d\n", ft_printf(" %01d ", 99));
+
+	printf(RED);
+	printf("->Result10 %d\n", printf(" %02d ", 100));
+	ft_printf(E0M);
+	printf("->Result10 %d\n", ft_printf(" %02d ", 100));
+
+	printf(RED);
+	printf("->Result11 %d\n", printf(" %03d ", 101));
+	ft_printf(E0M);
+	printf("->Result11 %d\n", ft_printf(" %03d ", 101));
+
+	printf(RED);
+	printf("->Result12 %d\n", printf(" %01d ", -9));
+	ft_printf(E0M);
+	printf("->Result12 %d\n", ft_printf(" %01d ", -9));
+
+	printf(RED);
+	printf("->Result13 %d\n", printf(" %02d ", -10));
+	ft_printf(E0M);
+	printf("->Result13 %d\n", ft_printf(" %02d ", -10));
+
+	printf(RED);
+	printf("->Result14 %d\n", printf(" %03d ", -11));
+	ft_printf(E0M);
+	printf("->Result14 %d\n", ft_printf(" %03d ", -11));
+
+	printf(RED);
+	printf("->Result15 %d\n", printf(" %04d ", -14));
+	ft_printf(E0M);
+	printf("->Result15 %d\n", ft_printf(" %04d ", -14));
+
+	printf(RED);
+	printf("->Result16 %d\n", printf(" %05d ", -15));
+	ft_printf(E0M);
+	printf("->Result16 %d\n", ft_printf(" %05d ", -15));
+
+	printf(RED);
+	printf("->Result17 %d\n", printf(" %06d ", -16));
+	ft_printf(E0M);
+	printf("->Result17 %d\n", ft_printf(" %06d ", -16));
+
+	printf(RED);
+	printf("->Result18 %d\n", printf(" %01d ", -99));
+	ft_printf(E0M);
+	printf("->Result18 %d\n", ft_printf(" %01d ", -99));
+
+	printf(RED);
+	printf("->Result19 %d\n", printf(" %02d ", -100));
+	ft_printf(E0M);
+	printf("->Result19 %d\n", ft_printf(" %02d ", -100));
+
+	printf(RED);
+	printf("->Result20 %d\n", printf(" %03d ", -101));
+	ft_printf(E0M);
+	printf("->Result20 %d\n", ft_printf(" %03d ", -101));
+
+	printf(RED);
+	printf("->Result21 %d\n", printf(" %09d ", INT_MAX));
+	ft_printf(E0M);
+	printf("->Result21 %d\n", ft_printf(" %09d ", INT_MAX));
+
+	printf(RED);
+	printf("->Result22 %d\n", printf(" %010d ", INT_MIN));
+	ft_printf(E0M);
+	printf("->Result22 %d\n", ft_printf(" %010d ", INT_MIN));
+
+	printf(RED);
+	printf("->Result23 %d\n", printf(" %011d ", LONG_MAX));
+	ft_printf(E0M);
+	printf("->Result23 %d\n", ft_printf(" %011d ", LONG_MAX));
+
+	printf(RED);
+	printf("->Result24 %d\n", printf(" %012d ", LONG_MIN));
+	ft_printf(E0M);
+	printf("->Result24 %d\n", ft_printf(" %012d ", LONG_MIN));
+
+	printf(RED);
+	printf("->Result25 %d\n", printf(" %013d ", UINT_MAX));
+	ft_printf(E0M);
+	printf("->Result25 %d\n", ft_printf(" %013d ", UINT_MAX));
+
+	printf(RED);
+	printf("->Result26 %d\n", printf(" %014d ", ULONG_MAX));
+	ft_printf(E0M);
+	printf("->Result26 %d\n", ft_printf(" %014d ", ULONG_MAX));
+
+	printf(RED);
+	printf("->Result27 %d\n", printf(" %015d ", ULONG_LONG_MAX));
+	ft_printf(E0M);
+	printf("->Result27 %d\n", ft_printf(" %015d ", ULONG_LONG_MAX));
+
+	printf(RED);
+	printf("->Result28 %d\n", printf(" %09d %010d %011d %012d %013d %014d %015d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+	ft_printf(E0M);
+	printf("->Result28 %d\n", ft_printf(" %09d %010d %011d %012d %013d %014d %015d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+//	SUBCATEGORY(29, 56, cout << endl << FG_LGRAY << "subcategory: i" << RESET_ALL << endl;)
+
+	printf(RED);
+	printf("->Result29 %d\n", printf(" %01i ", 0));
+	ft_printf(E0M);
+	printf("->Result29 %d\n", ft_printf(" %01i ", 0));
+
+	printf(RED);
+	printf("->Result30 %d\n", printf(" %02i ", -1));
+	ft_printf(E0M);
+	printf("->Result30 %d\n", ft_printf(" %02i ", -1));
+
+	printf(RED);
+	printf("->Result31 %d\n", printf(" %03i ", 1));
+	ft_printf(E0M);
+	printf("->Result31 %d\n", ft_printf(" %03i ", 1));
+
+	printf(RED);
+	printf("->Result32 %d\n", printf(" %04i ", 9));
+	ft_printf(E0M);
+	printf("->Result32 %d\n", ft_printf(" %04i ", 9));
+
+	printf(RED);
+	printf("->Result33 %d\n", printf(" %01i ", 10));
+	ft_printf(E0M);
+	printf("->Result33 %d\n", ft_printf(" %01i ", 10));
+
+	printf(RED);
+	printf("->Result34 %d\n", printf(" %02i ", 11));
+	ft_printf(E0M);
+	printf("->Result34 %d\n", ft_printf(" %02i ", 11));
+
+	printf(RED);
+	printf("->Result35 %d\n", printf(" %03i ", 15));
+	ft_printf(E0M);
+	printf("->Result35 %d\n", ft_printf(" %03i ", 15));
+
+	printf(RED);
+	printf("->Result36 %d\n", printf(" %04i ", 16));
+	ft_printf(E0M);
+	printf("->Result36 %d\n", ft_printf(" %04i ", 16));
+
+	printf(RED);
+	printf("->Result37 %d\n", printf(" %05i ", 17));
+	ft_printf(E0M);
+	printf("->Result37 %d\n", ft_printf(" %05i ", 17));
+
+	printf(RED);
+	printf("->Result38 %d\n", printf(" %01i ", 99));
+	ft_printf(E0M);
+	printf("->Result38 %d\n", ft_printf(" %01i ", 99));
+
+	printf(RED);
+	printf("->Result39 %d\n", printf(" %02i ", 100));
+	ft_printf(E0M);
+	printf("->Result39 %d\n", ft_printf(" %02i ", 100));
+
+	printf(RED);
+	printf("->Result40 %d\n", printf(" %03i ", 101));
+	ft_printf(E0M);
+	printf("->Result40 %d\n", ft_printf(" %03i ", 101));
+
+	printf(RED);
+	printf("->Result41 %d\n", printf(" %01i ", -9));
+	ft_printf(E0M);
+	printf("->Result41 %d\n", ft_printf(" %01i ", -9));
+
+	printf(RED);
+	printf("->Result42 %d\n", printf(" %02i ", -10));
+	ft_printf(E0M);
+	printf("->Result42 %d\n", ft_printf(" %02i ", -10));
+
+	printf(RED);
+	printf("->Result43 %d\n", printf(" %03i ", -11));
+	ft_printf(E0M);
+	printf("->Result43 %d\n", ft_printf(" %03i ", -11));
+
+	printf(RED);	
+	printf("->Result44 %d\n", printf(" %04i ", -14));
+	ft_printf(E0M);
+	printf("->Result44 %d\n", ft_printf(" %04i ", -14));
+
+	printf(RED);
+	printf("->Result45 %d\n", printf(" %05i ", -15));
+	ft_printf(E0M);
+	printf("->Result45 %d\n", ft_printf(" %05i ", -15));
+
+	printf(RED);
+	printf("->Result46 %d\n", printf(" %06i ", -16));
+	ft_printf(E0M);
+	printf("->Result46 %d\n", ft_printf(" %06i ", -16));
+
+	printf(RED);
+	printf("->Result47 %d\n", printf(" %01i ", -99));
+	ft_printf(E0M);
+	printf("->Result47 %d\n", ft_printf(" %01i ", -99));
+
+	printf(RED);
+	printf("->Result48 %d\n", printf(" %02i ", -100));
+	ft_printf(E0M);
+	printf("->Result48 %d\n", ft_printf(" %02i ", -100));
+
+	printf(RED);
+	printf("->Result49 %d\n", printf(" %03i ", -101));
+	ft_printf(E0M);
+	printf("->Result49 %d\n", ft_printf(" %03i ", -101));
+
+	printf(RED);
+	printf("->Result50 %d\n", printf(" %09i ", INT_MAX));
+	ft_printf(E0M);
+	printf("->Result50 %d\n", ft_printf(" %09i ", INT_MAX));
+
+	printf(RED);
+	printf("->Result51 %d\n", printf(" %010i ", INT_MIN));
+	ft_printf(E0M);
+	printf("->Result51 %d\n", ft_printf(" %010i ", INT_MIN));
+
+	printf(RED);
+	printf("->Result52 %d\n", printf(" %011i ", LONG_MAX));
+	ft_printf(E0M);
+	printf("->Result52 %d\n", ft_printf(" %011i ", LONG_MAX));
+
+	printf(RED);
+	printf("->Result53 %d\n", printf(" %012i ", LONG_MIN));
+	ft_printf(E0M);
+	printf("->Result53 %d\n", ft_printf(" %012i ", LONG_MIN));
+
+	printf(RED);
+	printf("->Result54 %d\n", printf(" %013i ", UINT_MAX));
+	ft_printf(E0M);
+	printf("->Result54 %d\n", ft_printf(" %013i ", UINT_MAX));
+
+	printf(RED);
+	printf("->Result55 %d\n", printf(" %014i ", ULONG_MAX));
+	ft_printf(E0M);
+	printf("->Result55 %d\n", ft_printf(" %014i ", ULONG_MAX));
+
+	printf(RED);
+	printf("->Result56 %d\n", printf(" %015i ", ULONG_LONG_MAX));
+	ft_printf(E0M);
+	printf("->Result56 %d\n", ft_printf(" %015i ", ULONG_LONG_MAX));
+
+	printf(RED);
+	printf("->Result57 %d\n", printf(" %09i %010i %011i %012i %013i %014i %015i", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+	ft_printf(E0M);
+	printf("->Result57 %d\n", ft_printf(" %09i %010i %011i %012i %013i %014i %015i", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+
+//	SUBCATEGORY(57, 85, cout << endl << FG_LGRAY << "subcategory: u" << RESET_ALL << endl;)
+/*	printf("->Result58 %d\n", printf(" %01u ", 0));
+	printf("->Result59 %d\n", printf(" %02u ", -1));
+	printf("->Result60 %d\n", printf(" %03u ", 1));
+	printf("->Result61 %d\n", printf(" %04u ", 9));
+	printf("->Result62 %d\n", printf(" %01u ", 10));
+	printf("->Result63 %d\n", printf(" %02u ", 11));
+	printf("->Result64 %d\n", printf(" %03u ", 15));
+	printf("->Result65 %d\n", printf(" %04u ", 16));
+	printf("->Result66 %d\n", printf(" %05u ", 17));
+	printf("->Result67 %d\n", printf(" %01u ", 99));
+	printf("->Result68 %d\n", printf(" %02u ", 100));
+	printf(68, printf(" %03u ", 101));
+	printf(69, printf(" %01u ", -9));
+	printf(70, printf(" %02u ", -10));
+	printf(71, printf(" %03u ", -11));
+	printf(72, printf(" %04u ", -14));
+	printf(73, printf(" %05u ", -15));
+	printf(74, printf(" %06u ", -16));
+	printftf(75, printf(" %01u ", -99));
+	printftf(76, printf(" %02u ", -100));
+	printf(77, printf(" %03u ", -101));
+	printf(78, printf(" %09u ", INT_MAX));
+	printf(79, printf(" %010u ", INT_MIN));
+	printf(80, printf(" %011u ", LONG_MAX));
+	printf(81, printf(" %012u ", LONG_MIN));
+	printf(82, printf(" %013u ", UINT_MAX));
+	printf(83, printf(" %014u ", ULONG_MAX));
+	printf(84, printf(" %015u ", ULONG_LONG_MAX));
+	printf(85, printf(" %09u %010u %011u %012u %013u %014u %015u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+//	SUBCATEGORY(86, 114, cout << endl << FG_LGRAY << "subcategory: x" << RESET_ALL << endl;)
+	printf(86, printf(" %01x ", 0));
+	printf(87, printf(" %02x ", -1));
+	printf(89, printf(" %04x ", 9));
+	printf(90, printf(" %01x ", 10));
+	printf(91, printf(" %02x ", 11));
+	printf(92, printf(" %03x ", 15));
+	printf(93, printf(" %04x ", 16));
+	printf(94, printf(" %05x ", 17));
+	printf(95, printf(" %01x ", 99));
+	printf(96, printf(" %02x ", 100));
+	printf(97, printf(" %03x ", 101));
+	printf(98, printf(" %01x ", -9));
+	printf(99, printf(" %02x ", -10));
+	printf(100, printf(" %03x ", -11));
+	printf(101, printf(" %04x ", -14));
+	printf(102, printf(" %05x ", -15));
+	printf(103, printf(" %06x ", -16));
+	printf(104, printf(" %01x ", -99));
+	printf(105, printf(" %02x ", -100));
+	printf(106, printf(" %03x ", -101));
+	printf(107, printf(" %09x ", INT_MAX));
+	printf(108, printf(" %010x ", INT_MIN));
+	printf(109, printf(" %011x ", LONG_MAX));
+	printf(110, printf(" %012x ", LONG_MIN));
+	printf(111, printf(" %013x ", UINT_MAX));
+	printf(112, printf(" %014x ", ULONG_MAX));
+	printf(113, printf(" %015x ", ULONG_LONG_MAX));
+	printf(114, printf(" %09x %010x %011x %012x %013x %014x %015x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+	
+//	SUBCATEGORY(115, 143, cout << endl << FG_LGRAY << "subcategory: X" << RESET_ALL << endl;)
+	printf(115, printf(" %01X ", 0));
+	printf(116, printf(" %02X ", -1));
+	printf(117, printf(" %03X ", 1));
+	printf(118, printf(" %04X ", 9));
+	printf(119, printf(" %01X ", 10));
+	printf(120, printf(" %02X ", 11));
+	printf(121, printf(" %03X ", 15));
+	printf(122, printf(" %04X ", 16));
+	printf(123, printf(" %05X ", 17));
+	printf(124, printf(" %01X ", 99));
+	printf(125, printf(" %02X ", 100));
+	printf(126, printf(" %03X ", 101));
+	printf(127, printf(" %01X ", -9));
+	printf(128, printf(" %02X ", -10));
+	printf(129, printf(" %03X ", -11));
+	printf(130, printf(" %04X ", -14));
+	printf(131, printf(" %05X ", -15));
+	printf(132, printf(" %06X ", -16));
+	printf(133, printf(" %01X ", -99));
+	printf(134, printf(" %02X ", -100));
+	printf(135, printf(" %03X ", -101));
+	printf(136, printf(" %09X ", INT_MAX));
+	printf(137, printf(" %010X ", INT_MIN));
+	printf(138, printf(" %011X ", LONG_MAX));
+	printf(139, printf(" %012X ", LONG_MIN));
+	printf(140, printf(" %013X ", UINT_MAX));
+	printf(141, printf(" %014X ", ULONG_MAX));
+	printf(142, printf(" %015X ", ULONG_LONG_MAX));
+	printf(143, printf(" %09X %010X %011X %012X %013X %014X %015X", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+*/
+}
+
 int main(void)
 {
 //	test_c();
 //	test_s();
-//	test2_s();
+/*	test2_s(); */
 //	test3_d();
-	test4_i();
+//	test4_i();
 //	test_plus();
+	test_zero();
 	return (0);
 }

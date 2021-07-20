@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/16 22:05:49 by ksoto            ###   ########.fr        #
+#    Updated: 2021/07/20 19:50:59 by ksoto            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ DIRFT		=	$(LIB)/src/
 
 #***************** SRC ********************#
 
-SRC			=	stack_manipulation.c ft_printf.c handle_format.c validate_format.c select_functions.c ft_conversion_cs.c ft_conversion_diu.c ft_conversion_xX.c ft_final_width_calculation.c ft_conversion_p.c ft_flags_cs.c ft_flags_xX.c ft_flags_p.c ft_flags_diu.c set_flags_structure.c ft_width_diu.c
+SRC			=	stack_manipulation.c ft_printf.c handle_format.c validate_format.c select_functions.c ft_conversion_cs.c ft_conversion_diu.c ft_conversion_xX.c ft_final_width_calculation.c ft_conversion_p.c ft_flags_cs.c ft_flags_xX.c ft_flags_p.c ft_flags_diu.c set_flags_structure.c ft_width_diu.c ft_vfprintf.c
 
 SRCFT		=	ft_atoi.c ft_chrcount.c ft_memalloc.c ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c ft_strcmp.c ft_strncmp.c
 
@@ -96,7 +96,7 @@ fclean	:		clean
 re		:		fclean all
 
 test	:
-				$(CC) $(INCLUDE) test.c libftprintf.a
+				$(CC) $(INCLUDE) main.c libftprintf.a
 
 debug	:
 				$(CC) -g $(INCLUDE) test.c libftprintf.a $(LIB)/libft.a

@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/21 18:59:12 by ciglesia         ###   ########.fr        #
+#    Updated: 2021/07/21 19:08:59 by ciglesia         ###   ########.fr        #
 #    Updated: 2021/07/09 12:00:04 by ksoto            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -76,22 +76,24 @@ $(NAME)	:		ftlib $(OBJS)
 				@$(ECHO)
 				@ar rc $(NAME) $(OBJS)
 				@ranlib $(NAME)
-				@$(ECHO) $(BOLD)$(GREEN)'> Compiled'$(E0M)
+				@$(ECHO) $(BOLD)$(GREEN)'> compiled'$(E0M)
 
 clean	:
 				@($(RM) $(OBJS))
 				@($(RM) $(DEPS))
 				@(cd $(LIB) && $(MAKE) clean)
-				@$(ECHO) $(BOLD)$(RED)'> Directory cleaned'$(E0M)
+				@$(ECHO) $(BOLD)$(RED)'> directory cleaned'$(E0M)
 
 all		:		$(NAME)
 
 bonus	:		$(NAME)
 
-fclean	:		clean
+fclean	:
+				@($(RM) $(OBJS))
+				@($(RM) $(DEPS))
 				@$(RM) $(NAME)
 				@(cd $(LIB) && $(MAKE) fclean)
-				@$(ECHO) $(BOLD)$(RED)'> Remove executable'$(E0M)
+				@$(ECHO) $(BOLD)$(RED)'> executable removed'$(E0M)
 
 re		:		fclean all
 

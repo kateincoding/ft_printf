@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/21 18:56:15 by ciglesia         ###   ########.fr        #
+#    Updated: 2021/07/21 19:09:18 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,18 +64,18 @@ $(NAME)	:		$(OBJS)
 				@$(ECHO)
 				@ar rc $(NAME) $(OBJS)
 				@ranlib $(NAME)
-				@$(ECHO) $(BOLD)$(GREEN)'> Compiled'$(E0M)
+				@$(ECHO) $(BOLD)$(GREEN)'> compiled'$(E0M)
 
 clean	:
 				@($(RM) $(OBJS))
 				@($(RM) $(DEPS))
-				@$(ECHO) $(BOLD)$(RED)'> Directory cleaned'$(E0M)
+				@$(ECHO) $(BOLD)$(RED)'> directory cleaned'$(E0M)
 
 all		:		$(NAME)
 
 fclean	:		clean
 				@$(RM) $(NAME)
-				@$(ECHO) $(BOLD)$(RED)'> Remove executable'$(E0M)
+				@$(ECHO) $(BOLD)$(RED)'> executable removed'$(E0M)
 
 re		:		fclean all
 

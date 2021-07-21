@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:22:23 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/27 13:25:20 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/21 19:19:24 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])

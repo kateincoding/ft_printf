@@ -47,7 +47,7 @@ void test_d(void)
     printf("prueba %+d\n", 42);
     ft_printf("prueba %+d\n", -42);
     printf("prueba %+d\n", -42);
-/*
+
     ft_printf("prueba %   d\n", 42);
     printf("prueba %   d\n", 42);
 
@@ -79,7 +79,7 @@ void test_d(void)
     printf("%-6d\n", 29);
     ft_printf("%.5d\n", 29);
     printf("%.5d\n", 29);
-*//*
+
     ft_printf("'%  6.3d'\n", 29);
     printf("'%  6.3d'\n", 29);
     ft_printf("ft_printf-> '%6.0d'\n", 29);
@@ -90,14 +90,13 @@ void test_d(void)
     printf("'%-1.8d'\n", 29);
     ft_printf("'%-15.3d'\n", 29);
     printf("'%-15.3d'\n", 29);
-*//*
+
     printf("------wildcard-----\n");
     ft_printf("%*d\n", 5, 4);
     printf("%*d\n", 5, 4);
     ft_printf("%d\n", 2, 9);
     printf("%d\n", 2, 9);
     printf("-----------\n");
-*/
 }
 
 void test_ptr(void)
@@ -134,8 +133,10 @@ void test_ptr(void)
     ft_printf ("bytes_f: %d\n\n", ft_printf ("%*.p\n", NULL));
 
     printf("**** case 6: %%*5.p value given NULL\n");
-    printf("bytes_o: %d\n\n", printf ("%*5.p\n",NULL));
-    ft_printf ("bytes_f: %d\n\n", ft_printf ("%*5.p\n", NULL));
+    printf("bytes_o: %d\n\n", printf ("%5.p\n",NULL));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%5.p\n", NULL));
+    printf("bytes_o: %d\n\n", printf ("%5.p\n",0));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%5.p\n", 0));
 
     printf("**** case 7: %%2.9p value given 1234\n");
     printf("bytes_o: %d\n\n", printf ("%2.15p\n",1234));
@@ -152,13 +153,14 @@ int main(void)
 //    int i = 7;
 //    char h = 'k';
 
-/*
-    ft_printf("hola\n");
-    case resolved
+    printf("hola %6s.\n", "kate");
+    ft_printf("hola %6s.\n", "kate");
+    printf("hey %7c\n", "a");
+    ft_printf("hey %7c\n", "a");
     ft_printf("% 5 d\n", 29);
     printf("% 5 d\n", 29);
     printf("-----------\n");
-*/
+
 	int		a = -4;
 	int		b = 0;
 	char	c = 'a';
@@ -181,7 +183,9 @@ int main(void)
 	char	*t = "0x12345678";
 	char	*u = "-0";
 
-/*
+    test_d();
+    test_ptr();
+
     test_ptr();
     printf("\ntest 4 %%1d\n");
     printf(" --- Return : %d\n", printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d));
@@ -285,15 +289,15 @@ int main(void)
     i = 8;
     l = 0;
     j = -12;
-*/
-/*
+
+
     printf("%03.5d\n", 23);
     ft_printf("%03.5d\n", 23);
     printf("%05d\n", 23);
     ft_printf("%05d\n", 23);
     printf("%3.5d\n", 23);
     ft_printf("%3.5d\n", 23);
-*/
+
 
 //		printf(" --- Return : %d\n", printf("%0*d, %0*d, %0*d, %0*d, %0*d", a, l, a, m, a, c, a, e, a, d));
 //		printf(" --- Return : %d\n", ft_printf("%0*d, %0*d, %0*d, %0*d, %0*d", a, l, a, m, a, c, a, e, a, d));
@@ -363,7 +367,7 @@ int main(void)
 
 //    printf(" --- Return : %d\n", printf("%.*i", a, l));
 //    printf(" --- Return : %d\n", ft_printf("%.*i", a, l));
-
+/*
     printf(" --- Return : %d\n", printf("%.*u", a, l));
     printf(" --- Return : %d\n", ft_printf("%.*u", a, l));
     printf(" --- Return : %d\n", printf("%.*d", a, i));
@@ -371,6 +375,7 @@ int main(void)
     a = 4;
     printf(" --- Return : %d\n", printf("%.*d", a, l));
     printf(" --- Return : %d\n", ft_printf("%.*d", a, l));
+
     printf(" --- Return : %d\n", printf("%.*d", a, i));
     printf(" --- Return : %d\n", ft_printf("%.*d", a, i));
     a = -4;
@@ -393,7 +398,7 @@ int main(void)
 		printf(" --- Return : %d\n", ft_printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
 		a++;
 	}
-/*
+
     a = -1;
 	while(a < 5) //T257-346
 	{
@@ -412,6 +417,9 @@ int main(void)
 		}
 		a++;
 	}
+
+    			printf(" --- Return : %d\n", printf("%-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X", a, b, i, a, b, i, a, b, i, a, b, j, a, b, j, a, b, j, a, b, k, a, b, k, a, b, k, a, b, l, a, b, l, a, b, l, a, b, m, a, b, m, a, b, m, a, b, c, a, b, c, a, b, c, a, b, d, a, b, d, a, b, d, a, b, e, a, b, e, a, b, e));
+			printf(" --- Return : %d\n", ft_printf("%-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X, %-*.*u, %-*.*x, %-*.*X", a, b, i, a, b, i, a, b, i, a, b, j, a, b, j, a, b, j, a, b, k, a, b, k, a, b, k, a, b, l, a, b, l, a, b, l, a, b, m, a, b, m, a, b, m, a, b, c, a, b, c, a, b, c, a, b, d, a, b, d, a, b, d, a, b, e, a, b, e, a, b, e));
 */
     /* ---------------- test %i -----------------*/
 /*

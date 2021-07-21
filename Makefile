@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/21 19:08:59 by ciglesia         ###   ########.fr        #
+#    Updated: 2021/07/21 21:16:37 by ciglesia         ###   ########.fr        #
 #    Updated: 2021/07/09 12:00:04 by ksoto            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -47,10 +47,10 @@ ifdef FLAGS
 CFLAGS		=
 	endif
 	ifeq ($(FLAGS), debug)
-CFLAGS		=	-Wall -Wextra -Werror -ansi -pedantic -g -fPIC
+CFLAGS		=	-Wall -Wextra -Werror -ansi -pedantic -g
 	endif
 else
-CFLAGS		=	-Wall -Wextra -Werror -fPIC
+CFLAGS		=	-Wall -Wextra -Werror
 endif
 
 CC			=	/usr/bin/gcc
@@ -74,7 +74,8 @@ E0M			=	"\e[0m"
 
 $(NAME)	:		ftlib $(OBJS)
 				@$(ECHO)
-				@ar rc $(NAME) $(OBJS)
+				@mv libft.a $(NAME)
+				@ar rcs $(NAME) $(OBJS)
 				@ranlib $(NAME)
 				@$(ECHO) $(BOLD)$(GREEN)'> compiled'$(E0M)
 

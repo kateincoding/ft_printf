@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/20 19:50:59 by ksoto            ###   ########.fr        #
+#    Updated: 2021/07/20 23:02:11 by ksoto            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,7 @@ fclean	:		clean
 re		:		fclean all
 
 test	:
-				$(CC) $(INCLUDE) main.c libftprintf.a
+				$(CC) $(INCLUDE) test.c libftprintf.a
 
 debug	:
 				$(CC) -g $(INCLUDE) test.c libftprintf.a $(LIB)/libft.a

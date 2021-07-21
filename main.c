@@ -47,7 +47,7 @@ void test_d(void)
     printf("prueba %+d\n", 42);
     ft_printf("prueba %+d\n", -42);
     printf("prueba %+d\n", -42);
-/*
+
     ft_printf("prueba %   d\n", 42);
     printf("prueba %   d\n", 42);
 
@@ -79,7 +79,7 @@ void test_d(void)
     printf("%-6d\n", 29);
     ft_printf("%.5d\n", 29);
     printf("%.5d\n", 29);
-*//*
+
     ft_printf("'%  6.3d'\n", 29);
     printf("'%  6.3d'\n", 29);
     ft_printf("ft_printf-> '%6.0d'\n", 29);
@@ -90,14 +90,13 @@ void test_d(void)
     printf("'%-1.8d'\n", 29);
     ft_printf("'%-15.3d'\n", 29);
     printf("'%-15.3d'\n", 29);
-*//*
+
     printf("------wildcard-----\n");
     ft_printf("%*d\n", 5, 4);
     printf("%*d\n", 5, 4);
     ft_printf("%d\n", 2, 9);
     printf("%d\n", 2, 9);
     printf("-----------\n");
-*/
 }
 
 void test_ptr(void)
@@ -184,8 +183,9 @@ int main(void)
 	char	*t = "0x12345678";
 	char	*u = "-0";
 
+    test_d();
     test_ptr();
-/*
+
     test_ptr();
     printf("\ntest 4 %%1d\n");
     printf(" --- Return : %d\n", printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d));
@@ -289,15 +289,15 @@ int main(void)
     i = 8;
     l = 0;
     j = -12;
-*/
-/*
+
+
     printf("%03.5d\n", 23);
     ft_printf("%03.5d\n", 23);
     printf("%05d\n", 23);
     ft_printf("%05d\n", 23);
     printf("%3.5d\n", 23);
     ft_printf("%3.5d\n", 23);
-*/
+
 
 //		printf(" --- Return : %d\n", printf("%0*d, %0*d, %0*d, %0*d, %0*d", a, l, a, m, a, c, a, e, a, d));
 //		printf(" --- Return : %d\n", ft_printf("%0*d, %0*d, %0*d, %0*d, %0*d", a, l, a, m, a, c, a, e, a, d));

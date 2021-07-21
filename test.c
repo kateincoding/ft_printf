@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:29:11 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/07/20 14:51:28 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 23:47:33 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1155,20 +1155,44 @@ void test_zero(void)
 	printf("->Result92 %d\n", ft_printf(" %03x ", 15));
 
 	printf("->Result94 %d\n", printf(" %05x ", 17));
-	printf("->Result94 %d\n", printf(" %05x ", 17));
+	printf("->Result94 %d\n", ft_printf(" %05x ", 17));
 	
 	printf("->Result95 %d\n", printf(" %01x ", 99));
+	printf("->Result95 %d\n", ft_printf(" %01x ", 99));
+
 	printf("->Result96 %d\n", printf(" %02x ", 100));
+	printf("->Result96 %d\n", ft_printf(" %02x ", 100));
+
 	printf("->Result97 %d\n", printf(" %03x ", 101));
+	printf("->Result97 %d\n", ft_printf(" %03x ", 101));
+
 	printf("->Result98 %d\n", printf(" %01x ", -9));
+	printf("->Result98 %d\n", ft_printf(" %01x ", -9));
+
 	printf("->Result99 %d\n", printf(" %02x ", -10));
+	printf("->Result99 %d\n", ft_printf(" %02x ", -10));
+
 	printf("->Result100 %d\n", printf(" %03x ", -11));
+	printf("->Result100 %d\n", ft_printf(" %03x ", -11));
+
 	printf("->Result101 %d\n", printf(" %04x ", -14));
+	printf("->Result101 %d\n", ft_printf(" %04x ", -14));
+
 	printf("->Result102 %d\n", printf(" %05x ", -15));
+	printf("->Result102 %d\n", ft_printf(" %05x ", -15));
+
 	printf("->Result103 %d\n", printf(" %06x ", -16));
+	printf("->Result103 %d\n", ft_printf(" %06x ", -16));
+
 	printf("->Result104 %d\n", printf(" %01x ", -99));
+	printf("->Result104 %d\n", ft_printf(" %01x ", -99));
+
 	printf("->Result105 %d\n", printf(" %02x ", -100));
+	printf("->Result105 %d\n", ft_printf(" %02x ", -100));
+
 	printf("->Result106 %d\n", printf(" %03x ", -101));
+	printf("->Result106 %d\n", ft_printf(" %03x ", -101));
+	
 	printf("->Result107 %d\n", printf(" %09x ", INT_MAX));
 	printf("->Result108 %d\n", printf(" %010x ", INT_MIN));
 	printf("->Result109 %d\n", printf(" %011x ", LONG_MAX));
@@ -1213,6 +1237,28 @@ void test_zero(void)
 
 void test_fix(void)
 {
+	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	int		f = 42;
+	int		g = 25;
+	int		h = 4200;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	char	*n = "abcdefghijklmnop";
+	char	*o = "-a";
+	char	*p = "-12";
+	char	*q = "0";
+	char	*r = "%%";
+	char	*s = "-2147483648";
+	char	*t = "0x12345678";
+	char	*u = "-0";
+
 	/* %p */
 	printf(RED);
 	printf("->Result1 %d\n", printf(" |%p| |%p| ", ULONG_MAX, -ULONG_MAX));
@@ -1250,6 +1296,56 @@ void test_fix(void)
 	printf("->Result6 %d\n", printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
 	ft_printf(E0M);
 	printf("->Result6 %d\n", ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
+
+	ft_printf("'%  6.3d'\n", 29);
+    printf("'%  6.3d'\n", 29);
+
+	ft_printf("'%-15.3d'\n", 29);
+    printf("'%-15.3d'\n", 29);
+
+    printf("**** case 7: %%2.9p value given 1234\n");
+    printf("bytes_o: %d\n\n", printf ("%2.15p\n",1234));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%2.15p\n", 1234));
+
+    printf("**** case 8: %%.5p value given NULL\n");
+    printf("bytes_o: %d\n\n", printf ("%.5p\n",0));
+    ft_printf ("bytes_f: %d\n\n", ft_printf ("%.5p\n", 0));
+
+	printf(" --- Return : %d\n", printf("%4i", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	printf(" --- Return : %d\n", ft_printf("%4i", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+
+	printf("\ntest 25\n");
+
+    printf(" --- Return : %d\n", printf("%1.1i, %1.1d, %1.1d, %1.1d, %1.1d, %1.1d, %1.1d, %1.1d", i, j, k, l, m, c, e, d)); //T25
+    printf(" --- Return : %d\n", ft_printf("%1.1i, %1.1d, %1.1d, %1.1d, %1.1d, %1.1d, %1.1d, %1.1d", i, j, k, l, m, c, e, d)); //T25
+
+	printf("\nbehaviour with 0\n");
+    printf(" --- Return : %d\n", printf("%d", l));
+    printf(" --- Return : %d\n", ft_printf("%d", l));
+    printf(" --- Return : %d\n", printf("%0d", l));
+    printf(" --- Return : %d\n", ft_printf("%0d", l));
+    printf(" --- Return : %d\n", printf("%.d", l));
+    printf(" --- Return : %d\n", ft_printf("%.d", l));
+    printf(" --- Return : %d\n", printf("%0.d", l));
+    printf(" --- Return : %d\n", ft_printf("%0.d", l));
+
+    printf("\nbehaviour with 0 with wodth\n");
+    printf(" --- Return : %d\n", printf("%d", l));
+    printf(" --- Return : %d\n", ft_printf("%d", l));
+    printf(" --- Return : %d\n", printf("%1d", l));
+    printf(" --- Return : %d\n", ft_printf("%1d", l));
+    printf(" -o- Return : %d\n", printf("%1.d", l));
+    printf(" -f- Return : %d\n", ft_printf("%1.d", l));
+    printf(" -o- Return : %u\n", printf("%1.u", l));
+    printf(" -f- Return : %u\n", ft_printf("%1.u", l));
+    printf(" -o- Return : %i\n", printf("%1.i", l));
+    printf(" -f- Return : %i\n", ft_printf("%1.i", l));
+    printf(" -o- Return : %d\n", printf("%1.1p", 0));
+    printf(" -f- Return : %d\n", ft_printf("%1.1p", 0));
+    printf(" --- Return : %d\n", printf("%1.1d", l));
+    printf(" --- Return : %d\n", ft_printf("%1.1d", l));
+    printf(" --- Return : %d\n", printf("%2.d", l));
+    printf(" --- Return : %d\n", ft_printf("%2.d", l));
 }
 
 void	test_x(void)
@@ -1405,12 +1501,12 @@ int main(void)
 {
 //	test_c();
 //	test_s();
-/*	test2_s(); */
-//	test3_d();
-//	test4_i();
-//	test_plus();
-//	test_zero();
-//	test_fix();
+	test2_s();
+	test3_d();
+	test4_i();
+	test_plus();
+	test_zero();
+	test_fix();
 	test_x();
 	return (0);
 }

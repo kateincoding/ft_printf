@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:29:11 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/07/20 23:47:33 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/21 13:17:42 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1499,8 +1499,8 @@ void	test_x(void)
 
 int main(void)
 {
-//	test_c();
-//	test_s();
+	test_c();
+	test_s();
 	test2_s();
 	test3_d();
 	test4_i();

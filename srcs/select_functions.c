@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:40 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/01 05:28:04 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 22:55:47 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,26 @@
  * @list: list of arguments to print
  * Return: numbers of char printed
  */
-int select_function(va_list args)
+int	select_function(t_fields *str, va_list args)
 {
-	unsigned int i = 0, result = 0;
+	unsigned int	i;
+	unsigned int	result;
+	const t_func	operator[9] = {{'c', print_char}, {'s', print_str},
+									{'d', print_int}, {'i', print_int},
+									{'u', print_unsigned}, {'x', print_hex},
+									{'X', print_upper_hexadecimal},
+									{'p', print_ptr}, {'\0', NULL}};
 
+	i = 0;
+	result = 0;
 	if (!str->format[i])
 		return (-1);
-
-	/* falta p & f */
-	t_func 	operator[] = {
-			{'c', print_char},
-			{'s', print_str},
-	/*		{'d', print_int},
-			{'i', print_int},
-			{'u', print_unsigned},*/
-	//		{'o', print_octal},
-	/*		{'x', print_hex},
-			{'X', print_HEX},*/
-	//		{'b', print_bin},
-	//		{'S', print_Str_Ascii},
-	//		{'r', print_rev_str},
-	//		{'R', print_rot13},
-			{'\0', NULL}};
-
-	// printf("\ntst here %c\n", str->op);
 	while (operator[i].op)
 	{
-		// printf("\ntst here %c\n", str->op);
 		if (str->op == operator[i].op)
 		{
-			// printf("\nhere\n");
-            result += operator[i].f(args);
-			break;
+			result += operator[i].f(str, args);
+			break ;
 		}
 		i++;
 	}

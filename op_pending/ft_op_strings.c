@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strings.c                                       :+:      :+:    :+:   */
+/*   ft_op_strings.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:38:49 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/22 22:38:53 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/08 09:55:10 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int print_Str_Ascii(va_list arg)
 		{
 			ft_putchar('\\');
 			ft_putchar('x');
-			print_HEXADECIMAL(s[c] / 16);
-			print_HEXADECIMAL(s[c] % 16);
+			print_upper_hexa(s[c] / 16);
+			print_upper_hexa(s[c] % 16);
 			i += 4;
 		}
 		else

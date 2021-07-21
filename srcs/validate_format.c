@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 22:37:47 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/24 05:48:38 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/15 05:32:45 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 ** Return: 1 if is positive; 0 if is negative
 */
 
-int validate_operator(char op)
+int	validate_operator(char op)
 {
 	return (ft_chrcount("diouxXcspf%", op) > 0);
 }
@@ -50,11 +50,14 @@ int	validate_modifier(const char *format, int i)
 /*
 ** validate_flag - validate if it is a flag
 ** @flag: flag to evaluate
-** Flags
-** - A minus sign `-' which specifies left adjustment of the output in the indicated field;
-** 0 A zero `0' character indicating that zero-padding should be used rather than blank-padding.  A `-' overrides a `0' if both are used;
-** . precision which specifies the number of digits to appear after the decimal point
-** * width - A field width or precision may be `*' instead of a digit string.  In this case an argument supplies the field width or precision.
+** - A minus sign `-' which specifies left adjustment of the
+** output in the indicated field;
+** 0 A zero `0' character indicating that zero-padding should be
+** used rather than blank-padding.
+** A `-' overrides a `0' if both are used;
+** . precision which specifies the number of digits to appear after the decimal
+** point* width - A field width or precision may be `*' instead of a digit
+** string. In this case an argument supplies the field width or precision.
 ** Return: 1 if is positive; 0 if is negative
 */
 
@@ -68,8 +71,6 @@ int	validate_only_flag(const char flag)
 	return (ft_chrcount("-0# +", flag) > 0);
 }
 
-// HERE
-
 /*
 ** valid_operator_with_flag - validate
 ** %[$][flags][width][.precision][length modifier]conversion
@@ -82,8 +83,9 @@ int	validate_only_flag(const char flag)
 
 int	valid_operator_flag_modifier(const char *format, int i)
 {
-	int result = 0;
+	int	result;
 
+	result = 0;
 	while (validate_flag(format[i]))
 		i++;
 	while ('0' <= format[i] && format[i] <= '9')

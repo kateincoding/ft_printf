@@ -6,10 +6,10 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/21 21:16:37 by ciglesia         ###   ########.fr        #
-#    Updated: 2021/07/09 12:00:04 by ksoto            ###   ########.fr        #
+#    Updated: 2021/07/21 15:28:29 by ksoto            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME		=	libftprintf.a
 
@@ -101,9 +101,6 @@ re		:		fclean all
 ftlib	:
 				@(cd $(LIB) && $(MAKE))
 
-test	:
-				$(CC) -g $(INCLUDE) tests/test.c libftprintf.a libft.a
-
-.PHONY	:		all bonus clean fclean re ftlib test
+.PHONY	:		all bonus clean fclean re ftlib
 
 -include $(DEPS)

@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 05:39:10 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/20 18:11:39 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 23:15:36 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,9 @@ int	print_int(t_fields *str, va_list lista)
 	calculate_int_len(str, n);
 	calculate_format_width_d(str);
 	print_before_diu(str);
-	if (str->negative == 1)
+	if (str->zero_value == 1 && str->precision == 0)
+		;
+	else if (str->negative == 1)
 		str->counter += putnbr_di((long)n, str->fd);
 	else
 		str->counter += putnbr_di((long)n, str->fd);
@@ -141,7 +143,10 @@ int	print_unsigned(t_fields *str, va_list lista)
 	calculate_un_len(str, num);
 	calculate_format_width(str);
 	print_before_diu(str);
-	str->counter += putnbr_di((long)num, str->fd);
+	if (str->zero_value == 1 && str->precision >= 0)
+		;
+	else
+		str->counter += putnbr_di((long)num, str->fd);
 	print_after_diu(str);
 	return (str->counter);
 }

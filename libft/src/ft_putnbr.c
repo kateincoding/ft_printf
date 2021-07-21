@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 00:12:26 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/27 13:25:45 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/21 13:23:24 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putnbr(int n)
 {
-	return(ft_putnbr_fd(n, 1));
+	return (ft_putnbr_fd(n, 1));
 }

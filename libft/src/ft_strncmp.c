@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 11:01:41 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/16 09:03:13 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/21 13:27:09 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < n && s1 && s2 && s1[i] && s2[i] &&

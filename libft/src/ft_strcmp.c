@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 22:53:20 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/16 09:03:08 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/21 13:27:52 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	return (ft_strncmp(s1, s2, (size_t)-1));
+	return (ft_strncmp(s1, s2, (size_t) - 1));
 }

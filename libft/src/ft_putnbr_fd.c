@@ -6,16 +6,17 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 08:28:55 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/27 13:25:59 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/21 13:24:35 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		putnbr(long n, int fd)
+int	putnbr(long n, int fd)
 {
-    int counter = 0;
+	int	counter;
 
+	counter = 0;
 	if (n == -2147483648)
 		counter += ft_putstr_fd("-2147483648", fd);
 	else if (n < 0)
@@ -30,11 +31,10 @@ int		putnbr(long n, int fd)
 	}
 	else if (n < 10)
 		counter += ft_putchar_fd(n + '0', fd);
-
-    return(counter);
+	return (counter);
 }
 
 int	ft_putnbr_fd(int n, int fd)
 {
-	return(putnbr(n, fd));
+	return (putnbr(n, fd));
 }

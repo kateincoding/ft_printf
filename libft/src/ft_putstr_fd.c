@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 08:13:25 by ksoto             #+#    #+#             */
-/*   Updated: 2021/06/27 13:34:02 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/07/21 13:22:14 by ksoto            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putstr_fd(const char *s, int fd)
 {
-	return(write(fd, s, ft_strlen(s)));
+	return (write(fd, s, ft_strlen(s)));
 }

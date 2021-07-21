@@ -1,44 +1,32 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile_checker                                   :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/15 06:33:26 by ksoto            ###   ########.fr        #
+#    Updated: 2021/07/21 18:56:15 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	libftprintf.a
+NAME		=	../libft.a
 
-#***************** LIB ********************#
-# General
-INC			=	./includes/
-
-INCLUDE		=	-I $(INC)
-
-# Lib
-LIB			=	./libft/
+INCLUDE		=	./include/
 
 #***************** DIR ********************#
 
-DIRSRC		=	./srcs/
-DIRFT		=	$(LIB)/src/
+DIRSRC		=	./src/
 
 #***************** SRC ********************#
 
-SRC			=	stack_manipulation.c ft_printf.c handle_format.c validate_format.c select_functions.c ft_conversion_cs.c ft_conversion_diu.c ft_conversion_xX.c handle_print.c ft_conversion_p.c
-
-SRCFT		=	ft_atoi.c ft_chrcount.c ft_memalloc.c ft_putchar.c ft_putchar_fd.c ft_br.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c
-
-SRCS		=	$(SRC) $(SRCFT)
+SRC			=	ft_atoi.c ft_chrcount.c ft_memalloc.c ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putstr_fd.c ft_strcmp.c ft_strlen.c ft_strncmp.c
 
 #***************** DEPS *******************#
 
 DIROBJ		=	./depo/
 
-OAUX		=	$(SRCS:%=$(DIROBJ)%)
+OAUX		=	$(SRC:%=$(DIROBJ)%)
 DEPS		=	$(OAUX:.c=.d)
 OBJS		=	$(OAUX:.c=.o)
 
@@ -47,10 +35,10 @@ ifdef FLAGS
 CFLAGS		=
 	endif
 	ifeq ($(FLAGS), debug)
-CFLAGS		=	-Wall -Wextra -Werror -ansi -pedantic -g -fPIC
+CFLAGS		=	-Wall -Wextra -Werror -ansi -pedantic -g
 	endif
 else
-CFLAGS		=	-Wall -Wextra -Werror -fPIC
+CFLAGS		=	-Wall -Wextra -Werror
 endif
 
 CC			=	/usr/bin/gcc
@@ -68,11 +56,7 @@ E0M			=	"\e[0m"
 
 %.o		:		../$(DIRSRC)/%.c
 				@printf $(GREEN)"Generating libftprintf objects... %-33.33s\r" $@
-				@$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
-
-%.o		:		../$(DIRFT)/%.c
-				@printf $(GREEN)"Generating libftprintf objects... %-33.33s\r" $@
-				@$(CC) $(CFLAGS) $(INCLUDE) -MMD -o $@ -c $<
+				@$(CC) $(CFLAGS) -I $(INCLUDE) -MMD -o $@ -c $<
 
 #************************ MAIN COMPILATION *************************
 
@@ -95,12 +79,6 @@ fclean	:		clean
 
 re		:		fclean all
 
-test	:
-				$(CC) $(INCLUDE) main.c libftprintf.a
-
-debug	:
-				$(CC) -g $(INCLUDE) main.c libftprintf.a $(LIB)/libft.a
-
-.PHONY	:		all clean fclean re ftlib
+.PHONY	:		all clean re
 
 -include $(DEPS)

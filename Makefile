@@ -6,7 +6,7 @@
 #    By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 13:15:05 by ciglesia          #+#    #+#              #
-#    Updated: 2021/07/21 18:55:33 by ciglesia         ###   ########.fr        #
+#    Updated: 2021/07/21 18:59:12 by ciglesia         ###   ########.fr        #
 #    Updated: 2021/07/09 12:00:04 by ksoto            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -99,11 +99,8 @@ ftlib	:
 				@(cd $(LIB) && $(MAKE))
 
 test	:
-				$(CC) $(INCLUDE) test.c libftprintf.a
+				$(CC) -g $(INCLUDE) tests/test.c libftprintf.a libft.a
 
-debug	:
-				$(CC) -g $(INCLUDE) test.c libftprintf.a $(LIB)/libft.a
-
-.PHONY	:		all bonus clean fclean re ftlib
+.PHONY	:		all bonus clean fclean re ftlib test
 
 -include $(DEPS)

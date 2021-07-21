@@ -5,7 +5,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>
-// # include "../libft/libft.h"
+// # include "libft.h"
 # include <stdio.h>
 
 /*
@@ -177,7 +177,6 @@ void	print_after_p(t_fields *str);
 /*
 ** libft -----
 */
-
 int		ft_putchar(char c);
 int		ft_putchar_fd(char c, int fd);
 int		ft_chrcount(char const *s, char c);

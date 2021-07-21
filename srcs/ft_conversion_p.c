@@ -6,7 +6,7 @@
 /*   By: ksoto <ksoto@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:36:11 by ksoto             #+#    #+#             */
-/*   Updated: 2021/07/09 00:18:52 by ksoto            ###   ########.fr       */
+/*   Updated: 2021/07/20 21:39:16 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,14 @@ int	print_ptr(t_fields *str, va_list lista)
 	int				z;
 
 	initialize_var_operators(str);
-	p = va_arg(lista, unsigned long); /* como diferenciamos cuando es 0 de un NULL */
+	p = va_arg(lista, unsigned long);
 	str->null_flag = (!p);
-	// printf("p is %lu\n", p); p siempre es 0 en caso sea 0 y null, caso 3 y 6
-	i = (sizeof(p) << 3) - 20;
+	i = (sizeof(p) << 3) - 4;
 	size = a_size(i, p, &z);
-	str->len = size + (!p) * 3; /*como se diferenciaria el p de 0 y null */
+	str->len = size + (!p) * 3;
 	calculate_format_width(str);
-	//if (!p)
-	//	str->final_width += 1;
-	// printf("\nlen %d and final width %d\n", str->len, str->final_width);
-	print_before(str);
-	if (!p && str->precision == -1)
+	print_before_p(str);
+	if (!p && str->precision != 0)
 		str->counter += ft_putchar_fd('0', str->fd);
 	while (size && i >= 0 && p != 0)
 	{
@@ -81,6 +77,6 @@ int	print_ptr(t_fields *str, va_list lista)
 			str->counter += ft_putchar_fd(hex_digit((p >> i) & 0xf), str->fd);
 		i -= 4;
 	}
-	print_after(str);
+	print_after_p(str);
 	return (str->counter);
 }

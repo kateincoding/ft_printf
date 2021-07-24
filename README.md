@@ -41,9 +41,14 @@ with all conversions
 ## Personal Extras
 * It works with wildcards "*"
 
-## Requeriments
+## Makefile to create the library
 ```
-Makefile all, clean, fclean, re, bonus
+make
+make all
+make clean
+make fclean
+make re
+make bonus
 ```
 
 ## Subject
